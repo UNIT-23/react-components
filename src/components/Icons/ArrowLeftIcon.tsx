@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Fonts } from "../../theme"
+import { Fonts } from "../../theme/"
 
 interface IProps {
 	readonly color?: string

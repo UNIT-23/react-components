@@ -6,7 +6,7 @@ import SnackbarContent from "@material-ui/core/SnackbarContent"
 import IconButton from "@material-ui/core/IconButton"
 import Slide, { SlideProps } from "@material-ui/core/Slide"
 
-import Plus from "../Icons/Plus"
+import Plus from "../Icons/PlusIcon"
 import AlertIcon from "../Icons/AlertIcon"
 
 import { alertClose } from "../../appstate/actions/alert/alertActions"
