@@ -1,14 +1,21 @@
 import * as React from "react"
-import "./App.css"
+import { Provider } from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
 
-class App extends React.Component {
-	render() {
-		return (
-			<div className="App">
-				<h3>React Components</h3>
-			</div>
-		)
-	}
+import MainRoute from "./navigation/routes"
+
+import { persistor, store } from "./appstate/store"
+
+const onBeforeLift: Function = (): void => {
+	// Anything that needs to be done before App ready (by redux-persist)
 }
+
+const App: React.SFC = (): JSX.Element => (
+	<Provider store={store}>
+		<PersistGate onBeforeLift={onBeforeLift} persistor={persistor}>
+			<MainRoute />
+		</PersistGate>
+	</Provider>
+)
 
 export default App

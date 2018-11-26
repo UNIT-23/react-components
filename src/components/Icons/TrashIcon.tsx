@@ -8,7 +8,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Trash: React.SFC<IProps> = ({
+const TrashIcon: React.SFC<IProps> = ({
 	color = "#222",
 	size = Fonts.iconSize.medium,
 	fill = "none"
@@ -31,4 +31,4 @@ const Trash: React.SFC<IProps> = ({
 	</svg>
 )
 
-export default Trash
+export default TrashIcon

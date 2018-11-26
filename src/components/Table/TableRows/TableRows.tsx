@@ -8,6 +8,7 @@ import InputField from "../../InputField/InputField"
 import { IProps } from "./__types/IProps"
 import { IRow } from "../__types/IRow"
 import { Values } from "./__types/Values"
+import { InputTypes } from "../../../models/InputTypes"
 
 import styles from "./styles/"
 import { IHead } from "../__types/IHead"

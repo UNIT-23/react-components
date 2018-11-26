@@ -1,23 +1,26 @@
 interface IRootState {
-	readonly auth: IAuth
 	readonly alert: IAlert
+	readonly posts: IPosts
+}
+
+interface IPosts {
+	readonly posts: ReadonlyArray<IPost>
+	readonly postsGetRequestState: API
+	readonly postsCount: number
+	readonly postsGetError: string
+}
+
+interface IPost {
+	readonly postId: number
+	readonly id: number
+	readonly name: string
+	readonly email: string
+	readonly body: string
 }
 
 interface ITableData {
 	readonly component: React.ReactNode
 	readonly value: number | string
-}
-
-interface IAuth {
-	readonly user: IUser
-	readonly authToken: string
-	readonly loginRequestState: API
-	readonly loginError: string
-}
-
-interface IUser {
-	readonly id: string
-	readonly name: string
 }
 
 interface ITableHeader {
@@ -33,13 +36,13 @@ interface IAlert {
 	readonly alertLevel?: AlertLevel
 }
 
-declare enum AlertLevel {
+enum AlertLevel {
 	Success = "Success",
 	Warning = "Warning",
 	Error = "Error"
 }
 
-declare enum IWeekDays {
+enum IWeekDays {
 	Monday = "Monday",
 	Sunday = "Sunday",
 	Tuesday = "Tuesday",
@@ -49,7 +52,7 @@ declare enum IWeekDays {
 	Saturday = "Saturday"
 }
 
-declare enum InputTypes {
+enum InputTypes {
 	Select = "select",
 	Textarea = "textarea",
 	Switch = "switch",
@@ -67,7 +70,7 @@ interface IAction<P, T> {
 /* ------------------------------------------------- */
 // API dup cause can't import in global.d.ts
 /* ------------------------------------------------- */
-declare enum API {
+enum API {
 	NOT_REQUESTED = "API_NOT_REQUESTED",
 	REQUEST_PENDING = "API_REQUEST_PENDING",
 	REQUEST_SUCCESS = "API_REQUEST_SUCCESS",

@@ -7,7 +7,7 @@ import { IHead } from "../../__types/IHead"
 
 export interface IProps<TRow extends IRow, THead extends IHead> extends WithStyles<typeof styles> {
 	readonly rows: ReadonlyArray<TRow>
-	readonly handleSelectClick?: (event: React.ChangeEvent, id: string) => void
+	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
 	readonly orderBy: string
 	readonly orderType: "asc" | "desc"
 	readonly page: number

@@ -1,7 +1,7 @@
 import { all } from "redux-saga/effects"
 
-import { loginRequestSagaWatcher } from "./sagas/auth/loginRequestSaga"
+import { postsGetSagaWatcher } from "./sagas/posts/postsGetRequestSaga"
 
 export function* rootSaga() {
-	yield all([loginRequestSagaWatcher()])
+	yield all([postsGetSagaWatcher()])
 }

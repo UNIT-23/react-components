@@ -7,7 +7,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Clock: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const ClockIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -25,4 +25,4 @@ const Clock: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium
 	</svg>
 )
 
-export default Clock
+export default ClockIcon

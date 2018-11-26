@@ -13,7 +13,7 @@ import { rootReducer } from "./rootReducer"
 
 import { rootSaga } from "./rootSaga"
 
-export function configureStore() {
+function configureStore() {
 	// To use Reactotron for devTools
 	// Source: https://github.com/infinitered/reactotron
 	if (process.env.NODE_ENV !== "production") {
@@ -54,3 +54,5 @@ export function configureStore() {
 		persistor: persistStore(store)
 	}
 }
+
+export const { store, persistor } = configureStore()

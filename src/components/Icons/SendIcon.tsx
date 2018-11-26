@@ -7,7 +7,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Send: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const SendIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -26,4 +26,4 @@ const Send: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium 
 	</svg>
 )
 
-export default Send
+export default SendIcon

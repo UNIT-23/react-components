@@ -7,7 +7,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Support: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const SupportIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -30,4 +30,4 @@ const Support: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medi
 	</svg>
 )
 
-export default Support
+export default SupportIcon

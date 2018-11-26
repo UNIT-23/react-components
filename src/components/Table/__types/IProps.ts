@@ -8,13 +8,13 @@ export interface IProps extends StyledComponentProps {
 	readonly dataRequestState?: API
 	readonly DefaultBtn?: React.SFC | React.ComponentClass
 	readonly handleSelectAllClick?: React.ChangeEventHandler
-	readonly handleSelectClick?: (event: React.ChangeEvent, id: string) => void
+	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
 	readonly header: ReadonlyArray<IHead>
 	readonly onPageChange?: (page: number, rowsPerPage: number) => void
 	readonly onRowsPerPageChange?: (page: number, rowsPerPage: number) => void
 	readonly rows: ReadonlyArray<IRow>
 	readonly rowsPerPage?: number
-	readonly selected?: ReadonlyArray<string>
+	readonly selected?: ReadonlyArray<number>
 	readonly SelectedBtn?: React.SFC | React.ComponentClass
 	readonly tableTitle: string
 }

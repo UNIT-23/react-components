@@ -3,7 +3,7 @@ import { reducer as formReducer } from "redux-form"
 import storage from "redux-persist/lib/storage"
 
 import { alertReducer as alert } from "./reducers/alert/alertReducer"
-import { authReducer as auth } from "./reducers/auth/authReducer"
+import { postsReducer as posts } from "./reducers/posts/postsReducer"
 
 // Setup for Redux Persist
 export const rootReducer = persistCombineReducers(
@@ -15,6 +15,6 @@ export const rootReducer = persistCombineReducers(
 	{
 		form: formReducer,
 		alert,
-		auth
+		posts
 	}
 )

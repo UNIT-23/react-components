@@ -7,7 +7,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Refresh: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const RefreshIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -26,4 +26,4 @@ const Refresh: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medi
 	</svg>
 )
 
-export default Refresh
+export default RefreshIcon

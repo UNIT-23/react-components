@@ -7,7 +7,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const Chat: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const ChatIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
 	<svg
 		stroke="currentColor"
 		fill="currentColor"
@@ -33,4 +33,4 @@ const Chat: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium 
 	</svg>
 )
 
-export default Chat
+export default ChatIcon
