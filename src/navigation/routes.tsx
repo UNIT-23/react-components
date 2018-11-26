@@ -10,7 +10,7 @@ const DashboardComponent = React.lazy(() => import("../screens/Dashboard/Dashboa
 
 const MainRoute = (): JSX.Element => (
 	<div>
-		<Router>
+		<Router basename={process.env.PUBLIC_URL}>
 			<React.Suspense fallback={<Loader />}>
 				<Switch>
 					<AuthRoute path="/" exact isAuth={true} component={DashboardComponent} />

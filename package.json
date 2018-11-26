@@ -2,6 +2,7 @@
 	"name": "react-components",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "https://unit-23.github.io/react-components",
 	"dependencies": {
 		"@atlaskit/avatar": "^14.1.3",
 		"@atlaskit/drawer": "^2.5.1",
