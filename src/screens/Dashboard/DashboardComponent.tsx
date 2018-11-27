@@ -27,7 +27,7 @@ import TrashIcon from "../../components/Icons/TrashIcon"
 import UsersIcon from "../../components/Icons/UsersIcon"
 import UserIcon from "../../components/Icons/UserIcon"
 
-import { alertOpen } from "../../appstate/actions/alert/alertActions"
+import { openAlert } from "../../appstate/actions/alert/alertActions"
 
 import { IProps } from "./__types/IProps"
 
@@ -48,7 +48,7 @@ class DashboardComponent extends React.Component<IProps> {
 	private showAlert() {
 		const { dispatch } = this.props
 
-		dispatch(alertOpen({ message: "Dummy Alert here nothing to worry!" }))
+		dispatch(openAlert({ message: "Dummy Alert here nothing to worry!" }))
 	}
 
 	public render() {

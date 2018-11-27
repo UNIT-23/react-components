@@ -1,3 +1,7 @@
+// -------------------------------------------------------
+/*---------------------Components------------------------*/
+// -------------------------------------------------------
+
 export { default as Alert } from "./src/components/Alert/Alert"
 export { default as ApiSuspense } from "./src/components/ApiSuspense/ApiSuspense"
 export { default as Avatar } from "./src/components/Avatar/Avatar"
@@ -28,3 +32,15 @@ export { default as UsersIcon } from "./src/components/Icons/UsersIcon"
 export { default as InputField } from "./src/components/InputField/InputField"
 export { default as Loader } from "./src/components/Loader/Loader"
 export { default as Table } from "./src/components/Table/Table"
+
+// -------------------------------------------------------
+/*---------------------Actions---------------------------*/
+// -------------------------------------------------------
+
+export { openAlert, closeAlert } from "./src/appstate/actions/alert/alertActions"
+
+// -------------------------------------------------------
+/*---------------------Reducers--------------------------*/
+// -------------------------------------------------------
+
+export { alertReducer } from "./src/appstate/reducers/alert/alertReducer"
