@@ -30,6 +30,7 @@ export { default as UserIcon } from "./src/components/Icons/UserIcon"
 export { default as UsersIcon } from "./src/components/Icons/UsersIcon"
 
 export { default as InputField } from "./src/components/InputField/InputField"
+export { default as RedirectToLogin } from "./src/components/RedirectToLogin/RedirectToLogin"
 export { default as Loader } from "./src/components/Loader/Loader"
 export { default as Table } from "./src/components/Table/Table"
 
