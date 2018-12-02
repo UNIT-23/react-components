@@ -13,7 +13,7 @@ import styles from "./styles/"
 const createSortHandler: Function = (property: number, onRequestSort: Function): Function => (event: Event): void =>
 	onRequestSort(event, property)
 
-function HeaderRow ({
+function HeaderRow({
 	id,
 	classes,
 	numeric,
@@ -42,7 +42,7 @@ function HeaderRow ({
 					direction={orderType}
 					onClick={createSortHandler(id, onRequestSort)}
 				>
-					<Typography color="inherit" align="center" variant="subtitle1">
+					<Typography color="inherit" align="center" variant="caption">
 						{label}
 					</Typography>
 				</TableSortLabel>
