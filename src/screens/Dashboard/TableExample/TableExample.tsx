@@ -1,3 +1,6 @@
+// TODO: Move to ReadonlyArray
+// tslint:disable:readonly-array
+// tslint:disable:no-let
 import * as React from "react"
 
 import Table from "../../../components/Table/Table"
@@ -48,7 +51,8 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 		const { selectedIds } = this.state
 
 		const selectedIndex = selectedIds.indexOf(id)
-		let newSelected: ReadonlyArray<number> = []
+
+		let newSelected: number[] = []
 
 		if (selectedIndex === -1) {
 			newSelected = newSelected.concat(selectedIds, id)
@@ -77,14 +81,14 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 
 		const navOutOfRangeOfData = nextOffset >= posts.length
 
-		onNextPage &&
-			navOutOfRangeOfData &&
+		if (onNextPage && navOutOfRangeOfData) {
 			dispatch(
 				postsGetRequest({
 					offset: nextOffset,
 					limit: rowsPerPage
 				})
 			)
+		}
 	}
 
 	public onRowsPerPageChange(_page: number, rowsPerPage: number) {
@@ -113,8 +117,8 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 				count={postsCount}
 				dataRequestState={API.REQUEST_SUCCESS}
 				tableTitle="Merchants"
-				DefaultBtn={DefaultBtn}
-				SelectedBtn={SelectedBtn}
+				DefaultBtn={<DefaultBtn />}
+				SelectedBtn={<SelectedBtn />}
 				handleSelectClick={this.handleSelectClick}
 				onPageChange={this.onPageChange}
 				onRowsPerPageChange={this.onRowsPerPageChange}

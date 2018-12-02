@@ -6,7 +6,7 @@ import { IHead } from "./IHead"
 export interface IProps extends StyledComponentProps {
 	readonly count: number
 	readonly dataRequestState?: API
-	readonly DefaultBtn?: React.SFC | React.ComponentClass
+	readonly DefaultBtn?: JSX.Element
 	readonly handleSelectAllClick?: React.ChangeEventHandler
 	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
 	readonly header: ReadonlyArray<IHead>
@@ -15,6 +15,6 @@ export interface IProps extends StyledComponentProps {
 	readonly rows: ReadonlyArray<IRow>
 	readonly rowsPerPage?: number
 	readonly selected?: ReadonlyArray<number>
-	readonly SelectedBtn?: React.SFC | React.ComponentClass
+	readonly SelectedBtn?: JSX.Element
 	readonly tableTitle: string
 }

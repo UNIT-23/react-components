@@ -7,9 +7,6 @@ const styles: StyleRulesCallback = (): StyleRules =>
 		toolTip: {
 			display: "flex",
 			justifyContent: "center"
-		},
-		header: {
-			background: "red"
 		}
 	})
 

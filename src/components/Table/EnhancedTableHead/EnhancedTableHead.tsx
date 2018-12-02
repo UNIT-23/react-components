@@ -8,6 +8,8 @@ import HeaderRows from "./HeaderRows/HeaderRows"
 
 import InputField from "../../InputField/InputField"
 
+import { InputTypes } from "../../../models/InputTypes"
+
 import { IProps } from "./__types/IProps"
 import { IHead } from "../__types/IHead"
 
