@@ -106,7 +106,7 @@ function TableRows<TRow extends IRow, THead extends IHead>({
 
 // tslint:disable-next-line:no-object-mutation
 TableRows.defaultProps = {
-	selected: []
+	selected: [] as ReadonlyArray<number | string>
 }
 
 export default withStyles(styles)(TableRows)

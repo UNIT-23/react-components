@@ -1,7 +1,7 @@
-import { Styles } from "react-jss"
 import { Colors } from "../../../../theme"
 
-export const styles: Styles = {
+// tslint:disable-next-line:no-any
+export const styles = () => ({
 	root: {
 		padding: 0,
 		color: Colors.primary,
@@ -10,4 +10,4 @@ export const styles: Styles = {
 		}
 	},
 	checked: {}
-}
+})
