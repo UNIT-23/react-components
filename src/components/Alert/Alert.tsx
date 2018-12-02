@@ -9,7 +9,7 @@ import Slide, { SlideProps } from "@material-ui/core/Slide"
 import Plus from "../Icons/PlusIcon"
 import AlertIcon from "../Icons/AlertIcon"
 
-import { alertClose } from "../../appstate/actions/alert/alertActions"
+import { closeAlert } from "../../appstate/actions/alert/alertActions"
 
 import { IProps } from "./__types/IProps"
 
@@ -25,7 +25,7 @@ class Alert extends React.Component<IProps> {
 	public handleClose() {
 		const { dispatch } = this.props
 
-		dispatch(alertClose())
+		dispatch(closeAlert())
 	}
 
 	public render() {

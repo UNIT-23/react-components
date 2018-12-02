@@ -2,14 +2,14 @@ import { AlertTypes } from "../../types/alertTypes"
 
 import { AlertOpenAction, AlertCloseAction, IAlertOpenPayload } from "./__types/IActions"
 
-export function alertOpen(payload: IAlertOpenPayload): AlertOpenAction {
+export function openAlert(payload: IAlertOpenPayload): AlertOpenAction {
 	return {
 		payload,
 		type: AlertTypes.ALERT_OPEN
 	}
 }
 
-export function alertClose(): AlertCloseAction {
+export function closeAlert(): AlertCloseAction {
 	return {
 		type: AlertTypes.ALERT_CLOSE
 	}
