@@ -46,3 +46,9 @@ export { openAlert, closeAlert } from "./src/appstate/actions/alert/alertActions
 // -------------------------------------------------------
 
 export { alertReducer } from "./src/appstate/reducers/alert/alertReducer"
+
+// -------------------------------------------------------
+/*---------------------Theme--------------------------*/
+// -------------------------------------------------------
+
+export { Theme } from "./src/theme/"

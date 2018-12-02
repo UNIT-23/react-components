@@ -1,4 +1,6 @@
-const colors = {
+// tslint:disable:no-let
+// tslint:disable-next-line:readonly-keyword
+export let Colors = {
 	primary: "#00796B",
 	primaryLight: "#009688",
 	secondary: "#FFC107",
@@ -13,4 +15,6 @@ const colors = {
 	frost: "#757575"
 }
 
-export default colors
+export const Theme = (overrideTheme: { readonly [key: string]: string } = {}) => {
+	Colors = { ...Colors, ...overrideTheme }
+}
