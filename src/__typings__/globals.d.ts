@@ -19,8 +19,9 @@ interface IPost {
 }
 
 interface ITableData {
-	readonly component: React.ReactNode
-	readonly value: number | string
+	// tslint:disable:readonly-keyword
+	component: React.ReactNode
+	value: number | string
 }
 
 interface ITableHeader {
