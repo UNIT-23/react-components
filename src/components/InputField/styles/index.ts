@@ -1,10 +1,11 @@
 import { IProps } from "../__types/IProps"
+import { Fonts } from "../../../theme"
 
 // tslint:disable-next-line:no-any
 export const styles: any = {
 	input: {
 		width: "96%",
-		fontSize: 14,
+		fontSize: Fonts.size.small,
 		outline: "none",
 		borderRadius: "0px",
 		margin: "8px 0px",
@@ -14,7 +15,7 @@ export const styles: any = {
 	},
 	textarea: {
 		width: "96%",
-		fontSize: 14,
+		fontSize: Fonts.size.small,
 		outline: "none",
 		borderRadius: "0px",
 		margin: "8px 0px",

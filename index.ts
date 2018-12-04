@@ -65,3 +65,4 @@ export { tableDataFormatter } from "./src/utils/tableDataFormatter"
 // -------------------------------------------------------
 
 export { InputTypes } from "./src/models/InputTypes"
+export { API } from "./src/models/ApiState"
