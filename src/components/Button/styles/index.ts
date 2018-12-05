@@ -12,6 +12,7 @@ export const styles: any = {
 		outline: "none",
 		border: "none",
 		margin: ({ margin }: IProps) => margin || "10px 0px",
-		cursor: "pointer"
+		cursor: "pointer",
+		boxShadow: "1px 3px 8px 0px #ccc"
 	}
 }

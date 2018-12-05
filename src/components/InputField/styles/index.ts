@@ -11,6 +11,7 @@ export const styles: any = {
 		margin: "8px 0px",
 		height: 31,
 		padding: "8px 8px",
+		boxShadow: "1px 3px 8px 0px #ccc",
 		border: ({ meta: { error, touched } }: IProps) => (error && touched ? "1px solid red" : "1px solid #e8e6e6")
 	},
 	textarea: {
@@ -22,6 +23,7 @@ export const styles: any = {
 		resize: "none",
 		height: 80,
 		padding: "8px 8px",
+		boxShadow: "1px 3px 8px 0px #ccc",
 		border: ({ meta: { error, touched } }: IProps) => (error && touched ? "1px solid red" : "1px solid #e8e6e6")
 	}
 }
