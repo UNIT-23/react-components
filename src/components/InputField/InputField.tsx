@@ -13,9 +13,13 @@ import { IProps } from "./__types/IProps"
 const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
 		case "select":
+			const onBlurForSelect = (_: React.ChangeEvent) => {
+				onBlur(restInput.value)
+			}
+
 			return (
 				<CheckboxSelect
-					onBlur={onBlur}
+					onBlur={onBlurForSelect}
 					styles={selectStyles}
 					{...restInput}
 					{...rest}
