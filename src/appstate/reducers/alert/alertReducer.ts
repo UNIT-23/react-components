@@ -14,6 +14,7 @@ export function alertReducer(state: IAlert = initialState, action: AlertActions)
 		case AlertTypes.ALERT_OPEN:
 			return {
 				...state,
+				message: action.payload.message || "Something went wrong!",
 				alertState: true
 			}
 		case AlertTypes.ALERT_CLOSE:
