@@ -8,7 +8,7 @@ import { IProps } from "./__types/IProps"
 
 const ApiSuspense = ({ apiState, children }: IProps) => {
 	if (apiState === API.REQUEST_PENDING) {
-		return <Loader />
+		return <Loader color="#fff" />
 	}
 
 	return <>{children}</>
