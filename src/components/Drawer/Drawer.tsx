@@ -1,6 +1,5 @@
 import * as React from "react"
 import MuiDrawer from "@material-ui/core/Drawer"
-import List from "@material-ui/core/List"
 import injectSheet from "react-jss"
 
 import { IProps } from "./__types/IProps"
@@ -35,9 +34,7 @@ class Drawer extends React.Component<IProps, IState> {
 				open={openModel}
 				onClose={closeDrawer}
 			>
-				<div className={classes.list}>
-					<List>{children}</List>
-				</div>
+				<div className={classes.list}>{children}</div>
 			</MuiDrawer>
 		)
 	}

@@ -4,6 +4,7 @@ import { IProps } from "../__types/IProps"
 export const styles: any = {
 	list: {
 		width: ({ width }: IProps) => width || "60vw",
+		height: ({ height }: IProps) => height || "89%",
 		"& ul": {
 			padding: 0
 		}

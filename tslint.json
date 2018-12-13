@@ -1,57 +1,58 @@
 {
-    "extends": [
-        "tslint-plugin-prettier",
-        "tslint-config-prettier",
-        "tslint-eslint-rules",
-        "tslint-immutable/all",
-        "tslint:all",
-        "tslint-react"
-    ],
-    "rules": {
-        "only-arrow-functions": false,
-        "prefer-function-over-method": false,
-        "no-empty-interface": false,
-        "type-literal-delimiter": false,
-        "no-if-statement": false,
-        "no-null-keyword": false,
-        "prefer-method-signature": false,
-        "jsx-no-multiline-js": false,
-        "ordered-imports": false,
-        "jsx-boolean-value": false,
-        "newline-per-chained-call": false,
-        "no-mixed-interface": false,
-        "space-before-function-paren": false,
-        "no-expression-statement": false,
-        "typedef": [false, "variable-declaration"],
-        "max-line-length": [
-            true,
-            {
-                "limit": 120,
-                "ignore-pattern": "class [a-zA-Z] |<path"
-            }
-        ],
-        "member-ordering": false,
-        "no-this": false,
-        "no-class": false,
-        "no-inferrable-types": false,
-        "no-any": true,
-        "quotemark": [true, "double"],
-        "indent": [true, "tabs", 4],
-        "file-name-casing": false,
-        "semicolon": [true, "never"],
-        "variable-name": false,
-        "no-default-export": false,
-        "no-import-side-effect": [
-            true,
-            {
-                "ignore-module": "(\\.html|\\.css)$"
-            }
-        ],
-        "no-submodule-imports": false,
-        "object-literal-sort-keys": false,
-        "object-literal-key-quotes": false,
-        "ban-types": false,
-        "trailing-comma": false
-    },
-    "defaultSeverity": "error"
+	"extends": [
+		"tslint-plugin-prettier",
+		"tslint-config-prettier",
+		"tslint-eslint-rules",
+		"tslint-immutable/all",
+		"tslint:all",
+		"tslint-react"
+	],
+	"rules": {
+		"only-arrow-functions": false,
+		"no-method-signature": false,
+		"prefer-function-over-method": false,
+		"no-empty-interface": false,
+		"type-literal-delimiter": false,
+		"no-if-statement": false,
+		"no-null-keyword": false,
+		"prefer-method-signature": false,
+		"jsx-no-multiline-js": false,
+		"ordered-imports": false,
+		"jsx-boolean-value": false,
+		"newline-per-chained-call": false,
+		"no-mixed-interface": false,
+		"space-before-function-paren": false,
+		"no-expression-statement": false,
+		"typedef": [false, "variable-declaration"],
+		"max-line-length": [
+			true,
+			{
+				"limit": 120,
+				"ignore-pattern": "class [a-zA-Z] |<path"
+			}
+		],
+		"member-ordering": false,
+		"no-this": false,
+		"no-class": false,
+		"no-inferrable-types": false,
+		"no-any": true,
+		"quotemark": [true, "double"],
+		"indent": [true, "tabs", 4],
+		"file-name-casing": false,
+		"semicolon": [true, "never"],
+		"variable-name": false,
+		"no-default-export": false,
+		"no-import-side-effect": [
+			true,
+			{
+				"ignore-module": "(\\.html|\\.css)$"
+			}
+		],
+		"no-submodule-imports": false,
+		"object-literal-sort-keys": false,
+		"object-literal-key-quotes": false,
+		"ban-types": false,
+		"trailing-comma": false
+	},
+	"defaultSeverity": "error"
 }
