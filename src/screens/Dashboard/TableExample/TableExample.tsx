@@ -104,8 +104,9 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 		)
 	}
 
-	public formatData(data: ReadonlyArray<IPost>) {
-		return data.map(tableDataFormatter)
+	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
+		// tslint:disable-next-line:no-any
+		return data.map(tableDataFormatter) as any
 	}
 
 	public render() {

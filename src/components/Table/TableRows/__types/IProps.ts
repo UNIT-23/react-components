@@ -1,12 +1,11 @@
 import { WithStyles } from "@material-ui/core/styles"
 
-import { IRow } from "../../__types/IRow"
-
 import styles from "../styles"
+
 import { IHead } from "../../__types/IHead"
 
-export interface IProps<TRow extends IRow, THead extends IHead> extends WithStyles<typeof styles> {
-	readonly rows: ReadonlyArray<TRow>
+export interface IProps<THead extends IHead> extends WithStyles<typeof styles> {
+	readonly rows: ReadonlyArray<ITableData>
 	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
 	readonly orderBy: string
 	readonly orderType: "asc" | "desc"

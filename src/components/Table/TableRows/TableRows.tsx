@@ -6,35 +6,34 @@ import { withStyles } from "@material-ui/core/styles"
 import InputField from "../../InputField/InputField"
 
 import { IProps } from "./__types/IProps"
-import { IRow } from "../__types/IRow"
 import { Values } from "./__types/Values"
 import { InputTypes } from "../../../models/InputTypes"
 
 import styles from "./styles/"
 import { IHead } from "../__types/IHead"
 
-function stableSort<TRow extends IRow>(
-	array: ReadonlyArray<TRow>,
-	cmp: (a: TRow, b: TRow) => number
-): ReadonlyArray<TRow> {
-	const stabilizedThis: ReadonlyArray<ReadonlyArray<TRow | number>> = array
-		.map((el: TRow, index: number) => [el, index])
-		.sort((a: ReadonlyArray<TRow | number>, b: ReadonlyArray<TRow | number>) => {
-			const orderType: number = cmp(a[0] as TRow, b[0] as TRow)
+function stableSort(
+	array: ReadonlyArray<ITableData>,
+	cmp: (a: ITableData, b: ITableData) => number
+): ReadonlyArray<ITableData> {
+	const stabilizedThis: ReadonlyArray<ReadonlyArray<ITableData | number>> = array
+		.map((el: ITableData, index: number) => [el, index])
+		.sort((a: ReadonlyArray<ITableData | number>, b: ReadonlyArray<ITableData | number>) => {
+			const orderType: number = cmp(a[0] as ITableData, b[0] as ITableData)
 
 			return orderType !== 0 ? orderType : (a[1] as number) - (b[1] as number)
 		})
 
-	return stabilizedThis.map((el: ReadonlyArray<TRow | number>) => el[0] as TRow)
+	return stabilizedThis.map((el: ReadonlyArray<ITableData | number>) => el[0] as ITableData)
 }
 
-function getSorting<TRow extends IRow>(orderType: "asc" | "desc", orderBy: string): (a: TRow, b: TRow) => number {
+function getSorting(orderType: "asc" | "desc", orderBy: string): (a: ITableData, b: ITableData) => number {
 	return orderType === "desc"
-		? (a: TRow, b: TRow): number => desc(a, b, orderBy)
-		: (a: TRow, b: TRow): number => -desc(a, b, orderBy)
+		? (a: ITableData, b: ITableData): number => desc(a, b, orderBy)
+		: (a: ITableData, b: ITableData): number => -desc(a, b, orderBy)
 }
 
-function desc<TRow extends IRow>(a: TRow, b: TRow, orderBy: string): number {
+function desc(a: ITableData, b: ITableData, orderBy: string): number {
 	return b[orderBy].value < a[orderBy].value ? -1 : b[orderBy].value > a[orderBy].value ? 1 : 0
 }
 
@@ -45,7 +44,7 @@ function rowClickHandler(
 	return (event: React.MouseEvent<HTMLTableRowElement>): Function => handleClick && handleClick(event, id)
 }
 
-function TableRows<TRow extends IRow, THead extends IHead>({
+function TableRows<THead extends IHead>({
 	rows,
 	classes,
 	handleSelectClick,
@@ -55,14 +54,14 @@ function TableRows<TRow extends IRow, THead extends IHead>({
 	rowsPerPage,
 	selected,
 	columns
-}: IProps<TRow, THead>): JSX.Element {
+}: IProps<THead>): JSX.Element {
 	const emptyRows: number = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
 	return (
 		<React.Fragment>
 			{stableSort(rows, getSorting(orderType, orderBy))
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-				.map((row: TRow) => {
+				.map((row: ITableData) => {
 					const isSelected: boolean = selected.includes(row.id.value as React.ReactText)
 					const rowNames: ReadonlyArray<string> = columns.map((c: THead) => c.id)
 
