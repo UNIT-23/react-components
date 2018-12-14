@@ -1,5 +1,5 @@
 import React from "react"
-import useSheet from "react-jss"
+import injectSheet from "react-jss"
 
 import { IProps } from "./__types/IProps"
 
@@ -16,4 +16,4 @@ const Loader: React.SFC<IProps> = ({ classes }: IProps): JSX.Element => (
 		</div>
 	</div>
 )
-export default useSheet(styles)(Loader)
+export default injectSheet(styles)(Loader)

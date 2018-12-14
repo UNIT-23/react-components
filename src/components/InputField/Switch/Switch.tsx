@@ -1,5 +1,5 @@
 import * as React from "react"
-import useSheet from "react-jss"
+import injectSheet from "react-jss"
 import Switch from "@material-ui/core/Switch"
 
 import { styles } from "./styles"
@@ -41,4 +41,4 @@ class Checkbox extends React.Component<IProps, IState> {
 	}
 }
 
-export default useSheet(styles)(Checkbox)
+export default injectSheet(styles)(Checkbox)

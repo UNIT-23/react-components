@@ -1,5 +1,5 @@
 import * as React from "react"
-import useSheet from "react-jss"
+import injectSheet from "react-jss"
 // @ts-ignore
 import AtlasAvatar from "@atlaskit/avatar"
 
@@ -19,4 +19,4 @@ const Avatar = ({ photo, name, size, status, presence, classes }: IProps) => (
 	</div>
 )
 
-export default React.memo(useSheet(styles)(Avatar))
+export default React.memo(injectSheet(styles)(Avatar))

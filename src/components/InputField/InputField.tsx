@@ -1,5 +1,5 @@
 import React from "react"
-import useSheet from "react-jss"
+import injectSheet from "react-jss"
 // @ts-ignore
 import { CheckboxSelect } from "@atlaskit/select"
 
@@ -68,4 +68,4 @@ InputField.defaultProps = {
 	}
 }
 
-export default useSheet(styles)(InputField) as InputField<IProps>
+export default injectSheet(styles)(InputField) as InputField<IProps>

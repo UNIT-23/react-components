@@ -1,5 +1,5 @@
 import React from "react"
-import useSheet from "react-jss"
+import injectSheet from "react-jss"
 
 import { IProps } from "./__types/IProps"
 
@@ -11,4 +11,4 @@ const Button = ({ children, classes, ...rest }: IProps) => (
 	</button>
 )
 
-export default useSheet(styles)(Button)
+export default injectSheet(styles)(Button)
