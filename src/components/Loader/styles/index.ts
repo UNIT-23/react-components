@@ -15,8 +15,6 @@ const react: IReactStyle = {
 // tslint:disable-next-line:no-any
 export const styles: any = {
 	container: {
-		width: "100%",
-		height: "100%",
 		position: "relative",
 		top: "45%",
 		left: "40%"
