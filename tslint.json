@@ -8,6 +8,7 @@
 		"tslint-react"
 	],
 	"rules": {
+		"no-empty": false,
 		"only-arrow-functions": false,
 		"no-method-signature": false,
 		"prefer-function-over-method": false,
