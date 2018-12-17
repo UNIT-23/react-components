@@ -42,6 +42,7 @@ export { default as Table } from "./src/components/Table/Table"
 // -------------------------------------------------------
 
 export { openAlert, closeAlert } from "./src/appstate/actions/alert/alertActions"
+export { AlertOpenAction } from "./src/appstate/actions/alert/__types/IActions"
 
 // -------------------------------------------------------
 /*---------------------Reducers--------------------------*/
