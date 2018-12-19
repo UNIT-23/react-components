@@ -2,7 +2,8 @@ import * as React from "react"
 import { StyledComponentProps } from "react-jss"
 
 export interface IProps extends StyledComponentProps, React.ButtonHTMLAttributes<HTMLButtonElement> {
-	readonly children: React.ReactNode
+	readonly children?: React.ReactNode
+	readonly addBtn?: boolean
 	readonly onClick?: (event: React.MouseEvent) => void
 	readonly href?: string
 	readonly padding?: string | number
