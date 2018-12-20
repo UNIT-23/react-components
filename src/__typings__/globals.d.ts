@@ -58,6 +58,7 @@ enum InputTypes {
 	Select = "select",
 	Textarea = "textarea",
 	Switch = "switch",
+	Editor = "editor",
 	Checkbox = "checkbox"
 }
 
