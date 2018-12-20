@@ -3,6 +3,7 @@ import injectSheet from "react-jss"
 // @ts-ignore
 import { CheckboxSelect } from "@atlaskit/select"
 
+import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
 
@@ -27,6 +28,12 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 					className="checkbox-select"
 					classNamePrefix="select"
 				/>
+			)
+		case "editor":
+			return (
+				<div className={classes.editor}>
+					<EditorInput {...restInput} {...rest} />
+				</div>
 			)
 		case "textarea":
 			return <textarea onBlur={onBlur} {...restInput} {...rest} className={classes.textarea} />

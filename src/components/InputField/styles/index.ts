@@ -25,6 +25,9 @@ export const styles: any = {
 		padding: "8px 8px",
 		boxShadow: "1px 3px 8px 0px #ccc",
 		border: ({ meta: { error, touched } }: IProps) => (error && touched ? "1px solid red" : "1px solid #e8e6e6")
+	},
+	editor: {
+		boxShadow: "1px 3px 8px 0px #ccc"
 	}
 }
 
