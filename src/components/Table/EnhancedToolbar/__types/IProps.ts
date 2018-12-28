@@ -6,5 +6,5 @@ export interface IProps extends WithStyles<typeof styles> {
 	readonly DefaultBtn?: JSX.Element
 	readonly numSelected?: number
 	readonly SelectedBtn?: JSX.Element
-	readonly tableTitle?: string
+	readonly tableTitle?: JSX.Element
 }
