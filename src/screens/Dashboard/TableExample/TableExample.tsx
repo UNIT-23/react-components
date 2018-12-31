@@ -117,7 +117,7 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 			<Table
 				count={postsCount}
 				dataRequestState={API.REQUEST_SUCCESS}
-				tableTitle="Merchants"
+				tableTitle={<div>Merchants</div>}
 				DefaultBtn={<DefaultBtn />}
 				SelectedBtn={<SelectedBtn />}
 				handleSelectClick={this.handleSelectClick}
