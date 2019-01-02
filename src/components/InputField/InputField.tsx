@@ -6,6 +6,7 @@ import { CheckboxSelect } from "@atlaskit/select"
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
+import { CirclePicker } from "react-color"
 
 import { styles, selectStyles } from "./styles"
 
@@ -41,6 +42,9 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case "checkbox":
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
+		case "colorpicker":
+			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
+			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
 		default:
 			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
 	}
