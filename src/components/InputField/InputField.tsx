@@ -22,6 +22,7 @@ const InputField = ({
 			return (
 				<CheckboxSelect
 					onBlur={onBlurForSelect}
+					onChange={onChange}
 					styles={selectStyles}
 					{...restInput}
 					{...rest}
@@ -54,7 +55,9 @@ const InputField = ({
 			  onChange(reader.result)
 			}
 
-			reader.readAsDataURL(file)
+			if (file) {
+				reader.readAsDataURL(file)
+			}
 		}
 
 		return (
