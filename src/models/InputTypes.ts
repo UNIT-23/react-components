@@ -3,5 +3,7 @@ export enum InputTypes {
 	Textarea = "textarea",
 	Editor = "editor",
 	Switch = "switch",
-	Checkbox = "checkbox"
+	Checkbox = "checkbox",
+	Calender = "calender"
+
 }

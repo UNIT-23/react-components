@@ -59,7 +59,8 @@ enum InputTypes {
 	Textarea = "textarea",
 	Switch = "switch",
 	Editor = "editor",
-	Checkbox = "checkbox"
+	Checkbox = "checkbox",
+	Calender = "calender"
 }
 
 /* ------------------------------------------------- */

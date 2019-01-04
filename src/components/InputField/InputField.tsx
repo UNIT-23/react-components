@@ -6,6 +6,7 @@ import { CheckboxSelect } from "@atlaskit/select"
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
+import Calender from "./calender/CalenderComponent"
 
 import { styles, selectStyles } from "./styles"
 
@@ -41,6 +42,17 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case "checkbox":
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
+		case "calender":
+			return	(
+				 <Calender
+					 startDate={restInput.value.startDate}
+					 endDate={restInput.value.endDate}
+					 date={restInput.value}
+					 onDateChange={restInput.onChange}
+					 onDatesChange={restInput.onChange}
+					 {...rest}
+					/>
+			)
 		default:
 			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
 	}
