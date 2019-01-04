@@ -11,7 +11,8 @@ import { styles, selectStyles } from "./styles"
 
 import { IProps } from "./__types/IProps"
 
-const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
+const InputField = ({
+	input: { onBlur, onChange, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
 		case "select":
 			const onBlurForSelect = (_: React.ChangeEvent) => {
@@ -36,13 +37,36 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 				</div>
 			)
 		case "textarea":
-			return <textarea onBlur={onBlur} {...restInput} {...rest} className={classes.textarea} />
+			return <textarea onBlur={onBlur} onChange={onChange} {...restInput} {...rest} className={classes.textarea} />
 		case "switch":
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case "checkbox":
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
+		case "file":
+		const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+			e.preventDefault()
+
+			const reader = new FileReader()
+			const file = e.target.files[0]
+
+			// tslint:disable-next-line:no-object-mutation
+			reader.onloadend = () => {
+			  onChange(reader.result)
+			}
+
+			reader.readAsDataURL(file)
+		}
+
+		return (
+			<input
+				onChange={adaptFileEventToValue}
+				type="file"
+				name={restInput.name}
+				{...rest}
+			/>
+		)
 		default:
-			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
+			return <input onBlur={onBlur} onChange={onChange} {...restInput} {...rest} className={classes.input} />
 	}
 }
 

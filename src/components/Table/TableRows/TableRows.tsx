@@ -83,10 +83,13 @@ function TableRows<THead extends IHead>({
 							{rowNames
 								.filter((rowName: string) => rowName !== "id")
 								.map((rowName: string, i: number) => {
-									const isNumeric: boolean = columns.find((c: THead) => c.id === rowName).numeric
+									const align: "left" | "center" | "right" | "justify" | "char" = columns.find(
+										// Length
+										(c: THead) => c.id === rowName
+										).align
 
 									return (
-										<TableCell className={classes.tableCell} key={i} numeric={isNumeric}>
+										<TableCell className={classes.tableCell} key={i} align={align}>
 											{row[rowName as string].component}
 										</TableCell>
 									)

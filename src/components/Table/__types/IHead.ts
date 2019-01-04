@@ -2,5 +2,5 @@ export interface IHead {
 	readonly disablePadding: boolean
 	readonly id: string
 	readonly label: string
-	readonly numeric: boolean
+	readonly align: "left" | "center" | "right" | "justify" | "char"
 }

@@ -18,10 +18,10 @@ import { connect } from "react-redux"
 import { postsGetRequest } from "../../../appstate/actions/posts/postsActions"
 
 const header: ReadonlyArray<ITableHeader> = [
-	{ id: "postId", numeric: false, disablePadding: false, label: "ID" },
-	{ id: "name", numeric: false, disablePadding: false, label: "Name" },
-	{ id: "email", numeric: false, disablePadding: false, label: "Email" },
-	{ id: "body", numeric: false, disablePadding: false, label: "Message" }
+	{ id: "postId", align: "center", disablePadding: false, label: "ID" },
+	{ id: "name", align: "center", disablePadding: false, label: "Name" },
+	{ id: "email", align: "center", disablePadding: false, label: "Email" },
+	{ id: "body", align: "center", disablePadding: false, label: "Message" }
 ]
 
 class TableExampleComponent extends React.Component<IProps, IState> {
