@@ -1,6 +1,6 @@
 import { AlertTypes } from "../../types/alertTypes"
 
-import { AlertActions } from "../../actions/alert/__types/IActions"
+import { AlertActions, AlertOpenAction } from "../../actions/alert/__types/IActions"
 import { AlertLevel } from "../../../components/Alert/__types/AlertTypes"
 
 export const initialState: IAlert = {
@@ -14,7 +14,7 @@ export function alertReducer(state: IAlert = initialState, action: AlertActions)
 		case AlertTypes.ALERT_OPEN:
 			return {
 				...state,
-				message: action.payload.message || "Something went wrong!",
+				message: (action as AlertOpenAction).payload.message || "Something went wrong!",
 				alertState: true
 			}
 		case AlertTypes.ALERT_CLOSE:

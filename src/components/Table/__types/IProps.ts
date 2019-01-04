@@ -15,5 +15,5 @@ export interface IProps extends StyledComponentProps {
 	readonly rowsPerPage?: number
 	readonly selected?: ReadonlyArray<number>
 	readonly SelectedBtn?: JSX.Element
-	readonly tableTitle: string
+	readonly tableTitle: JSX.Element
 }
