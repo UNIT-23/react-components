@@ -60,7 +60,8 @@ enum InputTypes {
 	Switch = "switch",
 	Editor = "editor",
 	Checkbox = "checkbox",
-	File = "file"
+	File = "file",
+	Colorpicker = "colorpicker"
 }
 
 /* ------------------------------------------------- */

@@ -6,13 +6,14 @@ import { CheckboxSelect } from "@atlaskit/select"
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
+import { CirclePicker } from "react-color"
 
 import { styles, selectStyles } from "./styles"
 
 import { IProps } from "./__types/IProps"
 
 const InputField = ({
-	input: { onBlur, onChange, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
+	input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
 		case "select":
 			const onBlurForSelect = (_: React.ChangeEvent) => {
@@ -22,7 +23,6 @@ const InputField = ({
 			return (
 				<CheckboxSelect
 					onBlur={onBlurForSelect}
-					onChange={onChange}
 					styles={selectStyles}
 					{...restInput}
 					{...rest}
@@ -38,7 +38,7 @@ const InputField = ({
 				</div>
 			)
 		case "textarea":
-			return <textarea onBlur={onBlur} onChange={onChange} {...restInput} {...rest} className={classes.textarea} />
+			return <textarea onBlur={onBlur} {...restInput} {...rest} className={classes.textarea} />
 		case "switch":
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case "checkbox":
@@ -52,7 +52,7 @@ const InputField = ({
 
 			// tslint:disable-next-line:no-object-mutation
 			reader.onloadend = () => {
-			  onChange(reader.result)
+				restInput.onChange(reader.result)
 			}
 
 			if (file) {
@@ -68,8 +68,11 @@ const InputField = ({
 				{...rest}
 			/>
 		)
+		case "colorpicker":
+			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
+			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
 		default:
-			return <input onBlur={onBlur} onChange={onChange} {...restInput} {...rest} className={classes.input} />
+			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
 	}
 }
 
