@@ -1,17 +1,17 @@
 import * as React from "react"
-import { connect } from "react-redux"
 import injectSheet from "react-jss"
 import Snackbar from "@material-ui/core/Snackbar"
 import SnackbarContent from "@material-ui/core/SnackbarContent"
 import IconButton from "@material-ui/core/IconButton"
-import Slide, { SlideProps } from "@material-ui/core/Slide"
 
 import Plus from "../Icons/PlusIcon"
 import AlertIcon from "../Icons/AlertIcon"
+import TransitionSlide from "./TransitionSlide/TransitionSlide"
 
 import { closeAlert } from "../../appstate/actions/alert/alertActions"
 
 import { IProps } from "./__types/IProps"
+import { Values } from "./__types/Values"
 
 import { styles } from "./styles/"
 
@@ -39,11 +39,9 @@ class Alert extends React.Component<IProps> {
 						horizontal: "right"
 					}}
 					open={alertState}
-					autoHideDuration={3000}
+					autoHideDuration={Values.autoHideDuration}
 					onClose={this.handleClose}
-					TransitionComponent={(transitionProps: SlideProps) => (
-						<Slide {...transitionProps} direction="left" />
-					)}
+					TransitionComponent={TransitionSlide}
 				>
 					<SnackbarContent
 						className={classes.content}
@@ -73,8 +71,4 @@ class Alert extends React.Component<IProps> {
 	}
 }
 
-export default connect(({ alert }: IRootState) => ({
-	alertState: alert.alertState,
-	message: alert.message,
-	alertLevel: alert.alertLevel
-}))(injectSheet(styles)(Alert))
+export default injectSheet(styles)(Alert)

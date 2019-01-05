@@ -1,10 +1,8 @@
 import { WithStyles } from "@material-ui/core/styles"
 
-import styles from "../styles"
+import { styles } from "../styles"
 
-import { IHead } from "../../__types/IHead"
-
-export interface IProps<THead extends IHead> extends WithStyles<typeof styles> {
+export interface IProps<THead extends ITableHeader> extends WithStyles<typeof styles> {
 	readonly rows: ReadonlyArray<ITableData>
 	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void
 	readonly orderBy: string

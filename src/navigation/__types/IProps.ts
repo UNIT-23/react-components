@@ -1,1 +1,3 @@
-export interface IProps {}
+import { DispatchProp } from "react-redux"
+
+export interface IProps extends DispatchProp, IAlert {}

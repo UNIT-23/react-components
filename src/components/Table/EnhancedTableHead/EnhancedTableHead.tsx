@@ -11,9 +11,8 @@ import InputField from "../../InputField/InputField"
 import { InputTypes } from "../../../models/InputTypes"
 
 import { IProps } from "./__types/IProps"
-import { IHead } from "../__types/IHead"
 
-function EnhancedTableHead<THead extends IHead>({
+function EnhancedTableHead<THead extends ITableHeader>({
 	handleSelectClick,
 	onSelectAllClick,
 	onRequestSort,
@@ -31,14 +30,13 @@ function EnhancedTableHead<THead extends IHead>({
 						<InputField inputType={InputTypes.Checkbox} checked={numSelected === rowCount} />
 					</TableCell>
 				)}
-				{!!handleSelectClick &&
-					!onSelectAllClick && (
-						<TableCell padding="checkbox">
-							<Typography color="inherit" align="center" variant="subtitle1">
-								Select
-							</Typography>
-						</TableCell>
-					)}
+				{!!handleSelectClick && !onSelectAllClick && (
+					<TableCell padding="checkbox">
+						<Typography color="inherit" align="center" variant="subtitle1">
+							Select
+						</Typography>
+					</TableCell>
+				)}
 				<HeaderRows rows={columns} orderBy={orderBy} orderType={orderType} onRequestSort={onRequestSort} />
 			</TableRow>
 		</TableHead>

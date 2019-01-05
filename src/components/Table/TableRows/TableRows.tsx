@@ -9,8 +9,7 @@ import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
 import { InputTypes } from "../../../models/InputTypes"
 
-import styles from "./styles/"
-import { IHead } from "../__types/IHead"
+import { styles } from "./styles/"
 
 function stableSort(
 	array: ReadonlyArray<ITableData>,
@@ -44,7 +43,7 @@ function rowClickHandler(
 	return (event: React.MouseEvent<HTMLTableRowElement>): Function => handleClick && handleClick(event, id)
 }
 
-function TableRows<THead extends IHead>({
+function TableRows<THead extends ITableHeader>({
 	rows,
 	classes,
 	handleSelectClick,
@@ -83,10 +82,12 @@ function TableRows<THead extends IHead>({
 							{rowNames
 								.filter((rowName: string) => rowName !== "id")
 								.map((rowName: string, i: number) => {
-									const isNumeric: boolean = columns.find((c: THead) => c.id === rowName).numeric
+									const align: "center" | "left" | "right" | "justify" | "char" = columns.find(
+										(c: THead) => c.id === rowName
+									).align
 
 									return (
-										<TableCell className={classes.tableCell} key={i} numeric={isNumeric}>
+										<TableCell className={classes.tableCell} key={i} align={align}>
 											{row[rowName as string].component}
 										</TableCell>
 									)

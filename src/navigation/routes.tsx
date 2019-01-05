@@ -1,4 +1,5 @@
 import * as React from "react"
+import { connect } from "react-redux"
 import { Switch, BrowserRouter as Router } from "react-router-dom"
 
 import AuthRoute from "./AuthRoute/AuthRoute"
@@ -6,9 +7,11 @@ import AuthRoute from "./AuthRoute/AuthRoute"
 import Alert from "../components/Alert/Alert"
 import Loader from "../components/Loader/Loader"
 
+import { IProps } from "./__types/IProps"
+
 const DashboardComponent = React.lazy(() => import("../screens/Dashboard/DashboardComponent"))
 
-const MainRoute = (): JSX.Element => (
+const MainRoute = ({ alertState, message, alertLevel, dispatch }: IProps): JSX.Element => (
 	<div>
 		<Router basename={process.env.PUBLIC_URL}>
 			<React.Suspense fallback={<Loader />}>
@@ -18,8 +21,12 @@ const MainRoute = (): JSX.Element => (
 				</Switch>
 			</React.Suspense>
 		</Router>
-		<Alert />
+		<Alert alertState={alertState} message={message} alertLevel={alertLevel} dispatch={dispatch} />
 	</div>
 )
 
-export default MainRoute
+export default connect(({ alert }: IRootState) => ({
+	alertState: alert.alertState,
+	message: alert.message,
+	alertLevel: alert.alertLevel
+}))(MainRoute)

@@ -3,7 +3,7 @@ import { StyleRules, StyleRulesCallback } from "@material-ui/core/styles/withSty
 
 import { Fonts } from "../../../../theme"
 
-const styles: StyleRulesCallback = (): StyleRules =>
+export const styles: StyleRulesCallback = (): StyleRules =>
 	createStyles({
 		root: {},
 		tableCell: {
@@ -11,5 +11,3 @@ const styles: StyleRulesCallback = (): StyleRules =>
 			fontSize: Fonts.size.medium
 		}
 	})
-
-export default styles
