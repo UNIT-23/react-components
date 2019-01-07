@@ -6,7 +6,7 @@ import { CheckboxSelect } from "@atlaskit/select"
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
-import Calender from "./calender/CalenderComponent"
+import Calender from "./Calender/CalenderComponent"
 
 import { styles, selectStyles } from "./styles"
 

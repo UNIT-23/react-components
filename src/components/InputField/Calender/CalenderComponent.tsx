@@ -6,7 +6,7 @@ import * as React from "react"
 import { IState } from "./__types/IState"
 import { IProps } from "./__types/IProps"
 
-import moment from "moment"
+import moment , { Moment } from "moment"
 
 class CalenderComponent extends React.Component<IProps, IState> {
 	public constructor(props: IProps) {
@@ -22,10 +22,12 @@ class CalenderComponent extends React.Component<IProps, IState> {
 		this.state = {
 			focusedInput,
 			focused: false,
+		}
 
-	}
 	 this.onFocusChange = this.onFocusChange.bind(this)
 	 this.onFocusChangeSingle = this.onFocusChangeSingle.bind(this)
+	 this.onDatesChangeHanlder = this.onDatesChangeHanlder.bind(this)
+
   }
 
  public onFocusChange(focusedInput: FocusedInputShape): void {
@@ -36,26 +38,27 @@ class CalenderComponent extends React.Component<IProps, IState> {
 	this.setState({ focused})
 }
 
+ public onDatesChangeHanlder(value: Moment) {
+	 const { onDateChange, formats} = this.props
+	 onDateChange(value.format(formats || "YYYY-MM-DD"))
+}
+
  public render() {
 		 const {
 				type,
 				startDate,
 				endDate,
 				date,
-				autoFocus,
-				onDatesChange,
-				onDateChange,
 				enableBackDates,
-				...props
+				onDatesChange
 			} = this.props
 
 		 return (
 
 			<div>
 				{
-					this.props.type !== "single" ?
+					type !== "single" ?
 					<DateRangePicker
-						{...props}
 						startDate={startDate ? startDate : null}
 						startDateId="start_date"
 						endDate={endDate ? endDate : null}
@@ -69,7 +72,7 @@ class CalenderComponent extends React.Component<IProps, IState> {
 					:
 					<SingleDatePicker
 						date={moment(date || {})}
-						onDateChange={onDateChange}
+						onDateChange={this.onDatesChangeHanlder}
 						focused={this.state.focused}
 						onFocusChange={this.onFocusChangeSingle}
 						id="date"
