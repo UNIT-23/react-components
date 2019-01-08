@@ -11,10 +11,12 @@ import { CirclePicker } from "react-color"
 import { styles, selectStyles } from "./styles"
 
 import { IProps } from "./__types/IProps"
+import { InputTypes } from "../../models/InputTypes"
 
-const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
+const InputField = ({
+	input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
-		case "select":
+		case  InputTypes.Select:
 			const onBlurForSelect = (_: React.ChangeEvent) => {
 				onBlur(restInput.value)
 			}
@@ -30,19 +32,44 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 					classNamePrefix="select"
 				/>
 			)
-		case "editor":
+		case InputTypes.Editor:
 			return (
 				<div className={classes.editor}>
 					<EditorInput {...restInput} {...rest} />
 				</div>
 			)
-		case "textarea":
+		case InputTypes.Textarea:
 			return <textarea onBlur={onBlur} {...restInput} {...rest} className={classes.textarea} />
-		case "switch":
+		case InputTypes.Switch:
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
-		case "checkbox":
+		case InputTypes.Checkbox:
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
-		case "colorpicker":
+		case InputTypes.File:
+		const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+			e.preventDefault()
+
+			const reader = new FileReader()
+			const file = e.target.files[0]
+
+			// tslint:disable-next-line:no-object-mutation
+			reader.onloadend = () => {
+				restInput.onChange(reader.result)
+			}
+
+			if (file) {
+				reader.readAsDataURL(file)
+			}
+		}
+
+		return (
+			<input
+				onChange={adaptFileEventToValue}
+				type="file"
+				name={restInput.name}
+				{...rest}
+			/>
+		)
+		case InputTypes.Colorpicker:
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
 		default:
