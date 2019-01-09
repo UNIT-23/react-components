@@ -41,7 +41,15 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 		case "switch":
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case "checkbox":
-			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
+			return (
+				<Checkbox
+					onBlur={onBlur}
+					onChange={restInput.onChange}
+					value={restInput.name}
+					checked={restInput.value}
+					{...rest}
+				/>
+			)
 		case "colorpicker":
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
