@@ -1,6 +1,6 @@
 import { DateRangePickerShape } from "react-dates"
-
-export interface IProps extends Partial<Pick<DateRangePickerShape, "onFocusChange">> {
+import { StyledComponentProps } from "react-jss"
+export interface IProps extends StyledComponentProps, Partial<Pick<DateRangePickerShape, "onFocusChange">> {
 	readonly date?: string
 	readonly autoFocus?: boolean
 	readonly autoFocusEndDate?: boolean

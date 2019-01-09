@@ -1,9 +1,7 @@
 // tslint:disable-next-line:no-import-side-effect
 import * as React from "react"
 import { DateRangePicker, FocusedInputShape, SingleDatePicker } from "react-dates"
-
 import "react-dates/initialize"
-import "react-dates/lib/css/_datepicker.css"
 
 import { IState } from "./__types/IState"
 import { IProps } from "./__types/IProps"
@@ -114,7 +112,7 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						showDefaultInputIcon
 						placeholder="Select date"
 						displayFormat="YYYY-MM-DD"
-						isOutsideRange={enableBackDates ? () => false : () => true}
+						isOutsideRange={enableBackDates && (() => false)}
 					/>
 				}
 			</div >
