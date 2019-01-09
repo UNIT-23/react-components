@@ -6,6 +6,7 @@ import { CheckboxSelect } from "@atlaskit/select"
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
+import Calender from "./Calender/CalenderComponent"
 import { CirclePicker } from "react-color"
 
 import { styles, selectStyles } from "./styles"
@@ -45,30 +46,41 @@ const InputField = ({
 		case InputTypes.Checkbox:
 			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
 		case InputTypes.File:
-		const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-			e.preventDefault()
+			const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+				e.preventDefault()
 
-			const reader = new FileReader()
-			const file = e.target.files[0]
+				const reader = new FileReader()
+				const file = e.target.files[0]
 
-			// tslint:disable-next-line:no-object-mutation
-			reader.onloadend = () => {
-				restInput.onChange(reader.result)
+				// tslint:disable-next-line:no-object-mutation
+				reader.onloadend = () => {
+					restInput.onChange(reader.result)
+				}
+
+				if (file) {
+					reader.readAsDataURL(file)
+				}
 			}
 
-			if (file) {
-				reader.readAsDataURL(file)
-			}
-		}
-
-		return (
-			<input
-				onChange={adaptFileEventToValue}
-				type="file"
-				name={restInput.name}
-				{...rest}
-			/>
-		)
+			return (
+				<input
+					onChange={adaptFileEventToValue}
+					type="file"
+					name={restInput.name}
+					{...rest}
+				/>
+			)
+		case InputTypes.Calender:
+			return	(
+				<Calender
+					startDate={restInput.value.startDate}
+					endDate={restInput.value.endDate}
+					date={restInput.value}
+					onDateChange={restInput.onChange}
+					onDatesChange={restInput.onChange}
+					{...rest}
+					/>
+				)
 		case InputTypes.Colorpicker:
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
