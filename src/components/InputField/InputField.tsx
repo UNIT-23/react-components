@@ -79,8 +79,8 @@ const InputField = ({
 					onDateChange={restInput.onChange}
 					onDatesChange={restInput.onChange}
 					{...rest}
-					/>
-				)
+				/>
+			)
 		case InputTypes.Colorpicker:
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
