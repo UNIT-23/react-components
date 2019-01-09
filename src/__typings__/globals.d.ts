@@ -60,6 +60,7 @@ enum InputTypes {
 	Switch = "switch",
 	Editor = "editor",
 	Checkbox = "checkbox",
+	Calender = "calender",
 	Colorpicker = "colorpicker"
 }
 
