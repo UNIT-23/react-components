@@ -9,14 +9,14 @@ import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
 
-const Button = ({ children, addBtn, classes, ...rest }: IProps) => (
+const Button = ({ children, addBtn, onClick, classes }: IProps) => (
 	<>
 		{addBtn ? (
-			<div className={classes.addBtn} onClick={rest.onClick}>
+			<div className={classes.addBtn} onClick={onClick}>
 				<PlusIcon color={Colors.background} />
 			</div>
 		) : (
-			<button className={classes.button} {...rest}>
+			<button className={classes.button} onClick={onClick}>
 				{children}
 			</button>
 		)}

@@ -4,6 +4,6 @@ export enum InputTypes {
 	Editor = "editor",
 	Switch = "switch",
 	Checkbox = "checkbox",
-	Calender = "calender"
-
+	Calender = "calender",
+	Colorpicker = "colorpicker"
 }

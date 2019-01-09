@@ -7,6 +7,7 @@ import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
 import Calender from "./Calender/CalenderComponent"
+import { CirclePicker } from "react-color"
 
 import { styles, selectStyles } from "./styles"
 
@@ -53,6 +54,9 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 					 {...rest}
 					/>
 			)
+		case "colorpicker":
+			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
+			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
 		default:
 			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
 	}

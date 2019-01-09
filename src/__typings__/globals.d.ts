@@ -27,7 +27,7 @@ interface ITableData {
 
 interface ITableHeader {
 	readonly id: string
-	readonly numeric: boolean
+	readonly align: "center" | "left" | "right" | "justify" | "char"
 	readonly disablePadding: boolean
 	readonly label: string
 }
@@ -60,7 +60,8 @@ enum InputTypes {
 	Switch = "switch",
 	Editor = "editor",
 	Checkbox = "checkbox",
-	Calender = "calender"
+	Calender = "calender",
+	Colorpicker = "colorpicker"
 }
 
 /* ------------------------------------------------- */

@@ -9,7 +9,7 @@ React Components is collections of (well!) React Components, used internally in 
 
 ## Usage:
 
-We encourage you to use this repo as a submodule in you project. This is how it's used internally so to encourage easy and frequent upgrades to the components. PRs are most welcome.
+We encourage you to use this repo as a submodule in you project. This is how it's used internally so to encourage easy and frequent upgrades to the components. PRs are most welcome
 
 ## Docs:
 

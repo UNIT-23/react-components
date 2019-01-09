@@ -4,17 +4,18 @@ import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import Paper from "@material-ui/core/Paper"
 
-import Pagination from "./Pagination/Pagination"
 import EnhancedTableHead from "./EnhancedTableHead/EnhancedTableHead"
 import EnhancedToolbar from "./EnhancedToolbar/EnhancedToolbar"
 import TableRows from "./TableRows/TableRows"
+import Pagination from "./Pagination/Pagination"
+
+import ApiSuspense from "../ApiSuspense/ApiSuspense"
 
 import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 import { TableValues } from "./__types/TableValues"
 
 import { styles } from "./styles"
-import ApiSuspense from "../ApiSuspense/ApiSuspense"
 
 class EnhancedTable extends React.Component<IProps, IState> {
 	public readonly state: IState = {
@@ -109,10 +110,9 @@ class EnhancedTable extends React.Component<IProps, IState> {
 					</ApiSuspense>
 				</div>
 				<Pagination
-					component="div"
 					count={count}
 					rowsPerPage={rowsPerPage}
-					currentPage={page}
+					page={page}
 					onChangePage={this.handleChangePage}
 					onChangeRowsPerPage={this.handleChangeRowsPerPage}
 				/>

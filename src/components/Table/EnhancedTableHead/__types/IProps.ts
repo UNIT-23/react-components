@@ -1,7 +1,6 @@
 import * as React from "react"
-import { IHead } from "../../__types/IHead"
 
-export interface IProps<THead extends IHead> {
+export interface IProps<THead extends ITableHeader> {
 	readonly numSelected: number
 	readonly onRequestSort: Function
 	readonly handleSelectClick?: (event: React.ChangeEvent, id: number) => void

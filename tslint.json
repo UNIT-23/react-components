@@ -43,6 +43,7 @@
 		"semicolon": [true, "never"],
 		"variable-name": false,
 		"no-default-export": false,
+		"no-default-import": false,
 		"no-import-side-effect": [
 			true,
 			{

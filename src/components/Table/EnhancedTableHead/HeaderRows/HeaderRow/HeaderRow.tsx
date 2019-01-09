@@ -16,7 +16,7 @@ const createSortHandler: Function = (property: number, onRequestSort: Function):
 function HeaderRow({
 	id,
 	classes,
-	numeric,
+	align,
 	disablePadding,
 	label,
 	orderBy,
@@ -25,14 +25,14 @@ function HeaderRow({
 }: IProps): JSX.Element {
 	return (
 		<TableCell
-			numeric={numeric}
+			align={align}
 			className={classes.root}
 			padding={disablePadding ? "none" : "default"}
 			sortDirection={orderBy === id ? orderType : false}
 		>
 			<Tooltip
 				title="Sort"
-				placement={numeric ? "bottom-end" : "bottom-start"}
+				placement={align ? "bottom-end" : "bottom-start"}
 				enterDelay={HeaderRowValues.enterDelay}
 				className={classes.toolTip}
 			>
