@@ -1,4 +1,4 @@
-import moment, { unitOfTime } from "moment"
+import moment, { unitOfTime, Moment } from "moment"
 import momentTz from "moment-timezone"
 
 export function getLocalDateTime() {
@@ -10,11 +10,7 @@ export function getLocalTime(format = "hh:mm A") {
 }
 
 export function getTimeForZone(tz: string, format = "hh:mm A") {
-	return tz
-		? momentTz(moment())
-				.tz(tz)
-				.format(format)
-		: moment().format(format)
+	return tz ? momentTz(moment()).tz(tz).format(format) : moment().format(format)
 }
 
 export function getLocalDate(format = "YYYY-MM-DD") {
@@ -22,12 +18,7 @@ export function getLocalDate(format = "YYYY-MM-DD") {
 }
 
 export function formatToLocalDate(date: string, format = "YYYY-MM-DD hh:mm:ss A", skipOffset = false) {
-	return skipOffset
-		? moment(date).format(format)
-		: moment
-				.utc(jsDateToMomentDate(date))
-				.local()
-				.format(format)
+	return skipOffset ? moment(date).format(format) : moment.utc(jsDateToMomentDate(date)).local().format(format)
 }
 
 export function formatDate(date: string, format = "YYYY-MM-DD") {
@@ -49,10 +40,7 @@ export function formatToLocalDateExtended(date: string, utc = true) {
 
 	const utcOffset = moment().utcOffset()
 
-	return moment
-		.utc(jsDateToMomentDate(date))
-		.utcOffset(utcOffset)
-		.format("ddd, DD MMM YYYY")
+	return moment.utc(jsDateToMomentDate(date)).utcOffset(utcOffset).format("ddd, DD MMM YYYY")
 }
 
 export function getDateNumber(date: string) {
@@ -64,10 +52,7 @@ export function getDateNumber(date: string) {
 export function formatToLocalTime(date: string) {
 	const utcOffset = moment().utcOffset()
 
-	return moment
-		.utc(jsDateToMomentDate(date))
-		.utcOffset(utcOffset)
-		.format("hh:mm A")
+	return moment.utc(jsDateToMomentDate(date)).utcOffset(utcOffset).format("hh:mm A")
 }
 
 export function diffDates(startDate: string, endDate: string) {
@@ -94,12 +79,8 @@ export function updateDate(date = moment(), updateByAmount: number, updateType =
 	const positiveUpdateByAmount = Math.abs(updateByAmount)
 
 	return updateByAmount > 0
-		? moment(date)
-				.add((positiveUpdateByAmount as unknown) as unitOfTime.Diff, updateType)
-				.format(format)
-		: moment(date)
-				.subtract((positiveUpdateByAmount as unknown) as unitOfTime.Diff, updateType)
-				.format(format)
+		? moment(date).add((positiveUpdateByAmount as unknown) as unitOfTime.Diff, updateType).format(format)
+		: moment(date).subtract((positiveUpdateByAmount as unknown) as unitOfTime.Diff, updateType).format(format)
 }
 
 export function getAllDatesInRange(
@@ -123,12 +104,8 @@ export function getAllDatesInRange(
 }
 
 export function getStartEndOfWeek(someDateOfWeek = moment().format("YYYY-MM-DD"), format = "YYYY-MM-DD") {
-	const startDate = moment(someDateOfWeek)
-		.startOf("isoWeek")
-		.format(format)
-	const endDate = moment(someDateOfWeek)
-		.endOf("isoWeek")
-		.format(format)
+	const startDate = moment(someDateOfWeek).startOf("isoWeek").format(format)
+	const endDate = moment(someDateOfWeek).endOf("isoWeek").format(format)
 
 	return {
 		startDate,
@@ -159,4 +136,7 @@ function jsDateToMomentDate(date: string) {
 	const fromJSDate = moment.utc(date, "ddd MMM DD YYYY hh:mm:ss GMT+0000")
 
 	return fromJSDate.isValid() ? fromJSDate : moment(date)
+}
+export function getMomentInstance(date: string): Moment {
+	return moment(date || {})
 }

@@ -82,9 +82,10 @@ function TableRows<THead extends ITableHeader>({
 							{rowNames
 								.filter((rowName: string) => rowName !== "id")
 								.map((rowName: string, i: number) => {
-									const align: "center" | "left" | "right" | "justify" | "char" = columns.find(
+									const align: "left" | "center" | "right" | "justify" | "char" = columns.find(
+										// Length
 										(c: THead) => c.id === rowName
-									).align
+										).align
 
 									return (
 										<TableCell className={classes.tableCell} key={i} align={align}>
