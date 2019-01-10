@@ -14,10 +14,9 @@ import { styles, selectStyles } from "./styles"
 import { IProps } from "./__types/IProps"
 import { InputTypes } from "../../models/InputTypes"
 
-const InputField = ({
-	input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
+const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
-		case  InputTypes.Select:
+		case InputTypes.Select:
 			const onBlurForSelect = (_: React.ChangeEvent) => {
 				onBlur(restInput.value)
 			}
@@ -44,7 +43,15 @@ const InputField = ({
 		case InputTypes.Switch:
 			return <Switch onBlur={onBlur} {...restInput} {...rest} />
 		case InputTypes.Checkbox:
-			return <Checkbox onBlur={onBlur} {...restInput} {...rest} />
+			return (
+				<Checkbox
+					onBlur={onBlur}
+					onChange={restInput.onChange}
+					value={restInput.name}
+					checked={restInput.value}
+					{...rest}
+				/>
+			)
 		case InputTypes.File:
 			const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 				e.preventDefault()
@@ -62,16 +69,9 @@ const InputField = ({
 				}
 			}
 
-			return (
-				<input
-					onChange={adaptFileEventToValue}
-					type="file"
-					name={restInput.name}
-					{...rest}
-				/>
-			)
+			return <input onChange={adaptFileEventToValue} type="file" name={restInput.name} {...rest} />
 		case InputTypes.Calender:
-			return	(
+			return (
 				<Calender
 					startDate={restInput.value.startDate}
 					endDate={restInput.value.endDate}
