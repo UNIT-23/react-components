@@ -27,7 +27,7 @@ interface ITableData {
 
 interface ITableHeader {
 	readonly id: string
-	readonly align: "left" | "center" | "right" | "justify" | "char"
+	readonly align: "left" | "center" | "right" | "justify"
 	readonly disablePadding: boolean
 	readonly label: string
 }
