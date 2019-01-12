@@ -1,26 +1,40 @@
-import { Fonts, Colors } from "../../../theme/"
-
-import { IProps } from "../__types/IProps"
-
 // tslint:disable-next-line:no-any
 export const styles: any = {
-	container: {},
-	content: {
-		background: ({ alertLevel }: IProps) =>
-			({
-				Success: Colors.primary,
-				Warning: Colors.secondary,
-				Error: Colors.danger
-			}[alertLevel])
-	},
-	messageContainer: {
-		display: "flex"
+	main: {
+		position: "relative",
+		width: "100%",
+		height: "100%",
+		overflow: "hidden",
+		cursor: "pointer",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		color: "#bfbfbf"
 	},
 	message: {
-		fontSize: Fonts.size.medium,
-		padding: "0 10px"
+		boxSizing: "border-box",
+		position: "relative",
+		overflow: "hidden",
+		width: "30ch",
+		"@media(max-width: 680px)": {
+			width: "100%"
+		}
 	},
-	close: {
-		transform: "rotate(45deg)"
+	button: {
+		cursor: "pointer",
+		pointerEvents: "all",
+		outline: 0,
+		border: "none",
+		background: "transparent",
+		display: "flex",
+		alignSelf: "flex-end",
+		overflow: "hidden",
+		margin: 0,
+		padding: 0,
+		paddingBottom: 14,
+		color: "rgba(255, 255, 255, 0.5)",
+		"& :hover": {
+			color: " rgba(255, 255, 255, 0.6)"
+		}
 	}
 }
