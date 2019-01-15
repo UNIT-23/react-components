@@ -8,6 +8,8 @@ import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
 import Calender from "./Calender/CalenderComponent"
 import { CirclePicker } from "react-color"
+// @ts-ignore
+import TimeKeeper from "react-timekeeper"
 
 import { styles, selectStyles } from "./styles"
 
@@ -81,8 +83,12 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 					{...rest}
 				/>
 			)
+		case InputTypes.TimePicker:
+			return <TimeKeeper time={restInput.value} />
+		// Return <TimeKeeper time={restInput.value} onChange={value => restInput.value.onChange(value.formatted24)} />
+
 		case InputTypes.Colorpicker:
-			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
+			// tslint:disable-next-line:jsx-no-lambda TOD O: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
 		default:
 			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
