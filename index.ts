@@ -24,6 +24,7 @@ export { default as EditSquareIcon } from "./src/components/Icons/EditSquareIcon
 export { default as GearIcon } from "./src/components/Icons/GearIcon"
 export { default as ListIcon } from "./src/components/Icons/ListIcon"
 export { default as MetricsIcon } from "./src/components/Icons/MetricsIcon"
+export { default as materialThemeWrapper } from "./src/components/MaterialThemeWrapper/MaterialThemeWrapper"
 export { default as PlusIcon } from "./src/components/Icons/PlusIcon"
 export { default as RefreshIcon } from "./src/components/Icons/RefreshIcon"
 export { default as SendIcon } from "./src/components/Icons/SendIcon"

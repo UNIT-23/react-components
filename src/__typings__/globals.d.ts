@@ -62,7 +62,7 @@ enum InputTypes {
 	Checkbox = "checkbox",
 	File = "file",
 	Calender = "calender",
-	Colorpicker = "colorpicker"
+	ColorPicker = "colorpicker"
 }
 
 /* ------------------------------------------------- */

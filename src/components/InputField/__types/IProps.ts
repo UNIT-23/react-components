@@ -1,8 +1,29 @@
 import { StyledComponentProps } from "react-jss"
-import { WrappedFieldProps, BaseFieldProps } from "redux-form"
+import { BaseFieldProps, WrappedFieldMetaProps } from "redux-form"
 
-export interface IProps extends StyledComponentProps, WrappedFieldProps, BaseFieldProps<IProps> {
+// tslint:disable:readonly-array
+
+export interface IProps<TValue = string | string[] | number | boolean | ArrayBuffer | IStartEndOfWeek>
+	extends StyledComponentProps,
+		Partial<BaseFieldProps<IProps<TValue>>> {
 	readonly checked?: boolean
-	readonly name: string
+	readonly closeMenuOnSelect?: boolean
+	readonly isMulti?: boolean
+	readonly name?: string
+	readonly placeholder?: string
+	readonly input?: IInput<TValue>
+	readonly options?: ReadonlyArray<IDropDownData<TValue>>
+	readonly meta?: Partial<WrappedFieldMetaProps>
 	readonly inputType?: InputTypes
+}
+
+interface IInput<TValue> {
+	readonly name?: string
+	readonly checked?: boolean
+	readonly value?: TValue
+	onDragStart?(value: TValue | React.DragEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
+	onDrop?(value: TValue | React.DragEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
+	onFocus?(value: TValue | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
+	onChange?(value: TValue | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
+	onBlur?(value: TValue | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
 }

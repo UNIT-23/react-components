@@ -1,8 +1,11 @@
 import * as React from "react"
-import { StyledComponentProps } from "react-jss"
+import { StyledComponentProps, WithTheme } from "react-jss"
+
+import { Theme } from "../../../theme"
 
 export interface IProps
 	extends StyledComponentProps,
+		Partial<WithTheme<typeof Theme>>,
 		React.DOMAttributes<HTMLDivElement | HTMLButtonElement>,
 		Pick<React.AllHTMLAttributes<HTMLButtonElement>, "disabled" | "type"> {
 	readonly children?: React.ReactNode

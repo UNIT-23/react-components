@@ -1,4 +1,4 @@
-import { Theme, Colors } from "./Colors"
+import { Theme } from "./Colors"
 import Fonts from "./Fonts"
 
-export { Colors, Theme, Fonts }
+export { Theme, Fonts }

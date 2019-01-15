@@ -1,8 +1,8 @@
 import { Styles } from "react-jss"
 
-import { Colors } from "../../../../../theme"
+import { Theme } from "../../../../../theme"
 
-export const styles: Styles = {
+export const styles: (theme: typeof Theme) => Styles = (theme: typeof Theme) => ({
 	container: {
 		width: 300,
 		display: "flex",
@@ -20,7 +20,7 @@ export const styles: Styles = {
 		justifyContent: "center",
 		boxShadow: "0px 1px 9px #aaa",
 		cursor: "pointer",
-		backgroundColor: Colors.secondaryDark,
+		backgroundColor: theme.secondaryDark,
 		borderRadius: "50%"
 	}
-}
+})
