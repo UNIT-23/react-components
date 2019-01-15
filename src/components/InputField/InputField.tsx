@@ -17,7 +17,7 @@ import { InputTypes } from "../../models/InputTypes"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 
 function InputField<TValue>({ input, inputType, meta: { error }, classes, ...rest }: IProps<TValue>) {
-	const { name, onBlur, onChange, onFocus, value } = input
+	const { name, onBlur = () => {}, onChange, onFocus, value } = input
 
 	switch (inputType) {
 		case InputTypes.Select:
