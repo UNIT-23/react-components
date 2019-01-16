@@ -66,6 +66,11 @@ enum InputTypes {
 	ColorPicker = "colorpicker"
 }
 
+interface IStartEndOfWeek {
+	readonly startDate: string
+	readonly endDate: string
+}
+
 /* ------------------------------------------------- */
 // Actions Types
 /* ------------------------------------------------- */
@@ -83,3 +88,42 @@ enum API {
 	REQUEST_SUCCESS = "API_REQUEST_SUCCESS",
 	REQUEST_ERROR = "API_REQUEST_ERROR"
 }
+
+/* ------------------------------------------------- */
+// Useful Types
+/* ------------------------------------------------- */
+interface IListPayload {
+	readonly limit?: number
+	readonly offset?: number
+	readonly filter?: string
+	readonly sort?: string
+	readonly order?: string
+}
+
+interface ITableHeader {
+	readonly id: string
+	readonly align: "center" | "left" | "right" | "justify"
+	readonly disablePadding: boolean
+	readonly label: string
+}
+
+interface ITableData {
+	readonly [key: string]: {
+		readonly component: React.ReactNode
+		readonly value: number | string
+	}
+}
+
+interface IDropDownData<T = number | string> {
+	readonly label: string
+	readonly value: T
+}
+
+enum SuperPrivileges {
+	None = "none",
+	Read = "read",
+	Write = "write"
+}
+
+// tslint:disable-next-line:max-file-line-count
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>

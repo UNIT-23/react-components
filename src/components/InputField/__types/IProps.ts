@@ -8,6 +8,7 @@ export interface IProps<TValue = string | string[] | number | boolean | ArrayBuf
 		Partial<BaseFieldProps<IProps<TValue>>> {
 	readonly checked?: boolean
 	readonly closeMenuOnSelect?: boolean
+	readonly enableBackDates?: boolean
 	readonly isMulti?: boolean
 	readonly name?: string
 	readonly placeholder?: string
