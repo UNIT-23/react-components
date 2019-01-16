@@ -81,7 +81,7 @@ class CalenderComponent extends React.Component<IProps, IState> {
 
 	public render(): JSX.Element {
 		const { type, date, enableBackDates } = this.props
-		console.log(enableBackDates, "enableBackDates")
+
 		return (
 			<div>
 				{type !== "single" ? (
