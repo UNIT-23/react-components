@@ -30,69 +30,61 @@ class CalenderComponent extends React.Component<IProps, IState> {
 			endDate: null
 		}
 
-	 this.onFocusChange = this.onFocusChange.bind(this)
-	 this.onFocusChangeSingle = this.onFocusChangeSingle.bind(this)
-	 this.onDatesChangeHandler = this.onDatesChangeHandler.bind(this)
-	 this.onDatesRangeChangeHandler = this.onDatesRangeChangeHandler.bind(this)
+		this.onFocusChange = this.onFocusChange.bind(this)
+		this.onFocusChangeSingle = this.onFocusChangeSingle.bind(this)
+		this.onDatesChangeHandler = this.onDatesChangeHandler.bind(this)
+		this.onDatesRangeChangeHandler = this.onDatesRangeChangeHandler.bind(this)
+	}
 
-  }
+	public componentDidMount() {
+		const { startDate, endDate } = this.props
 
- public componentDidMount() {
-	const { startDate, endDate } = this.props
-
-	this.setState({
-		startDate: getMomentInstance(startDate),
-		endDate: getMomentInstance(endDate)
-	})
-  }
-
- public onFocusChange(focusedInput: FocusedInputShape): void {
-	this.setState({ focusedInput})
-}
-
- public onFocusChangeSingle({focused}: { readonly focused: boolean }): void {
-	this.setState({ focused})
-}
- public onDatesChangeHandler(value: Moment) {
-	 const { onDateChange, formats} = this.props
-	 onDateChange(value.format(formats || "YYYY-MM-DD"))
-}
-
- public onDatesRangeChangeHandler(value: IMomentDateRange): void {
-
-	 const { onDatesChange, formats} = this.props
-	 const {startDate} = this.state
-
-	 if (value.startDate) {
-		 this.setState({
-			 startDate: value.startDate,
+		this.setState({
+			startDate: getMomentInstance(startDate),
+			endDate: getMomentInstance(endDate)
 		})
 	}
 
-	 this.setState({
-		endDate: value.endDate
-	})
-
-	 if (value.endDate) {
-		 onDatesChange({
-			startDate: startDate.format(formats || "YYYY-MM-DD"),
-			endDate: value.endDate.format(formats || "YYYY-MM-DD")
-		})
+	public onFocusChange(focusedInput: FocusedInputShape): void {
+		this.setState({ focusedInput })
 	}
-}
+
+	public onFocusChangeSingle({ focused }: { readonly focused: boolean }): void {
+		this.setState({ focused })
+	}
+	public onDatesChangeHandler(value: Moment) {
+		const { onDateChange, formats } = this.props
+		onDateChange(value.format(formats || "YYYY-MM-DD"))
+	}
+
+	public onDatesRangeChangeHandler(value: IMomentDateRange): void {
+		const { onDatesChange, formats } = this.props
+		const { startDate } = this.state
+
+		if (value.startDate) {
+			this.setState({
+				startDate: value.startDate
+			})
+		}
+
+		this.setState({
+			endDate: value.endDate
+		})
+
+		if (value.endDate) {
+			onDatesChange({
+				startDate: startDate.format(formats || "YYYY-MM-DD"),
+				endDate: value.endDate.format(formats || "YYYY-MM-DD")
+			})
+		}
+	}
 
 	public render(): JSX.Element {
-		 const {
-				type,
-				date,
-				enableBackDates,
-			} = this.props
+		const { type, date, enableBackDates } = this.props
 
-		 return (
-
+		return (
 			<div>
-				{
-					type !== "single" ?
+				{type !== "single" ? (
 					<DateRangePicker
 						startDate={this.state.startDate}
 						startDateId="start_date"
@@ -104,7 +96,7 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						showDefaultInputIcon
 						displayFormat="YYYY-MM-DD"
 					/>
-					:
+				) : (
 					<SingleDatePicker
 						date={getMomentInstance(date)}
 						onDateChange={this.onDatesChangeHandler}
@@ -116,8 +108,8 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						displayFormat="YYYY-MM-DD"
 						isOutsideRange={enableBackDates ? () => false : () => true}
 					/>
-				}
-			</div >
+				)}
+			</div>
 		)
 	}
 }

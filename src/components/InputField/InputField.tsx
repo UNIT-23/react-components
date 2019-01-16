@@ -91,7 +91,7 @@ function InputField<TValue>({ input, inputType, meta: { error }, classes, ...res
 				/>
 			)
 		case InputTypes.TimePicker:
-			return <TimeKeeper time={restInput.value} />
+			return <TimeKeeper time={value} />
 		case InputTypes.ColorPicker:
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => onChange(hex as any)} />
@@ -133,7 +133,8 @@ InputField.defaultProps = {
 		submitFailed: false,
 		touched: false,
 		valid: true,
-		visited: false
+		visited: false,
+		enableBackDates: false
 	}
 }
 
