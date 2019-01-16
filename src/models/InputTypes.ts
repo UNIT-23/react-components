@@ -6,6 +6,6 @@ export enum InputTypes {
 	Checkbox = "checkbox",
 	File = "file",
 	Calender = "calender",
-	Colorpicker = "colorpicker",
-	TimePicker = "timepicker"
+	TimePicker = "timepicker",
+	ColorPicker = "colorpicker"
 }

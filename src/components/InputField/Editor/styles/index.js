@@ -1,4 +1,4 @@
-export default {
+export default (theme) => ({
 	editor: {
 		"& .ql-snow": {
 			border: "none !important"
@@ -11,4 +11,4 @@ export default {
 			width : "95%"
 		}
 	}
-}
+})

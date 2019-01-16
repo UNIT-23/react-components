@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 import React from "react"
 import injectSheet from "react-jss"
 // @ts-ignore
@@ -15,45 +16,51 @@ import { styles, selectStyles } from "./styles"
 
 import { IProps } from "./__types/IProps"
 import { InputTypes } from "../../models/InputTypes"
+import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 
-const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
+function InputField<TValue>({ input, inputType, meta: { error }, classes, ...rest }: IProps<TValue>) {
+	const { name, onBlur = () => {}, onChange, onFocus, value } = input
+
 	switch (inputType) {
 		case InputTypes.Select:
 			const onBlurForSelect = (_: React.ChangeEvent) => {
-				onBlur(restInput.value)
+				onBlur(value)
 			}
 
 			return (
 				<CheckboxSelect
 					onBlur={onBlurForSelect}
+					onFocus={onFocus}
+					onChange={onChange}
+					value={value}
 					styles={selectStyles}
-					{...restInput}
-					{...rest}
 					invalidMessage={error}
 					className="checkbox-select"
 					classNamePrefix="select"
+					{...rest}
 				/>
 			)
 		case InputTypes.Editor:
 			return (
 				<div className={classes.editor}>
-					<EditorInput {...restInput} {...rest} />
+					<EditorInput {...input} {...rest} />
 				</div>
 			)
 		case InputTypes.Textarea:
-			return <textarea onBlur={onBlur} {...restInput} {...rest} className={classes.textarea} />
-		case InputTypes.Switch:
-			return <Switch onBlur={onBlur} {...restInput} {...rest} />
-		case InputTypes.Checkbox:
 			return (
-				<Checkbox
+				<textarea
+					value={value as any}
 					onBlur={onBlur}
-					onChange={restInput.onChange}
-					value={restInput.name}
-					checked={restInput.value}
+					onFocus={onFocus}
+					onChange={onChange}
+					className={classes.textarea}
 					{...rest}
 				/>
 			)
+		case InputTypes.Switch:
+			return <Switch {...input} {...rest} />
+		case InputTypes.Checkbox:
+			return <Checkbox onBlur={onBlur} onChange={onChange} value={name} checked={value} {...rest} />
 		case InputTypes.File:
 			const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
 				e.preventDefault()
@@ -63,7 +70,7 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 
 				// tslint:disable-next-line:no-object-mutation
 				reader.onloadend = () => {
-					restInput.onChange(reader.result)
+					onChange(reader.result as any)
 				}
 
 				if (file) {
@@ -71,30 +78,38 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 				}
 			}
 
-			return <input onChange={adaptFileEventToValue} type="file" name={restInput.name} {...rest} />
+			return <input onChange={adaptFileEventToValue} type="file" name={name} {...rest} />
 		case InputTypes.Calender:
 			return (
 				<Calender
-					startDate={restInput.value.startDate}
-					endDate={restInput.value.endDate}
-					date={restInput.value}
-					onDateChange={restInput.onChange}
-					onDatesChange={restInput.onChange}
+					startDate={(value as any).startDate}
+					endDate={(value as any).endDate}
+					date={value as any}
+					onDateChange={onChange as any}
+					onDatesChange={onChange as any}
 					{...rest}
 				/>
 			)
 		case InputTypes.TimePicker:
 			return <TimeKeeper time={restInput.value} />
-		// Return <TimeKeeper time={restInput.value} onChange={value => restInput.value.onChange(value.formatted24)} />
-
-		case InputTypes.Colorpicker:
-			// tslint:disable-next-line:jsx-no-lambda TOD O: Fix this
-			return <CirclePicker onChangeComplete={({ hex }) => restInput.onChange(hex)} />
+		case InputTypes.ColorPicker:
+			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
+			return <CirclePicker onChangeComplete={({ hex }) => onChange(hex as any)} />
 		default:
-			return <input onBlur={onBlur} {...restInput} {...rest} className={classes.input} />
+			return (
+				<input
+					onBlur={onBlur}
+					onFocus={onFocus}
+					onChange={onChange}
+					value={value as any}
+					className={classes.input}
+					{...rest}
+				/>
+			)
 	}
 }
 
+// tslint:disable:no-any
 // tslint:disable-next-line:no-object-mutation
 InputField.defaultProps = {
 	input: {
@@ -102,9 +117,7 @@ InputField.defaultProps = {
 		onChange: () => {},
 		onDragStart: () => {},
 		onDrop: () => {},
-		onFocus: () => {},
-		value: "",
-		name: ""
+		onFocus: () => {}
 	},
 	meta: {
 		autofilled: false,
@@ -124,4 +137,4 @@ InputField.defaultProps = {
 	}
 }
 
-export default injectSheet(styles)(InputField) as InputField<IProps>
+export default materialThemeWrapper(injectSheet(styles)(InputField))
