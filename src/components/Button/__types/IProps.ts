@@ -14,4 +14,5 @@ export interface IProps
 	readonly color?: string
 	readonly width?: string | number
 	readonly margin?: string | number
+	readonly buttonType?: "default" | "square"
 }

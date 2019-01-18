@@ -9,7 +9,7 @@ export const styles: any = (theme: typeof Theme) => ({
 		color: "black",
 		background: ({ color, disabled }: IProps) => (disabled ? "#ccc" : color || theme.primaryLight),
 		padding: ({ padding }: IProps) => padding || Values.defaultPadding,
-		width: ({ width }: IProps) => width || Values.defaultWidth,
+		width: ({ width, buttonType }: IProps) => (buttonType === "square" ? 50 : width || Values.defaultWidth),
 		outline: "none",
 		border: "none",
 		margin: ({ margin }: IProps) => margin || "10px 0px",

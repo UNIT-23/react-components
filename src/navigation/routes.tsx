@@ -2,7 +2,7 @@ import * as React from "react"
 import { connect } from "react-redux"
 import { Switch, BrowserRouter as Router } from "react-router-dom"
 
-import AuthRoute from "./AuthRoute/AuthRoute"
+import AuthorizeRoute from "./AuthorizeRoute/AuthorizeRoute"
 
 import Alert from "../components/Alert/Alert"
 import Loader from "../components/Loader/Loader"
@@ -16,8 +16,8 @@ const MainRoute = ({ alertState, message, alertLevel, dispatch }: IProps): JSX.E
 		<Router basename={process.env.PUBLIC_URL}>
 			<React.Suspense fallback={<Loader />}>
 				<Switch>
-					<AuthRoute path="/" exact isAuth={true} component={DashboardComponent} />
-					<AuthRoute path="/posts/:id" exact isAuth={true} component={DashboardComponent} />
+					<AuthorizeRoute exact isAuth={true} path="/" component={DashboardComponent} />
+					<AuthorizeRoute exact isAuth={true} path="/posts/:id" component={DashboardComponent} />
 				</Switch>
 			</React.Suspense>
 		</Router>
