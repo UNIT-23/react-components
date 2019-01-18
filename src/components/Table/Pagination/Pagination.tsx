@@ -24,7 +24,9 @@ class Pagination extends React.Component<IProps> {
 
 	public goToPageHandler(page: number): (event: React.MouseEvent<HTMLButtonElement>) => void {
 		return (event: React.MouseEvent<HTMLButtonElement>) => {
-			this.props.onChangePage(event, page)
+			const indexZeroAdjustedPage = page - 1
+
+			this.props.onChangePage(event, indexZeroAdjustedPage)
 		}
 	}
 
