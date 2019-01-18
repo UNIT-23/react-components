@@ -1,10 +1,7 @@
 import * as React from "react"
-import TablePagination from "@material-ui/core/TablePagination"
 
 import Button from "../../Button/Button"
 import InputField from "../../InputField/InputField"
-
-import NOP from "./NOP/NOP"
 
 import { InputTypes } from "../../../models/InputTypes"
 
@@ -70,7 +67,7 @@ class Pagination extends React.Component<IProps> {
 	}
 
 	public render(): JSX.Element {
-		const { page, count, rowsPerPage, onChangePage, onChangeRowsPerPage } = this.props
+		const { page, count, rowsPerPage, onChangeRowsPerPage } = this.props
 
 		const maxPages = this.maxPages()
 
@@ -81,74 +78,60 @@ class Pagination extends React.Component<IProps> {
 		const buttonLabel5 = this.getNavButtonNumber(Values.buttonLabel5, page, maxPages)
 
 		return (
-			<TablePagination
-				ActionsComponent={NOP}
-				labelDisplayedRows={NOP}
-				labelRowsPerPage={
-					<div
-						style={{
-							display: "flex"
-						}}
-					>
-						<div>
-							<Button buttonType="square" onClick={this.handleBackButtonClick}>
-								{"<"}
-							</Button>
-							{maxPages >= Values.buttonLabel1 && (
-								<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
-									{buttonLabel1}
-								</Button>
-							)}
-							{maxPages >= Values.buttonLabel2 && (
-								<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
-									{buttonLabel2}
-								</Button>
-							)}
-							{maxPages >= Values.buttonLabel3 && (
-								<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
-									{buttonLabel3}
-								</Button>
-							)}
-							{maxPages >= Values.buttonLabel4 && (
-								<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
-									{buttonLabel4}
-								</Button>
-							)}
-							{maxPages >= Values.buttonLabel5 && (
-								<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel5)}>
-									{buttonLabel5}
-								</Button>
-							)}
-							<Button buttonType="square" onClick={this.handleNextButtonClick}>
-								{">"}
-							</Button>
-						</div>
-						<div>
-							<div>Showing</div>
-							<div style={{ width: 120 }}>
-								<InputField
-									inputType={InputTypes.Select}
-									isMulti={false}
-									input={{
-										value: { label: rowsPerPage, value: rowsPerPage },
-										onChange: onChangeRowsPerPage
-									}}
-									options={this.rowsPerPageOptions}
-								/>
-							</div>
-						</div>
-						<div>of {count}</div>
-					</div>
-				}
-				SelectProps={{
-					SelectDisplayProps: { style: { display: "none" } },
-					IconComponent: NOP
+			<div
+				style={{
+					display: "flex"
 				}}
-				page={page}
-				count={count}
-				rowsPerPage={rowsPerPage}
-				onChangePage={onChangePage}
-			/>
+			>
+				<div>
+					<Button buttonType="square" onClick={this.handleBackButtonClick}>
+						{"<"}
+					</Button>
+					{maxPages >= Values.buttonLabel1 && (
+						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
+							{buttonLabel1}
+						</Button>
+					)}
+					{maxPages >= Values.buttonLabel2 && (
+						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
+							{buttonLabel2}
+						</Button>
+					)}
+					{maxPages >= Values.buttonLabel3 && (
+						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
+							{buttonLabel3}
+						</Button>
+					)}
+					{maxPages >= Values.buttonLabel4 && (
+						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
+							{buttonLabel4}
+						</Button>
+					)}
+					{maxPages >= Values.buttonLabel5 && (
+						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel5)}>
+							{buttonLabel5}
+						</Button>
+					)}
+					<Button buttonType="square" onClick={this.handleNextButtonClick}>
+						{">"}
+					</Button>
+				</div>
+				<div>
+					<div>Showing</div>
+					<div style={{ width: 120 }}>
+						<InputField
+							inputType={InputTypes.Select}
+							isMulti={false}
+							input={{
+								value: { label: rowsPerPage, value: rowsPerPage },
+								onChange: onChangeRowsPerPage
+							}}
+							options={this.rowsPerPageOptions}
+						/>
+					</div>
+				</div>
+				<div>of {count}</div>
+			</div>
 		)
 	}
 }

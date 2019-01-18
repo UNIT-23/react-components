@@ -81,8 +81,18 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 	}
 
 	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
-		// tslint:disable-next-line:no-any
-		return data.map(tableDataFormatter) as any
+		return (
+			data
+				.map(tableDataFormatter)
+				// tslint:disable-next-line:no-any
+				.map((d: any) => ({
+					...d,
+					hasPremium: {
+						...d.hasPremium,
+						component: d.hasPremium.value ? "Premium" : "Trial"
+					}
+				}))
+		)
 	}
 
 	public render() {
