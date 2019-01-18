@@ -10,7 +10,7 @@ import Checkbox from "./Checkbox/Checkbox"
 import Calender from "./Calender/CalenderComponent"
 import { CirclePicker } from "react-color"
 // @ts-ignore
-import TimeKeeper from "react-timekeeper"
+import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
 
 import { styles, selectStyles } from "./styles"
 
@@ -91,7 +91,7 @@ function InputField<TValue>({ input, inputType, meta: { error }, classes, ...res
 				/>
 			)
 		case InputTypes.TimePicker:
-			return <TimeKeeper time={value} />
+			return <TimeKeeper value={value as any} onChange={onChange as any} />
 		case InputTypes.ColorPicker:
 			// tslint:disable-next-line:jsx-no-lambda TODO: Fix this
 			return <CirclePicker onChangeComplete={({ hex }) => onChange(hex as any)} />
