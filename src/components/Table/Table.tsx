@@ -8,6 +8,8 @@ import EnhancedToolbar from "./EnhancedToolbar/EnhancedToolbar"
 import TableRows from "./TableRows/TableRows"
 import Pagination from "./Pagination/Pagination"
 
+import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
+
 import ApiSuspense from "../ApiSuspense/ApiSuspense"
 
 import { IProps } from "./__types/IProps"
@@ -15,28 +17,35 @@ import { IState } from "./__types/IState"
 import { TableValues } from "./__types/TableValues"
 
 import { styles } from "./styles"
-import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 
 class Table extends React.Component<IProps, IState> {
 	public constructor(props: IProps) {
 		super(props)
 
+		const { orderBy, rowsPerPage } = props
+
+		this.state = {
+			orderBy,
+			page: 0,
+			orderType: "asc",
+			rowsPerPage: rowsPerPage || TableValues.defaultRowsPerPage
+		}
+
 		this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this)
-	}
-	public readonly state: IState = {
-		orderType: "asc",
-		orderBy: "id" as string,
-		page: 0,
-		rowsPerPage: this.props.rowsPerPage || TableValues.defaultRowsPerPage
 	}
 
 	public readonly handleRequestSort = (_event: MouseEvent, orderByUpdate: string): void => {
+		const { onSortChange } = this.props
 		const { orderBy, orderType } = this.state
 
+		const orderTypeUpdate = orderBy === orderByUpdate && orderType === "desc" ? "asc" : "desc"
+
 		this.setState({
-			orderType: orderBy === orderByUpdate && orderType === "desc" ? "asc" : "desc",
+			orderType: orderTypeUpdate,
 			orderBy: orderByUpdate
 		})
+
+		onSortChange(orderByUpdate, orderTypeUpdate)
 	}
 
 	// Req by MUI for handler to be arrow
