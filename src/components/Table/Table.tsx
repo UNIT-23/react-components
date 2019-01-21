@@ -45,7 +45,7 @@ class Table extends React.Component<IProps, IState> {
 			orderBy: orderByUpdate
 		})
 
-		onSortChange(orderByUpdate, orderTypeUpdate)
+		onSortChange && onSortChange(orderByUpdate, orderTypeUpdate)
 	}
 
 	// Req by MUI for handler to be arrow
