@@ -1,8 +1,7 @@
 import * as React from "react"
 import { withStyles } from "@material-ui/core/styles"
-import Table from "@material-ui/core/Table"
+import MaterialTable from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
-import Paper from "@material-ui/core/Paper"
 
 import EnhancedTableHead from "./EnhancedTableHead/EnhancedTableHead"
 import EnhancedToolbar from "./EnhancedToolbar/EnhancedToolbar"
@@ -16,8 +15,14 @@ import { IState } from "./__types/IState"
 import { TableValues } from "./__types/TableValues"
 
 import { styles } from "./styles"
+import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 
-class EnhancedTable extends React.Component<IProps, IState> {
+class Table extends React.Component<IProps, IState> {
+	public constructor(props: IProps) {
+		super(props)
+
+		this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this)
+	}
 	public readonly state: IState = {
 		orderType: "asc",
 		orderBy: "id" as string,
@@ -44,13 +49,11 @@ class EnhancedTable extends React.Component<IProps, IState> {
 		this.setState({ page })
 	}
 
-	// Req by MUI for handler to be arrow
-	public readonly handleChangeRowsPerPage = (
-		event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-	): void => {
+	private onChangeRowsPerPage(selected: IDropDownData<number>): void {
 		const { onRowsPerPageChange } = this.props
 		const { page } = this.state
-		const rowsPerPage: number = Number(event.target.value)
+
+		const rowsPerPage = selected.value
 
 		onRowsPerPageChange(page, rowsPerPage)
 
@@ -74,7 +77,7 @@ class EnhancedTable extends React.Component<IProps, IState> {
 		const { orderType, orderBy, rowsPerPage, page } = this.state
 
 		return (
-			<Paper square={true} className={classes.root}>
+			<div className={classes.root}>
 				<EnhancedToolbar
 					DefaultBtn={DefaultBtn}
 					SelectedBtn={SelectedBtn}
@@ -83,7 +86,7 @@ class EnhancedTable extends React.Component<IProps, IState> {
 				/>
 				<div className={classes.tableWrapper}>
 					<ApiSuspense apiState={dataRequestState}>
-						<Table className={classes.table}>
+						<MaterialTable className={classes.table}>
 							<EnhancedTableHead
 								numSelected={selected ? selected.length : 0}
 								columns={header}
@@ -106,19 +109,19 @@ class EnhancedTable extends React.Component<IProps, IState> {
 									selected={selected}
 								/>
 							</TableBody>
-						</Table>
+						</MaterialTable>
 					</ApiSuspense>
 				</div>
 				<Pagination
+					page={page}
 					count={count}
 					rowsPerPage={rowsPerPage}
-					page={page}
 					onChangePage={this.handleChangePage}
-					onChangeRowsPerPage={this.handleChangeRowsPerPage}
+					onChangeRowsPerPage={this.onChangeRowsPerPage}
 				/>
-			</Paper>
+			</div>
 		)
 	}
 }
 
-export default withStyles(styles)(EnhancedTable)
+export default materialThemeWrapper(withStyles(styles)(Table))

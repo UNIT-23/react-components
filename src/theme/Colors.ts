@@ -1,6 +1,6 @@
 // tslint:disable:no-let
 // tslint:disable-next-line:readonly-keyword
-export let Colors = {
+export let Theme = {
 	primary: "#00796B",
 	primaryLight: "#009688",
 	secondary: "#FFC107",
@@ -13,8 +13,4 @@ export let Colors = {
 	success: "#4CAF50",
 	text: "#212121",
 	frost: "#757575"
-}
-
-export const Theme = (overrideTheme: { readonly [key: string]: string } = {}) => {
-	Colors = { ...Colors, ...overrideTheme }
 }

@@ -2,7 +2,8 @@
 
 import axios from "axios"
 
-export const appBaseUrl = "https://jsonplaceholder.typicode.com"
+export const appBaseUrl =
+	process.env.NODE_ENV !== "production" ? "http://localhost:3001" : "https://jsonplaceholder.typicode.com"
 
 const api = axios.create({
 	baseURL: appBaseUrl,
@@ -26,8 +27,8 @@ export function runGqlQueries(query: string, token: string) {
 
 export function getPosts({ limit = 10, offset = 0, filter = "" }) {
 	if (filter) {
-		return api.get(`/comments?q=${filter}`)
+		return api.get(`/merchants?q=${filter}`)
 	}
 
-	return api.get(`/comments?_page=${offset}&_limit=${limit}`)
+	return api.get(`/merchants?_page=${offset}&_limit=${limit}`)
 }

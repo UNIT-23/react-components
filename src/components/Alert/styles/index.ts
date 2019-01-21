@@ -1,16 +1,16 @@
-import { Fonts, Colors } from "../../../theme/"
+import { Fonts, Theme } from "../../../theme/"
 
 import { IProps } from "../__types/IProps"
 
 // tslint:disable-next-line:no-any
-export const styles: any = {
+export const styles: any = (theme: typeof Theme) => ({
 	container: {},
 	content: {
 		background: ({ alertLevel }: IProps) =>
 			({
-				Success: Colors.primary,
-				Warning: Colors.secondary,
-				Error: Colors.danger
+				Success: theme.primary,
+				Warning: theme.secondary,
+				Error: theme.danger
 			}[alertLevel])
 	},
 	messageContainer: {
@@ -23,4 +23,4 @@ export const styles: any = {
 	close: {
 		transform: "rotate(45deg)"
 	}
-}
+})

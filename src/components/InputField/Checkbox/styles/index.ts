@@ -1,13 +1,13 @@
-import { Colors } from "../../../../theme"
+import { Theme } from "../../../../theme"
 
 // tslint:disable-next-line:no-any
-export const styles = () => ({
+export const styles = {
 	root: {
 		padding: 0,
-		color: Colors.primary,
-		"&$checked": {
-			color: Colors.primary
+		color: Theme.primary,
+		"& checked": {
+			color: Theme.primary
 		}
 	},
 	checked: {}
-})
+}

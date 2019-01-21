@@ -4,8 +4,10 @@ import Snackbar from "@material-ui/core/Snackbar"
 import SnackbarContent from "@material-ui/core/SnackbarContent"
 import IconButton from "@material-ui/core/IconButton"
 
-import Plus from "../Icons/PlusIcon"
+import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
+
 import AlertIcon from "../Icons/AlertIcon"
+import Plus from "../Icons/PlusIcon"
 import TransitionSlide from "./TransitionSlide/TransitionSlide"
 
 import { closeAlert } from "../../appstate/actions/alert/alertActions"
@@ -71,4 +73,4 @@ class Alert extends React.Component<IProps> {
 	}
 }
 
-export default injectSheet(styles)(Alert)
+export default materialThemeWrapper(injectSheet(styles)(Alert))

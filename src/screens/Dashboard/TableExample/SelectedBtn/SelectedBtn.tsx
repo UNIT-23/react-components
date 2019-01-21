@@ -1,19 +1,18 @@
 import * as React from "react"
+import injectSheet from "react-jss"
 
 import TrashIcon from "../../../../components/Icons/TrashIcon"
 
-import { Colors } from "../../../../theme"
+import { IProps } from "./__types/IProps"
 
-const SelectedBtn = () => {
-	return (
-		<div
-			style={{
-				cursor: "pointer"
-			}}
-		>
-			<TrashIcon color={Colors.danger} fill={Colors.danger} />
-		</div>
-	)
-}
+const SelectedBtn = ({ theme }: IProps) => (
+	<div
+		style={{
+			cursor: "pointer"
+		}}
+	>
+		<TrashIcon color={theme.danger} fill={theme.danger} />
+	</div>
+)
 
-export default SelectedBtn
+export default injectSheet({})(SelectedBtn)

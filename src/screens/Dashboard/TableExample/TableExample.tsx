@@ -18,10 +18,11 @@ import { connect } from "react-redux"
 import { postsGetRequest } from "../../../appstate/actions/posts/postsActions"
 
 const header: ReadonlyArray<ITableHeader> = [
-	{ id: "postId", align: "center", disablePadding: false, label: "ID" },
-	{ id: "name", align: "center", disablePadding: false, label: "Name" },
+	{ id: "firstname", align: "center", disablePadding: false, label: "Firstname" },
+	{ id: "lastname", align: "center", disablePadding: false, label: "Lastname" },
 	{ id: "email", align: "center", disablePadding: false, label: "Email" },
-	{ id: "body", align: "center", disablePadding: false, label: "Message" }
+	{ id: "phone", align: "center", disablePadding: false, label: "Phone" },
+	{ id: "hasPremium", align: "center", disablePadding: false, label: "Premium" }
 ]
 
 class TableExampleComponent extends React.Component<IProps, IState> {
@@ -36,7 +37,6 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 		}
 
 		this.onPageChange = this.onPageChange.bind(this)
-		this.handleSelectClick = this.handleSelectClick.bind(this)
 		this.onRowsPerPageChange = this.onRowsPerPageChange.bind(this)
 	}
 
@@ -44,30 +44,6 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 		const { dispatch } = this.props
 
 		dispatch(postsGetRequest({}))
-	}
-
-	public handleSelectClick(_event: React.ChangeEvent, id: number) {
-		const { posts } = this.props
-		const { selectedIds } = this.state
-
-		const selectedIndex = selectedIds.indexOf(id)
-
-		let newSelected: number[] = []
-
-		if (selectedIndex === -1) {
-			newSelected = newSelected.concat(selectedIds, id)
-		} else if (selectedIndex === 0) {
-			newSelected = newSelected.concat(selectedIds.slice(1))
-		} else if (selectedIndex === selectedIds.length - 1) {
-			newSelected = newSelected.concat(selectedIds.slice(0, -1))
-		} else if (selectedIndex > 0) {
-			newSelected = newSelected.concat(selectedIds.slice(0, selectedIndex), selectedIds.slice(selectedIndex + 1))
-		}
-
-		this.setState({
-			selected: newSelected.map((selectedId: number) => posts.find((m: IPost) => m.id === selectedId)),
-			selectedIds: [...newSelected]
-		})
 	}
 
 	public onPageChange(nextPage: number, rowsPerPage: number) {
@@ -105,22 +81,31 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 	}
 
 	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
-		// tslint:disable-next-line:no-any
-		return data.map(tableDataFormatter) as any
+		return (
+			data
+				.map(tableDataFormatter)
+				// tslint:disable-next-line:no-any
+				.map((d: any) => ({
+					...d,
+					hasPremium: {
+						...d.hasPremium,
+						component: d.hasPremium.value ? "Premium" : "Trial"
+					}
+				}))
+		)
 	}
 
 	public render() {
-		const { posts, postsCount } = this.props
+		const { posts } = this.props
 		const { selectedIds } = this.state
 
 		return (
 			<Table
-				count={postsCount}
+				count={90}
 				dataRequestState={API.REQUEST_SUCCESS}
 				tableTitle={<div>Merchants</div>}
 				DefaultBtn={<DefaultBtn />}
 				SelectedBtn={<SelectedBtn />}
-				handleSelectClick={this.handleSelectClick}
 				onPageChange={this.onPageChange}
 				onRowsPerPageChange={this.onRowsPerPageChange}
 				selected={selectedIds}
