@@ -8,11 +8,15 @@ import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
 import Calender from "./Calender/CalenderComponent"
 import { CirclePicker } from "react-color"
-
 import { styles, selectStyles } from "./styles"
 
 import { IProps } from "./__types/IProps"
 import { InputTypes } from "../../models/InputTypes"
+
+import { FilePond } from "react-filepond"
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css"
 
 const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error }, classes, ...rest }: IProps) => {
 	switch (inputType) {
@@ -53,23 +57,9 @@ const InputField = ({ input: { onBlur, ...restInput }, inputType, meta: { error 
 				/>
 			)
 		case InputTypes.File:
-			const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-				e.preventDefault()
 
-				const reader = new FileReader()
-				const file = e.target.files[0]
+			return <FilePond onupdatefiles={restInput.onChange}  {...rest} />
 
-				// tslint:disable-next-line:no-object-mutation
-				reader.onloadend = () => {
-					restInput.onChange(reader.result)
-				}
-
-				if (file) {
-					reader.readAsDataURL(file)
-				}
-			}
-
-			return <input onChange={adaptFileEventToValue} type="file" name={restInput.name} {...rest} />
 		case InputTypes.Calender:
 			return (
 				<Calender

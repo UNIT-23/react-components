@@ -2,6 +2,7 @@
 import * as React from "react"
 import { DateRangePicker, FocusedInputShape, SingleDatePicker } from "react-dates"
 import "react-dates/initialize"
+import "react-dates/lib/css/_datepicker.css"
 
 import { IState } from "./__types/IState"
 import { IProps } from "./__types/IProps"
