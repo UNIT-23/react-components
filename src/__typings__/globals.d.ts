@@ -1,9 +1,13 @@
 interface IRootState {
 	readonly alert: IAlert
 	readonly posts: IPosts
+	readonly tables: ITables
 }
 
 interface IPosts {
+	readonly page: number
+	readonly orderBy: string
+	readonly orderType: "asc" | "desc"
 	readonly posts: ReadonlyArray<IPost>
 	readonly postsGetRequestState: API
 	readonly postsCount: number
@@ -19,6 +23,11 @@ interface IPost {
 	readonly hasPremium: boolean
 }
 
+interface ITables {
+	readonly rowsPerPage: number
+	readonly filter: string
+}
+
 interface ITableData {
 	readonly [key: string]: {
 		readonly component: React.ReactNode
@@ -28,8 +37,6 @@ interface ITableData {
 
 interface ITableHeader {
 	readonly id: string
-	readonly align: "left" | "center" | "right" | "justify"
-	readonly disablePadding: boolean
 	readonly label: string
 }
 
@@ -96,16 +103,9 @@ enum API {
 interface IListPayload {
 	readonly limit?: number
 	readonly offset?: number
-	readonly filter?: string
 	readonly sort?: string
-	readonly order?: string
-}
-
-interface ITableHeader {
-	readonly id: string
-	readonly align: "center" | "left" | "right" | "justify"
-	readonly disablePadding: boolean
-	readonly label: string
+	readonly orderBy?: string
+	readonly orderType?: "asc" | "desc"
 }
 
 interface ITableData {

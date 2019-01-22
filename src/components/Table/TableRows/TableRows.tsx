@@ -81,18 +81,11 @@ function TableRows<THead extends ITableHeader>({
 							)}
 							{rowNames
 								.filter((rowName: string) => rowName !== "id")
-								.map((rowName: string, i: number) => {
-									const align: "left" | "center" | "right" | "justify" = columns.find(
-										// Length
-										(c: THead) => c.id === rowName
-									).align
-
-									return (
-										<TableCell className={classes.tableCell} key={i} align={align}>
-											{row[rowName as string].component}
-										</TableCell>
-									)
-								})}
+								.map((rowName: string, i: number) => (
+									<TableCell className={classes.tableCell} key={i} align={"center"}>
+										{row[rowName as string].component}
+									</TableCell>
+								))}
 						</TableRow>
 					)
 				})}

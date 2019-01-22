@@ -1,89 +1,37 @@
-// TODO: Move to ReadonlyArray
-// tslint:disable:readonly-array
-// tslint:disable:no-let
 import * as React from "react"
+import { connect } from "react-redux"
 
 import Table from "../../../components/Table/Table"
+import { TableModel } from "../../../components/Table/models/TableModel"
 
 import DefaultBtn from "./DefaultBtn/DefaultBtn"
 import SelectedBtn from "./SelectedBtn/SelectedBtn"
 
-import { API } from "../../../models/ApiState"
-
-import { tableDataFormatter } from "../../../utils/tableDataFormatter"
-
-import { IProps } from "./__types/IProps"
-import { IState } from "./__types/IState"
-import { connect } from "react-redux"
 import { postsGetRequest } from "../../../appstate/actions/posts/postsActions"
 
+import { API } from "../../../models/ApiState"
+
+import { IProps } from "./__types/IProps"
+
 const header: ReadonlyArray<ITableHeader> = [
-	{ id: "firstname", align: "center", disablePadding: false, label: "Firstname" },
-	{ id: "lastname", align: "center", disablePadding: false, label: "Lastname" },
-	{ id: "email", align: "center", disablePadding: false, label: "Email" },
-	{ id: "phone", align: "center", disablePadding: false, label: "Phone" },
-	{ id: "hasPremium", align: "center", disablePadding: false, label: "Premium" }
+	{ id: "firstname", label: "Firstname" },
+	{ id: "lastname", label: "Lastname" },
+	{ id: "email", label: "Email" },
+	{ id: "phone", label: "Phone" },
+	{ id: "hasPremium", label: "Premium" }
 ]
 
-class TableExampleComponent extends React.Component<IProps, IState> {
+class TableExampleComponent extends TableModel<IProps> {
 	public constructor(props: IProps) {
 		super(props)
 
-		this.state = {
-			selected: [],
-			selectedIds: [],
-			currentPage: 0,
-			searchValue: ""
-		}
-
-		this.onPageChange = this.onPageChange.bind(this)
-		this.onRowsPerPageChange = this.onRowsPerPageChange.bind(this)
-	}
-
-	public componentDidMount() {
-		const { dispatch } = this.props
-
-		dispatch(postsGetRequest({}))
-	}
-
-	public onPageChange(nextPage: number, rowsPerPage: number) {
-		const { posts, dispatch } = this.props
-		const { currentPage } = this.state
-
-		this.setState({ selected: [], currentPage: nextPage })
-
-		const onNextPage = nextPage > currentPage
-		const nextOffset = nextPage * rowsPerPage
-
-		const navOutOfRangeOfData = nextOffset >= posts.length
-
-		if (onNextPage && navOutOfRangeOfData) {
-			dispatch(
-				postsGetRequest({
-					offset: nextOffset,
-					limit: rowsPerPage
-				})
-			)
-		}
-	}
-
-	public onRowsPerPageChange(_page: number, rowsPerPage: number) {
-		const { dispatch } = this.props
-
-		this.setState({ selected: [] })
-
-		dispatch(
-			postsGetRequest({
-				offset: 0,
-				limit: rowsPerPage
-			})
-		)
+		this.getAction = postsGetRequest
 	}
 
 	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
 		return (
-			data
-				.map(tableDataFormatter)
+			super
+				.formatData(data)
 				// tslint:disable-next-line:no-any
 				.map((d: any) => ({
 					...d,
@@ -96,27 +44,37 @@ class TableExampleComponent extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { posts } = this.props
-		const { selectedIds } = this.state
+		const { posts, page, rowsPerPage, filter, orderBy, orderType } = this.props
 
 		return (
 			<Table
 				count={90}
-				dataRequestState={API.REQUEST_SUCCESS}
-				tableTitle={<div>Merchants</div>}
-				DefaultBtn={<DefaultBtn />}
-				SelectedBtn={<SelectedBtn />}
-				onPageChange={this.onPageChange}
-				onRowsPerPageChange={this.onRowsPerPageChange}
-				selected={selectedIds}
+				page={page}
 				header={header}
+				orderBy={orderBy}
+				orderType={orderType}
+				rowsPerPage={rowsPerPage}
+				SelectedBtn={<SelectedBtn />}
 				rows={this.formatData(posts)}
+				onChangePage={this.onChangePage}
+				onChangeSort={this.onChangeSort}
+				tableTitle={<div>Merchants</div>}
+				dataRequestState={API.REQUEST_SUCCESS}
+				onChangeRowsPerPage={this.onChangeRowsPerPage}
+				DefaultBtn={<DefaultBtn handleSearch={this.filterHandler} filter={filter} />}
 			/>
 		)
 	}
 }
 
-export default connect(({ posts }: IRootState) => ({
+export default connect(({ posts, tables }: IRootState) => ({
+	page: posts.page,
 	posts: posts.posts,
-	postsCount: posts.postsCount
+	filter: tables.filter,
+	orderBy: posts.orderBy,
+	orderType: posts.orderType,
+	postsCount: posts.postsCount,
+	rowsPerPage: tables.rowsPerPage,
+	postsGetError: posts.postsGetError,
+	postsGetRequestState: posts.postsGetRequestState
 }))(TableExampleComponent)
