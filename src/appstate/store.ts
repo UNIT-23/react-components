@@ -1,3 +1,5 @@
+// tslint:disable:no-implicit-dependencies
+
 import { applyMiddleware, createStore, compose } from "redux"
 import createSagaMiddleware from "redux-saga"
 import { persistStore } from "redux-persist"
@@ -6,7 +8,7 @@ import { persistStore } from "redux-persist"
 import Reactotron from "reactotron-react-js"
 // @ts-ignore
 import { reactotronRedux } from "reactotron-redux"
-// @ts-ignore
+
 import sagaPlugin from "reactotron-redux-saga"
 
 import { rootReducer } from "./rootReducer"
@@ -18,7 +20,7 @@ function configureStore() {
 	// Source: https://github.com/infinitered/reactotron
 	if (process.env.NODE_ENV !== "production") {
 		const reactotron = Reactotron.configure()
-			.use(sagaPlugin())
+			.use(sagaPlugin({}))
 			.use(reactotronRedux())
 			.connect()
 
