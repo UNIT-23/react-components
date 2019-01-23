@@ -61,18 +61,18 @@ function TableRows<THead extends ITableHeader>({
 			{(orderBy ? stableSort(rows, getSorting(orderType, orderBy)) : rows)
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 				.map((row: ITableData) => {
-					const isSelected: boolean = selected.includes(row.id.value as React.ReactText)
+					const isSelected: boolean = selected.includes(row.id.value)
 					const rowNames: ReadonlyArray<string> = columns.map((c: THead) => c.id)
 
 					return (
 						<TableRow
-							key={row.id.value as React.ReactText}
+							key={row.id.value}
 							hover={true}
 							tabIndex={-1}
 							role="checkbox"
 							selected={isSelected}
 							aria-checked={isSelected}
-							onClick={rowClickHandler(handleSelectClick, row.id.value as React.ReactText)}
+							onClick={rowClickHandler(handleSelectClick, row.id.value)}
 						>
 							{!!handleSelectClick && (
 								<TableCell padding="checkbox">
@@ -83,7 +83,7 @@ function TableRows<THead extends ITableHeader>({
 								.filter((rowName: string) => rowName !== "id")
 								.map((rowName: string, i: number) => (
 									<TableCell className={classes.tableCell} key={i} align={"center"}>
-										{row[rowName as string].component}
+										{row[rowName].component}
 									</TableCell>
 								))}
 						</TableRow>

@@ -23,11 +23,12 @@ export const initialState: IPosts = {
 export function postsReducer(state: IPosts = initialState, action: PostsActions): IPosts {
 	switch (action.type) {
 		case PostsTypes.POSTS_GET_REQUEST:
-			const page = (action as PostsGetRequestAction).payload.page
+			const offset = (action as PostsGetRequestAction).payload.offset
+			const limit = (action as PostsGetRequestAction).payload.limit
 
 			return {
 				...state,
-				page: !isNaN(page) ? page : state.page,
+				page: offset ? offset / limit : 0,
 				orderBy: (action as PostsGetRequestAction).payload.orderBy || state.orderBy,
 				orderType:
 					state.orderBy === (action as PostsGetRequestAction).payload.orderBy && state.orderType === "desc"

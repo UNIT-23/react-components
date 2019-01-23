@@ -28,7 +28,7 @@ class TableExampleComponent extends TableModel<IProps> {
 		this.getAction = postsGetRequest
 	}
 
-	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
+	public formatData<IPost>(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
 		return (
 			super
 				.formatData(data)

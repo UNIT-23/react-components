@@ -34,8 +34,7 @@ export class TableModel<TProps extends IProps, TState = undefined> extends React
 		dispatch(
 			this.getAction({
 				limit: rowsPerPage,
-				offset: nextOffset,
-				page: nextPage
+				offset: nextOffset
 			})
 		)
 	}
@@ -50,8 +49,7 @@ export class TableModel<TProps extends IProps, TState = undefined> extends React
 		dispatch(
 			this.getAction({
 				limit: rowsPerPage,
-				offset: 0,
-				page: 0
+				offset: 0
 			})
 		)
 	}
@@ -63,13 +61,12 @@ export class TableModel<TProps extends IProps, TState = undefined> extends React
 			this.getAction({
 				orderBy,
 				limit: rowsPerPage,
-				offset: 0,
-				page: 0
+				offset: 0
 			})
 		)
 	}
 
-	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
+	public formatData<T>(data: ReadonlyArray<T>): ReadonlyArray<ITableData> {
 		return data.map(tableDataFormatter)
 	}
 
