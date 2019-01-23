@@ -5,7 +5,7 @@ import { Fonts } from "../../../theme"
 export const styles: any = {
 	input: {
 		width: "96%",
-		fontSize: Fonts.size.small,
+		fontSize: Fonts.size.regular,
 		outline: "none",
 		borderRadius: "0px",
 		margin: "8px 0px",
@@ -16,7 +16,7 @@ export const styles: any = {
 	},
 	textarea: {
 		width: "96%",
-		fontSize: Fonts.size.small,
+		fontSize: Fonts.size.regular,
 		outline: "none",
 		borderRadius: "0px",
 		margin: "8px 0px",

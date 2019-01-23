@@ -14,6 +14,7 @@ export const initialState: IPosts = {
 	posts: [],
 	orderBy: "",
 	orderType: "asc",
+	rowsPerPage: 0,
 	page: 0,
 	postsCount: 10,
 	postsGetRequestState: API.NOT_REQUESTED,

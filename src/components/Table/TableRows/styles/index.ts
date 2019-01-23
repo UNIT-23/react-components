@@ -8,6 +8,6 @@ export const styles: StyleRulesCallback = (): StyleRules =>
 		root: {},
 		tableCell: {
 			textAlign: "center",
-			fontSize: Fonts.size.medium
+			fontSize: Fonts.size.regular
 		}
 	})
