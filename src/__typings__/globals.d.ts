@@ -12,6 +12,7 @@ interface IPosts {
 	readonly postsGetRequestState: API
 	readonly postsCount: number
 	readonly postsGetError: string
+	readonly rowsPerPage: number
 }
 
 interface IPost {

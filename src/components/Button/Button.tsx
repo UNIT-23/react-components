@@ -11,7 +11,7 @@ const Button = ({ children, addBtn, onClick, classes, theme }: IProps) => (
 	<>
 		{addBtn ? (
 			<div className={classes.addBtn} onClick={onClick}>
-				<PlusIcon color={theme.background} />
+				<PlusIcon color={theme.backgroundColor} />
 			</div>
 		) : (
 			<button className={classes.button} onClick={onClick}>

@@ -1,10 +1,7 @@
 import { ISize, IStyle, IType, IIconSize } from "./types/Fonts.types"
 
 const type: IType = {
-	base    : "Avenir-Book",
-	digital : "digital-7",
-	bold    : "Avenir-Black",
-	emphasis: "HelveticaNeue-Italic"
+	base: "Roboto"
 }
 
 enum gridSize {
@@ -27,53 +24,103 @@ const iconSize: IIconSize = {
 }
 
 const size: ISize = {
-	h1     : "1.8357487921rem",
-	h2     : "1.6425120772rem",
-	h3     : "1.6425120772rem",
-	h4     : "1.2560386472rem",
-	h5     : "1.2560386472rem",
-	h6     : "0.9178743961rem",
-	input  : "0.8695652173rem",
-	regular: "0.8212560386rem",
-	medium : "0.6763285024rem",
-	small  : "0.5797101449rem",
-	tiny   : "0.4106280193rem",
-	icon   : "1.4492753622rem"
+	h1: "1.875rem",
+	h2: "1.625rem",
+	h3: "1.25rem",
+	h4: "1.125rem",
+	h5: "1rem",
+	caption: "0.875rem",
+	regular: "0.875rem",
+	label: "0.75rem"
 }
 
 const style: IStyle = {
 	dashboardGridSpacing: 24,
-	h1                  : {
+	h1: {
 		fontFamily: type.base,
-		fontSize  : size.h1
+		fontStyle: "normal",
+		fontWeight: "bold",
+		lineHeight: "normal",
+		fontSize: size.h1,
+		letterSpacing: "0.2",
+		color: "#1B1E24"
 	},
 	h2: {
+		fontFamily: type.base,
+		fontStyle: "normal",
 		fontWeight: "bold",
-		fontSize  : size.h2
+		lineHeight: "normal",
+		fontSize: size.h2,
+		letterSpacing: "0.2",
+		color: "#1B1E24"
 	},
 	h3: {
-		fontFamily: type.emphasis,
-		fontSize  : size.h3
+		fontFamily: type.base,
+		fontStyle: "normal",
+		fontWeight: "bold",
+		lineHeight: "normal",
+		fontSize: size.h3,
+		letterSpacing: "0.2",
+		color: "#1B1E24"
 	},
 	h4: {
 		fontFamily: type.base,
-		fontSize  : size.h4
+		fontStyle: "normal",
+		fontWeight: "bold",
+		lineHeight: "normal",
+		fontSize: size.h4,
+		letterSpacing: "0.2",
+		color: "#1B1E24"
 	},
 	h5: {
 		fontFamily: type.base,
-		fontSize  : size.h5
+		fontStyle: "normal",
+		fontWeight: "bold",
+		lineHeight: "normal",
+		fontSize: size.h5,
+		letterSpacing: "0.2",
+		color: "#1B1E24"
 	},
-	h6: {
-		fontFamily: type.emphasis,
-		fontSize  : size.h6
-	},
-	normal: {
+	caption: {
 		fontFamily: type.base,
-		fontSize  : size.regular
+		fontStyle: "normal",
+		fontWeight: "500",
+		lineHeight: "normal",
+		fontSize: size.caption,
+		color: "#1B1E24"
 	},
-	description: {
+	label: {
 		fontFamily: type.base,
-		fontSize  : size.medium
+		fontStyle: "normal",
+		fontWeight: "500",
+		lineHeight: "normal",
+		fontSize: size.label,
+		textTransform: "uppercase",
+		color: "#252631"
+	},
+	regular: {
+		fontFamily: type.base,
+		fontStyle: "normal",
+		fontWeight: "500",
+		lineHeight: "1.3125rem",
+		fontSize: size.regular,
+		color: "#98A9BC"
+	},
+	lightText: {
+		fontFamily: type.base,
+		fontStyle: "normal",
+		fontWeight: "500",
+		lineHeight: "1.3125rem",
+		fontSize: size.regular,
+		color: "#252631"
+	},
+	linkText: {
+		fontFamily: type.base,
+		fontStyle: "normal",
+		fontWeight: "500",
+		lineHeight: "normal",
+		fontSize: size.regular,
+		color: "#252631"
 	}
 }
 
