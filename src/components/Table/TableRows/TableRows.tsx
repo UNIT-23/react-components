@@ -51,14 +51,14 @@ function TableRows<THead extends ITableHeader>({
 	orderBy,
 	page,
 	rowsPerPage,
-	selected,
+	selected = [],
 	columns
 }: IProps<THead>): JSX.Element {
 	const emptyRows: number = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
 	return (
 		<React.Fragment>
-			{stableSort(rows, getSorting(orderType, orderBy))
+			{(orderBy ? stableSort(rows, getSorting(orderType, orderBy)) : rows)
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 				.map((row: ITableData) => {
 					const isSelected: boolean = selected.includes(row.id.value as React.ReactText)
@@ -81,18 +81,11 @@ function TableRows<THead extends ITableHeader>({
 							)}
 							{rowNames
 								.filter((rowName: string) => rowName !== "id")
-								.map((rowName: string, i: number) => {
-									const align: "left" | "center" | "right" | "justify" = columns.find(
-										// Length
-										(c: THead) => c.id === rowName
-									).align
-
-									return (
-										<TableCell className={classes.tableCell} key={i} align={align}>
-											{row[rowName as string].component}
-										</TableCell>
-									)
-								})}
+								.map((rowName: string, i: number) => (
+									<TableCell className={classes.tableCell} key={i} align={"center"}>
+										{row[rowName as string].component}
+									</TableCell>
+								))}
 						</TableRow>
 					)
 				})}
@@ -103,11 +96,6 @@ function TableRows<THead extends ITableHeader>({
 			)}
 		</React.Fragment>
 	)
-}
-
-// tslint:disable-next-line:no-object-mutation
-TableRows.defaultProps = {
-	selected: [] as ReadonlyArray<number | string>
 }
 
 export default withStyles(styles)(TableRows)

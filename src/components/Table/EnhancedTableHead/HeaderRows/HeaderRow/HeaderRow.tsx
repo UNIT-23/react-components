@@ -13,29 +13,10 @@ import styles from "./styles/"
 const createSortHandler: Function = (property: number, onRequestSort: Function): Function => (event: Event): void =>
 	onRequestSort(event, property)
 
-function HeaderRow({
-	id,
-	classes,
-	align,
-	disablePadding,
-	label,
-	orderBy,
-	orderType,
-	onRequestSort
-}: IProps): JSX.Element {
+function HeaderRow({ id, classes, label, orderBy, orderType, onRequestSort }: IProps): JSX.Element {
 	return (
-		<TableCell
-			align={align}
-			className={classes.root}
-			padding={disablePadding ? "none" : "default"}
-			sortDirection={orderBy === id ? orderType : false}
-		>
-			<Tooltip
-				title="Sort"
-				placement={align ? "bottom-end" : "bottom-start"}
-				enterDelay={HeaderRowValues.enterDelay}
-				className={classes.toolTip}
-			>
+		<TableCell className={classes.root} sortDirection={orderBy === id ? orderType : false}>
+			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay} className={classes.toolTip}>
 				<TableSortLabel
 					className={classes.header}
 					active={orderBy === id}

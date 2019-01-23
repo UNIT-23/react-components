@@ -93,10 +93,26 @@ class Inputs extends React.Component<IProps> {
 						isMulti="true"
 						closeMenuOnSelect={false}
 						placeholder="Select Recipients"
-						options={mockedUsers.map((u: { [key: string]: string }, id: number) => ({
+						options={mockedUsers.map((u: { readonly [key: string]: string }, id: number) => ({
 							value: id,
 							label: u.name
 						}))}
+					/>
+				</div>
+				<div>
+					<div>
+					<label htmlFor="calender">Calender</label>
+
+					</div>
+					<Field
+							autoFocus
+							enableBackDates={true}
+							component={InputField}
+							inputType={InputTypes.Calender}
+							name="referenceDate"
+							id="calender"
+							formats="YYYY-MM-DD"
+							type="single"
 					/>
 				</div>
 			</form>

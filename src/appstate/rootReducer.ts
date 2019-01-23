@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage"
 
 import { alertReducer as alert } from "./reducers/alert/alertReducer"
 import { postsReducer as posts } from "./reducers/posts/postsReducer"
+import { tablesReducer as tables } from "./tables/reducer/tablesReducer"
 
 // Setup for Redux Persist
 export const rootReducer = persistCombineReducers(
@@ -15,6 +16,7 @@ export const rootReducer = persistCombineReducers(
 	{
 		form: formReducer,
 		alert,
-		posts
+		posts,
+		tables
 	}
 )

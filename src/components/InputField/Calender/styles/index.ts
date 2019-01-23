@@ -35,24 +35,30 @@ export const styles = {
 				color: "#F9F9F9"
 			}
 		},
-		".DayPicker_weekHeader": {
-			margin: "-20px"
-		},
-		".DayPicker_transitionContainer": {
-			margin: "-20px"
-		},
 		".DateInput_input__focused": {
 			"border-bottom": "2px solid #85C733"
 		},
 		".DayPickerNavigation_button": {
 			outline: "none"
 		},
-		".SingleDatePickerInput_calendarIcon ,.DateRangePickerInput_calendarIcon": {
+		".SingleDatePickerInput_calendarIcon": {
 			backgroundColor: "#85C733",
 			color: "red"
 		},
 		".SingleDatePickerInput_calendarIcon_svg,.DateRangePickerInput_calendarIcon_svg": {
 			fill: "white"
+		},
+		".DateInput_fang": {
+			margin: "-10px"
+		},
+		".DayPicker_weekHeader_li": {
+			color: "#778CA2"
+		},
+		".CalendarMonth_caption": {
+			color: "red"
+		},
+		svg: {
+			margin: "20px"
 		}
 	}
 }

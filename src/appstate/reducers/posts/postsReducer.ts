@@ -4,13 +4,18 @@ import {
 	PostsActions,
 	PostsGetSuccessAction,
 	PostsGetErrorAction,
-	PostsGetUpdateAction
+	PostsGetUpdateAction,
+	PostsGetRequestAction
 } from "../../actions/posts/__types/IActions"
 
 import { API } from "../../../models/ApiState"
 
 export const initialState: IPosts = {
 	posts: [],
+	orderBy: "",
+	orderType: "asc",
+	rowsPerPage: 0,
+	page: 0,
 	postsCount: 10,
 	postsGetRequestState: API.NOT_REQUESTED,
 	postsGetError: ""
@@ -19,8 +24,16 @@ export const initialState: IPosts = {
 export function postsReducer(state: IPosts = initialState, action: PostsActions): IPosts {
 	switch (action.type) {
 		case PostsTypes.POSTS_GET_REQUEST:
+			const page = (action as PostsGetRequestAction).payload.page
+
 			return {
 				...state,
+				page: !isNaN(page) ? page : state.page,
+				orderBy: (action as PostsGetRequestAction).payload.orderBy || state.orderBy,
+				orderType:
+					state.orderBy === (action as PostsGetRequestAction).payload.orderBy && state.orderType === "desc"
+						? "asc"
+						: "desc",
 				postsGetRequestState: API.REQUEST_PENDING
 			}
 		case PostsTypes.POSTS_GET_REQUEST_SUCCESS:
@@ -28,13 +41,6 @@ export function postsReducer(state: IPosts = initialState, action: PostsActions)
 				...state,
 				posts: [...(action as PostsGetSuccessAction).payload.posts],
 				postsCount: (action as PostsGetSuccessAction).payload.postsCount,
-				postsGetRequestState: API.REQUEST_SUCCESS
-			}
-		case PostsTypes.POSTS_GET_REQUEST_UPDATE:
-			return {
-				...state,
-				posts: [...state.posts, ...(action as PostsGetUpdateAction).payload.posts],
-				postsCount: (action as PostsGetUpdateAction).payload.postsCount,
 				postsGetRequestState: API.REQUEST_SUCCESS
 			}
 		case PostsTypes.POSTS_GET_REQUEST_UPDATE:

@@ -17,7 +17,7 @@ export const styles: any = (theme: typeof Theme) => ({
 		display: "flex"
 	},
 	message: {
-		fontSize: Fonts.size.medium,
+		fontSize: Fonts.size.regular,
 		padding: "0 10px"
 	},
 	close: {
