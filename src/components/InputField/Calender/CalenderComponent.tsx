@@ -4,8 +4,16 @@ import { DateRangePicker, FocusedInputShape, SingleDatePicker } from "react-date
 import "react-dates/initialize"
 import "react-dates/lib/css/_datepicker.css"
 
+// Import Left from "../../Icons/ChevronLeftIcon"
+import Right from "./RightArrow/RightArrow"
+import Left from "./LeftArrow/LeftArrow"
+
 import { IState } from "./__types/IState"
 import { IProps } from "./__types/IProps"
+
+import { styles } from "./styles"
+import injectSheet from "react-jss"
+
 import { IMomentDateRange } from "./__types/IMomentDateRange"
 
 import { Moment } from "moment"
@@ -94,6 +102,9 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						focusedInput={this.state.focusedInput}
 						showDefaultInputIcon
 						displayFormat="YYYY-MM-DD"
+						hideKeyboardShortcutsPanel
+						navPrev={<Left />}
+						navNext={<Right range={true}/>}
 					/>
 				) : (
 					<SingleDatePicker
@@ -106,6 +117,10 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						placeholder="Select date"
 						displayFormat="YYYY-MM-DD"
 						isOutsideRange={enableBackDates && (() => false)}
+						numberOfMonths={1}
+						hideKeyboardShortcutsPanel
+						navPrev={<Left />}
+						navNext={<Right />}
 					/>
 				)}
 			</div>
@@ -113,4 +128,4 @@ class CalenderComponent extends React.Component<IProps, IState> {
 	}
 }
 
-export default CalenderComponent
+export default injectSheet(styles)(CalenderComponent)

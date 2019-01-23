@@ -12,5 +12,8 @@ export let Theme = {
 	warning: "#FFEB3B",
 	success: "#4CAF50",
 	text: "#212121",
-	frost: "#757575"
+	frost: "#757575",
+	calenderBackground: "#85C733",
+	color: "#F9F9F9",
+	colorHover: "#FFFFFF"
 }
