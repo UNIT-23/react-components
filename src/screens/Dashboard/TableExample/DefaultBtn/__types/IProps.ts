@@ -1,4 +1,6 @@
 import { StyledComponentProps } from "react-jss"
-import { DispatchProp } from "react-redux"
 
-export interface IProps extends StyledComponentProps, DispatchProp {}
+export interface IProps extends StyledComponentProps {
+	handleSearch(event: React.ChangeEvent<HTMLInputElement>): void
+	readonly filter: string
+}

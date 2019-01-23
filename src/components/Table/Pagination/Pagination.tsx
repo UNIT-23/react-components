@@ -124,6 +124,7 @@ class Pagination extends React.Component<IProps> {
 						<InputField
 							inputType={InputTypes.Select}
 							isMulti={false}
+							closeMenuOnSelect={true}
 							input={{
 								value: { label: rowsPerPage, value: rowsPerPage },
 								onChange: onChangeRowsPerPage
