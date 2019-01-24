@@ -34,7 +34,7 @@ export function formatNonStandardDate(
 }
 
 export function formatToLocalDateExtended(date: string, utc = true) {
-	if (utc === false) {
+	if (!utc) {
 		return moment(date).format("ddd, DD MMM YYYY")
 	}
 

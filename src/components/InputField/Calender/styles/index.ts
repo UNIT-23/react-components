@@ -41,10 +41,7 @@ export const styles = {
 		".DayPickerNavigation_button": {
 			outline: "none"
 		},
-		".SingleDatePickerInput_calendarIcon": {
-			backgroundColor: "#85C733",
-			color: "red"
-		},
+
 		".SingleDatePickerInput_calendarIcon_svg,.DateRangePickerInput_calendarIcon_svg": {
 			fill: "white"
 		},
@@ -55,7 +52,20 @@ export const styles = {
 			color: "#778CA2"
 		},
 		".CalendarMonth_caption": {
-			color: "red"
+			color: "#252631",
+			background: "#F8FAFB"
+		},
+		".DateRangePickerInput_calendarIcon, .SingleDatePickerInput_calendarIcon": {
+			padding: "0px"
+		},
+		".DateRangePickerInput_calendarIcon_svg , .SingleDatePickerInput_calendarIcon_svg": {
+			fill: "#85C733"
+		},
+		".CalendarDay__default": {
+			color: "#252631"
+		},
+		".DateRangePickerInput__withBorder, .SingleDatePickerInput__withBorder": {
+			"padding-inline-end": "20px"
 		},
 		svg: {
 			margin: "20px"

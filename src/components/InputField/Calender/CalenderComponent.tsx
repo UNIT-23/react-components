@@ -1,4 +1,4 @@
-// tslint:disable-next-line:no-import-side-effect
+// tslint:disable:no-import-side-effect
 import * as React from "react"
 import { DateRangePicker, FocusedInputShape, SingleDatePicker } from "react-dates"
 import "react-dates/initialize"
@@ -22,6 +22,7 @@ import { getMomentInstance } from "../../../services/dateService"
 class CalenderComponent extends React.Component<IProps, IState> {
 	public constructor(props: IProps) {
 		super(props)
+
 		// tslint:disable-next-line:no-let
 		let focusedInput: FocusedInputShape = null
 		if (props.autoFocus) {
@@ -105,6 +106,7 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						hideKeyboardShortcutsPanel
 						navPrev={<Left />}
 						navNext={<Right range={true}/>}
+						isOutsideRange={enableBackDates && (() => false)}
 					/>
 				) : (
 					<SingleDatePicker
