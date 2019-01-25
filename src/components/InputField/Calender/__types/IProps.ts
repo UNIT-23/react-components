@@ -11,4 +11,5 @@ export interface IProps extends StyledComponentProps, Partial<Pick<DateRangePick
 	readonly onDateChange?: (value: string) => void
 	readonly formats?: string
 	readonly onDatesChange?: (args: { readonly startDate: string; readonly endDate: string }) => void
+	readonly style?: any
 }

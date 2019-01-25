@@ -4,27 +4,32 @@ import { IProps } from "../__types/IProps"
 import { Values } from "../__types/Values"
 
 // tslint:disable-next-line:no-any
-export const styles: any = (theme: typeof Theme) => ({
+export const styles: any = () => ({
 	button: {
-		color: "black",
-		background: ({ color, disabled }: IProps) => (disabled ? "#ccc" : color || theme.primaryLight),
+		color: Theme.primary,
+		background: ({ color, disabled }: IProps) => (disabled ? Theme.primaryLight || color : Theme.secondary),
 		padding: ({ padding }: IProps) => padding || Values.defaultPadding,
 		width: ({ width, buttonType }: IProps) => (buttonType === "square" ? 50 : width || Values.defaultWidth),
 		outline: "none",
-		border: "none",
-		margin: ({ margin }: IProps) => margin || "10px 0px",
+		border: "3px",
+		margin: ({ margin }: IProps) => margin || "13px 20px 21px 12px",
 		cursor: "pointer",
-		boxShadow: "1px 3px 8px 0px #ccc"
+		boxShadow: "1px 3px 8px 0px #ccc",
+		radius: "3px",
+		position: "absolute",
+		height: "41px",
+		font: "normal bold 14px/19px Roboto"
 	},
 	addBtn: {
-		background: ({ color, disabled }: IProps) => (disabled ? "#ccc" : color || theme.primaryLight),
-		width: 40,
-		height: 40,
+		background: ({ color, disabled }: IProps) => (disabled ? "#ccc" : color || Theme.primaryLight),
+		width: 97,
+		height: 41,
 		borderRadius: "50%",
 		display: "flex",
 		boxShadow: "1px 3px 8px 0px #ccc",
 		alignItems: "center",
 		justifyContent: "center",
-		cursor: "pointer"
+		cursor: "pointer",
+		font: "16px"
 	}
 })

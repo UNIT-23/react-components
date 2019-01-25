@@ -5,14 +5,14 @@ import "react-dates/initialize"
 import "react-dates/lib/css/_datepicker.css"
 
 // Import Left from "../../Icons/ChevronLeftIcon"
-import Right from "./RightArrow/RightArrow"
-import Left from "./LeftArrow/LeftArrow"
+import Right from "../../Icons/ChevronRightIcon"
+import Left from "../../Icons/ChevronLeftIcon"
 
 import { IState } from "./__types/IState"
 import { IProps } from "./__types/IProps"
 
-import { styles } from "./styles"
 import injectSheet from "react-jss"
+import { styles } from "./styles"
 
 import { IMomentDateRange } from "./__types/IMomentDateRange"
 
@@ -88,7 +88,8 @@ class CalenderComponent extends React.Component<IProps, IState> {
 	}
 
 	public render(): JSX.Element {
-		const { type, date, enableBackDates } = this.props
+		const { type, date, enableBackDates, classes} = this.props
+		const outRangeDates = enableBackDates && (() => false)
 
 		return (
 			<div>
@@ -105,8 +106,8 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						displayFormat="YYYY-MM-DD"
 						hideKeyboardShortcutsPanel
 						navPrev={<Left />}
-						navNext={<Right range={true}/>}
-						isOutsideRange={enableBackDates && (() => false)}
+						navNext={<div className={classes.rangeArrow}><Right /></div>}
+						isOutsideRange={outRangeDates}
 					/>
 				) : (
 					<SingleDatePicker
@@ -118,11 +119,11 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						showDefaultInputIcon
 						placeholder="Select date"
 						displayFormat="YYYY-MM-DD"
-						isOutsideRange={enableBackDates && (() => false)}
+						isOutsideRange={outRangeDates}
 						numberOfMonths={1}
 						hideKeyboardShortcutsPanel
 						navPrev={<Left />}
-						navNext={<Right />}
+						navNext={<div className={classes.myArrow}><Right /></div>}
 					/>
 				)}
 			</div>
