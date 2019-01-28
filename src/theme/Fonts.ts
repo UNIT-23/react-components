@@ -1,4 +1,5 @@
 import { ISize, IStyle, IType, IIconSize } from "./types/Fonts.types"
+import { Theme } from "."
 
 const type: IType = {
 	base: "Roboto"
@@ -92,11 +93,11 @@ const style: IStyle = {
 	label: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "500",
+		fontWeight: "300",
 		lineHeight: "normal",
-		fontSize: size.label,
+		fontSize: size.regular,
 		textTransform: "uppercase",
-		color: "#252631"
+		color: Theme.info
 	},
 	regular: {
 		fontFamily: type.base,
