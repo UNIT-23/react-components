@@ -13,6 +13,7 @@ export class TableModel<TProps extends IProps, TState = undefined> extends React
 		this.onChangePage = this.onChangePage.bind(this)
 		this.onChangeSort = this.onChangeSort.bind(this)
 		this.filterHandler = this.filterHandler.bind(this)
+		this.deleteHandler = this.deleteHandler.bind(this)
 		this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this)
 	}
 
