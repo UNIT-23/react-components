@@ -1,5 +1,5 @@
 import { ISize, IStyle, IType, IIconSize } from "./types/Fonts.types"
-import { Theme } from "."
+import { Theme } from "./Colors"
 
 const type: IType = {
 	base: "Roboto"
@@ -85,7 +85,7 @@ const style: IStyle = {
 	caption: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "500",
+		fontWeight: 500,
 		lineHeight: "normal",
 		fontSize: size.caption,
 		color: "#1B1E24"
@@ -93,7 +93,7 @@ const style: IStyle = {
 	label: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "300",
+		fontWeight: 300,
 		lineHeight: "normal",
 		fontSize: size.regular,
 		textTransform: "uppercase",
@@ -102,7 +102,7 @@ const style: IStyle = {
 	regular: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "500",
+		fontWeight: 500,
 		lineHeight: "1.3125rem",
 		fontSize: size.regular,
 		color: "#98A9BC"
@@ -110,7 +110,7 @@ const style: IStyle = {
 	lightText: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "500",
+		fontWeight: 500,
 		lineHeight: "1.3125rem",
 		fontSize: size.regular,
 		color: "#252631"
@@ -118,7 +118,7 @@ const style: IStyle = {
 	linkText: {
 		fontFamily: type.base,
 		fontStyle: "normal",
-		fontWeight: "500",
+		fontWeight: 500,
 		lineHeight: "normal",
 		fontSize: size.regular,
 		color: "#252631"
