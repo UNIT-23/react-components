@@ -10,6 +10,8 @@ import { Values } from "./__types/Values"
 import { InputTypes } from "../../../models/InputTypes"
 
 import { styles } from "./styles/"
+import TrashIcon from "../../Icons/TrashIcon"
+import EditIcon from "../../Icons/EditIcon"
 
 function stableSort(
 	array: ReadonlyArray<ITableData>,
@@ -46,6 +48,8 @@ function rowClickHandler(
 function TableRows<THead extends ITableHeader>({
 	rows,
 	classes,
+	editHandler,
+	deleteHandler,
 	handleSelectClick,
 	orderType,
 	orderBy,
@@ -86,6 +90,20 @@ function TableRows<THead extends ITableHeader>({
 										{row[rowName].component}
 									</TableCell>
 								))}
+							{!handleSelectClick && (
+								<TableCell padding="checkbox">
+									{editHandler && (
+										<div onClick={editHandler}>
+											<EditIcon />
+										</div>
+									)}
+									{deleteHandler && (
+										<div onClick={deleteHandler(row.id.value as number)}>
+											<TrashIcon />
+										</div>
+									)}
+								</TableCell>
+							)}
 						</TableRow>
 					)
 				})}

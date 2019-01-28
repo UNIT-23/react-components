@@ -17,23 +17,25 @@ import { IProps } from "./__types/IProps"
 import { styles } from "./styles"
 
 const Table: React.SFC<IProps> = ({
-	rows,
-	header,
-	tableTitle,
-	DefaultBtn,
-	SelectedBtn,
+	count,
+	editHandler,
+	deleteHandler,
 	dataRequestState,
+	DefaultBtn,
 	handleSelectAllClick,
 	handleSelectClick,
+	header,
+	onChangePage,
 	onChangeRowsPerPage,
 	onChangeSort,
-	selected,
-	onChangePage,
-	rowsPerPage,
 	orderBy,
 	orderType,
 	page,
-	count,
+	rows,
+	rowsPerPage,
+	selected,
+	SelectedBtn,
+	tableTitle,
 	classes
 }: IProps) => (
 	<div className={classes.root}>
@@ -58,12 +60,14 @@ const Table: React.SFC<IProps> = ({
 					/>
 					<TableBody>
 						<TableRows
-							rows={rows}
 							columns={header}
+							deleteHandler={deleteHandler}
+							editHandler={editHandler}
 							handleSelectClick={handleSelectClick}
-							orderType={orderType}
 							orderBy={orderBy}
+							orderType={orderType}
 							page={page}
+							rows={rows}
 							rowsPerPage={rowsPerPage}
 							selected={selected}
 						/>
