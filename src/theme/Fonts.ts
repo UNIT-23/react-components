@@ -21,7 +21,8 @@ enum gridSize {
 }
 
 const iconSize: IIconSize = {
-	medium: 30
+	medium: 30,
+	small: 20
 }
 
 const size: ISize = {

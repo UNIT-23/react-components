@@ -7,7 +7,8 @@ import { InputTypes } from "../../../models/InputTypes"
 
 import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
-
+import { styles } from "./styles"
+import injectSheet from "react-jss"
 class Pagination extends React.Component<IProps> {
 	public constructor(props: IProps) {
 		super(props)
@@ -69,7 +70,8 @@ class Pagination extends React.Component<IProps> {
 	}
 
 	public render(): JSX.Element {
-		const { page, count, rowsPerPage, onChangeRowsPerPage } = this.props
+		const { page, count, rowsPerPage, onChangeRowsPerPage, classes: jssClasses } = this.props
+		const classes = jssClasses as any
 
 		const maxPages = this.maxPages()
 
@@ -80,11 +82,7 @@ class Pagination extends React.Component<IProps> {
 		const buttonLabel5 = this.getNavButtonNumber(Values.buttonLabel5, page, maxPages)
 
 		return (
-			<div
-				style={{
-					display: "flex"
-				}}
-			>
+			<div className={classes.container}>
 				<div>
 					<Button buttonType="square" onClick={this.handleBackButtonClick}>
 						{"<"}
@@ -118,9 +116,9 @@ class Pagination extends React.Component<IProps> {
 						{">"}
 					</Button>
 				</div>
-				<div>
-					<div>Showing</div>
-					<div style={{ width: 120 }}>
+				<div className={classes.perPageContainer}>
+					<div className={classes.perPageText}>Showing</div>
+					<div className={classes.perPage}>
 						<InputField
 							inputType={InputTypes.Select}
 							isMulti={false}
@@ -129,14 +127,15 @@ class Pagination extends React.Component<IProps> {
 								value: { label: rowsPerPage, value: rowsPerPage },
 								onChange: onChangeRowsPerPage
 							}}
+							showDropDownArrowIcons={true}
 							options={this.rowsPerPageOptions}
 						/>
 					</div>
+					<div className={classes.perPageText}>of {count}</div>
 				</div>
-				<div>of {count}</div>
 			</div>
 		)
 	}
 }
 
-export default Pagination
+export default injectSheet(styles)(Pagination)

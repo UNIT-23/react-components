@@ -21,9 +21,7 @@ const EnhancedTableToolbar: React.SFC<IProps> = ({
 					{numSelected} selected
 				</Typography>
 			) : (
-				<Typography variant="h6" id="tableTitle">
-					{tableTitle}
-				</Typography>
+				tableTitle
 			)}
 		</div>
 		<div className={classes.spacer} />

@@ -58,7 +58,7 @@ const Table: React.SFC<IProps> = ({
 						onRequestSort={onChangeSort}
 						rowCount={rows.length}
 					/>
-					<TableBody>
+					<TableBody className={classes.tableBody}>
 						<TableRows
 							columns={header}
 							deleteHandler={deleteHandler}

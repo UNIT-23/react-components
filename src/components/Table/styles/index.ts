@@ -1,8 +1,9 @@
-import { Theme, createStyles } from "@material-ui/core"
+import { Theme as MuiTheme, createStyles } from "@material-ui/core"
 
 import { TableValues } from "../__types/TableValues"
+import { Theme } from "../../../theme"
 
-export const styles = (theme: Theme) =>
+export const styles = (theme: MuiTheme) =>
 	createStyles({
 		root: {
 			width: "100%",
@@ -10,6 +11,9 @@ export const styles = (theme: Theme) =>
 		},
 		table: {
 			minWidth: 1020
+		},
+		tableBody: {
+			backgroundColor: Theme.primaryLight
 		},
 		tableWrapper: {
 			overflowX: "auto"

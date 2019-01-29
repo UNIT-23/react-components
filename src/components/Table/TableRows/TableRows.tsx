@@ -91,7 +91,7 @@ function TableRows<THead extends ITableHeader>({
 									</TableCell>
 								))}
 							{!handleSelectClick && (
-								<TableCell padding="checkbox">
+								<TableCell padding="checkbox" className={classes.tableCell}>
 									{editHandler && (
 										<div onClick={editHandler}>
 											<EditIcon />
