@@ -1,7 +1,7 @@
 import { createStyles } from "@material-ui/core"
 import { StyleRules } from "@material-ui/core/styles/withStyles"
 
-import { MuiTheme } from "../../../../theme/MuiTheme"
+import { MuiTheme } from "../../../../theme/"
 
 export default (theme: typeof MuiTheme): StyleRules =>
 	createStyles({

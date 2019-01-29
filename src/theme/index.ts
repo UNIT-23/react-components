@@ -1,6 +1,5 @@
-import { Theme } from "./Themes"
-import { MuiTheme } from "./MuiTheme"
+import { Theme, MuiTheme, overrideTheme } from "./Themes"
 
 import Fonts from "./Fonts"
 
-export { Theme, Fonts, MuiTheme }
+export { Theme, Fonts, MuiTheme, overrideTheme }
