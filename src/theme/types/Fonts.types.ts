@@ -1,5 +1,4 @@
 import { GridSpacing } from "@material-ui/core/Grid"
-import { CSSProperties } from "react-jss"
 
 export interface IType {
 	readonly base: string
@@ -22,14 +21,14 @@ export interface ISize {
 
 export interface IStyle {
 	readonly dashboardGridSpacing: GridSpacing
-	readonly h1: CSSProperties
-	readonly h2: CSSProperties
-	readonly h3: CSSProperties
-	readonly h4: CSSProperties
-	readonly h5: CSSProperties
-	readonly caption: CSSProperties
-	readonly label: CSSProperties
-	readonly regular: CSSProperties
-	readonly lightText: CSSProperties
-	readonly linkText: CSSProperties
+	readonly h1: React.CSSProperties
+	readonly h2: React.CSSProperties
+	readonly h3: React.CSSProperties
+	readonly h4: React.CSSProperties
+	readonly h5: React.CSSProperties
+	readonly caption: React.CSSProperties
+	readonly label: React.CSSProperties
+	readonly regular: React.CSSProperties
+	readonly lightText: React.CSSProperties
+	readonly linkText: React.CSSProperties
 }
