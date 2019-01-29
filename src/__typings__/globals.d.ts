@@ -4,9 +4,9 @@ interface IRootState {
 	readonly tables: ITables
 }
 
-interface IPosts {
+interface IPosts extends IListPayload {
 	readonly page: number
-	readonly orderBy: string
+	readonly orderBy: keyof IPost
 	readonly orderType: "asc" | "desc"
 	readonly posts: ReadonlyArray<IPost>
 	readonly postsGetRequestState: API
@@ -29,15 +29,8 @@ interface ITables {
 	readonly filter: string
 }
 
-interface ITableData {
-	readonly [key: string]: {
-		readonly component: React.ReactNode
-		readonly value: number | string
-	}
-}
-
-interface ITableHeader {
-	readonly id: string
+interface ITableHeader<TData> {
+	readonly id: keyof TData
 	readonly label: string
 }
 
@@ -109,12 +102,22 @@ interface IListPayload {
 	readonly orderType?: "asc" | "desc"
 }
 
-interface ITableData {
-	readonly [key: string]: {
-		readonly component: React.ReactNode
-		readonly value: number | string
+interface IBasicTableData {
+	readonly id: {
+		readonly component: React.ReactText
+		readonly value: React.ReactText
 	}
 }
+
+type ITableData<T> = {
+	readonly [K in keyof T]: {
+		readonly component: T[K] | React.ReactNode
+		readonly value: T[K]
+	}
+} &
+	IBasicTableData
+
+type Mutable<T> = { -readonly [K in keyof T]: T[K] }
 
 interface IDropDownData<T = number | string> {
 	readonly label: string
@@ -127,5 +130,6 @@ enum SuperPrivileges {
 	Write = "write"
 }
 
-// tslint:disable-next-line:max-file-line-count
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
+// tslint:disable-next-line:max-file-line-count

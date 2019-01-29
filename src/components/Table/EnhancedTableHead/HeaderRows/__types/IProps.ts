@@ -1,7 +1,6 @@
-export interface IProps {
+export interface IProps<TData> {
 	readonly onRequestSort: Function
-	// Should be keyof TRow but compiler err/limitation aren't allowing it https://stackoverflow.com/a/49469522/3104969
-	readonly orderBy: string
+	readonly orderBy: keyof TData
 	readonly orderType?: "asc" | "desc"
-	readonly rows: ReadonlyArray<ITableHeader>
+	readonly rows: ReadonlyArray<ITableHeader<TData>>
 }

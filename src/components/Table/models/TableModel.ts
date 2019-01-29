@@ -6,7 +6,7 @@ import { IProps } from "./__types/IProps"
 
 import { setRowsPerPage, setTableSearchFilter } from "../../../appstate/tables/actions/tablesActions"
 
-export class TableModel<TProps extends IProps, TState = undefined> extends React.Component<TProps, TState> {
+export class TableModel<TData, TProps extends IProps, TState = undefined> extends React.Component<TProps, TState> {
 	public constructor(props: TProps) {
 		super(props)
 
@@ -29,7 +29,7 @@ export class TableModel<TProps extends IProps, TState = undefined> extends React
 		dispatch(this.getAction({}))
 	}
 
-	public formatData<T>(data: ReadonlyArray<T>): ReadonlyArray<ITableData> {
+	public formatData(data: ReadonlyArray<TData>): ReadonlyArray<ITableData<TData>> {
 		return data.map(tableDataFormatter)
 	}
 

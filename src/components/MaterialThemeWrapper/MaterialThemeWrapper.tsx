@@ -1,11 +1,11 @@
 import * as React from "react"
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
+import { MuiThemeProvider } from "@material-ui/core/styles"
 
-const theme = createMuiTheme()
+import { MuiTheme } from "../../theme/MuiTheme"
 
 function materialThemeWrapper<TProps>(StyledComponent: React.ComponentType<TProps>) {
 	return (props: TProps) => (
-		<MuiThemeProvider theme={theme}>
+		<MuiThemeProvider theme={MuiTheme}>
 			<StyledComponent {...props} />
 		</MuiThemeProvider>
 	)

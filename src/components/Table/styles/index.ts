@@ -1,12 +1,12 @@
-import { Theme, createStyles } from "@material-ui/core"
+import { createStyles } from "@material-ui/core"
 
-import { TableValues } from "../__types/TableValues"
+import { Theme } from "../../../theme"
 
-export const styles = (theme: Theme) =>
+export const styles = (theme: typeof Theme) =>
 	createStyles({
 		root: {
 			width: "100%",
-			marginTop: theme.spacing.unit * TableValues.marginTopMultiplier
+			background: theme.backgroundColor
 		},
 		table: {
 			minWidth: 1020
