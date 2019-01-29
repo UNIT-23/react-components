@@ -1,4 +1,4 @@
-import { Theme } from "./Colors"
+import { Theme } from "./Themes"
 import { MuiTheme } from "./MuiTheme"
 
 import Fonts from "./Fonts"

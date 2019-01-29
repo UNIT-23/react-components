@@ -1,5 +1,4 @@
 import * as React from "react"
-import injectSheet from "react-jss"
 import MaterialTable from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 
@@ -15,6 +14,7 @@ import ApiSuspense from "../ApiSuspense/ApiSuspense"
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
+import { withStyles } from "@material-ui/core"
 
 class Table<TData> extends React.Component<IProps<TData>> {
 	public render() {
@@ -75,7 +75,7 @@ export default class WrappedGenericComponent<T> extends React.Component<
 	{}
 > {
 	private readonly C = materialThemeWrapper<IProps<T>>(
-		injectSheet(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => <Table<T> {...props} />)
+		withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => <Table<T> {...props} />)
 	)
 	public render() {
 		return <this.C {...this.props} />

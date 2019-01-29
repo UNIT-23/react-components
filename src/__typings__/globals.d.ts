@@ -73,6 +73,26 @@ interface IStartEndOfWeek {
 	readonly endDate: string
 }
 
+interface IThemeColors {
+	readonly primary: string
+	readonly primaryLight: string
+	readonly primaryDark: string
+	readonly secondary: string
+	readonly secondaryDark: string
+	readonly secondaryLight: string
+	readonly accent: string
+	readonly accentLight: string
+	readonly accentDark: string
+	readonly background: string
+	readonly profileBackground: string
+	readonly danger: string
+	readonly gray: string
+	readonly warning: string
+	readonly info: string
+	readonly success: string
+	readonly icons: string
+}
+
 /* ------------------------------------------------- */
 // Actions Types
 /* ------------------------------------------------- */

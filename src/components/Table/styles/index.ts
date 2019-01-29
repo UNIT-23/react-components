@@ -1,12 +1,10 @@
-import { createStyles } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core"
 
-import { Theme } from "../../../theme"
-
-export const styles = (theme: typeof Theme) =>
+export const styles = (theme: Theme) =>
 	createStyles({
 		root: {
 			width: "100%",
-			background: theme.backgroundColor
+			background: theme.palette.background.default
 		},
 		table: {
 			minWidth: 1020
