@@ -89,11 +89,11 @@ class Inputs extends React.Component<IProps> {
 					<Field
 						component={InputField}
 						name="recipients"
-						inputType="select"
+						inputType={InputTypes.Select}
 						isMulti="true"
 						closeMenuOnSelect={false}
 						placeholder="Select Recipients"
-						options={mockedUsers.map((u: { [key: string]: string }, id: number) => ({
+						options={mockedUsers.map((u: { readonly [key: string]: string }, id: number) => ({
 							value: id,
 							label: u.name
 						}))}

@@ -1,4 +1,5 @@
 import { GridSpacing } from "@material-ui/core/Grid"
+import { FontWeightProperty } from "csstype"
 
 export interface IType {
 	readonly base: string
@@ -24,7 +25,7 @@ export interface IStyle {
 	readonly h1: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly letterSpacing: string
@@ -33,7 +34,7 @@ export interface IStyle {
 	readonly h2: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly letterSpacing: string
@@ -42,7 +43,7 @@ export interface IStyle {
 	readonly h3: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly letterSpacing: string
@@ -51,7 +52,7 @@ export interface IStyle {
 	readonly h4: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly letterSpacing: string
@@ -60,7 +61,7 @@ export interface IStyle {
 	readonly h5: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly letterSpacing: string
@@ -69,7 +70,7 @@ export interface IStyle {
 	readonly caption: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly color: string
@@ -77,7 +78,7 @@ export interface IStyle {
 	readonly label: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly textTransform: string
@@ -86,7 +87,7 @@ export interface IStyle {
 	readonly regular: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly color: string
@@ -94,7 +95,7 @@ export interface IStyle {
 	readonly lightText: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly color: string
@@ -102,7 +103,7 @@ export interface IStyle {
 	readonly linkText: {
 		readonly fontFamily: string
 		readonly fontStyle: string
-		readonly fontWeight: string
+		readonly fontWeight: FontWeightProperty
 		readonly lineHeight: string
 		readonly fontSize: string
 		readonly color: string

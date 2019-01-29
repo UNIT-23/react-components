@@ -9,7 +9,7 @@ interface IProps {
 	readonly size?: number
 }
 
-const EditSquareIcon: React.SFC<IProps> = ({
+const ChevronDownIcon: React.SFC<IProps> = ({
 	color = "#222",
 	size = Fonts.iconSize.medium,
 	fill = "none"
@@ -21,8 +21,7 @@ const EditSquareIcon: React.SFC<IProps> = ({
 		y={size}
 		width={size}
 		height={size}
-		viewBox="0 0 24 24"
-		enableBackground="new 0 0 24 24"
+		viewBox="0 0 16 9"
 		xmlSpace="preserve"
 		fill={color}
 		style={{ color, background: fill }}
@@ -30,10 +29,10 @@ const EditSquareIcon: React.SFC<IProps> = ({
 		<g>
 			<path
 				fill={color}
-				d="M5,3C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19H5V5H12V3H5M17.78,4C17.61,4 17.43,4.07 17.3,4.2L16.08,5.41L18.58,7.91L19.8,6.7C20.06,6.44 20.06,6 19.8,5.75L18.25,4.2C18.12,4.07 17.95,4 17.78,4M15.37,6.12L8,13.5V16H10.5L17.87,8.62L15.37,6.12Z"
+				d="M1.39062 0.296875L8 6.94141L14.6094 0.296875L15.4531 1.14062L8.42188 8.17188L8 8.52344L7.57812 8.17188L0.546875 1.14062L1.39062 0.296875Z"
 			/>
 		</g>
 	</svg>
 )
 
-export default EditSquareIcon
+export default ChevronDownIcon
