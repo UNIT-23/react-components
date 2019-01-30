@@ -1,4 +1,3 @@
-
 // tslint:disable:no-any
 import React from "react"
 import injectSheet from "react-jss"
@@ -25,7 +24,7 @@ import { InputTypes } from "../../models/InputTypes"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 
 function InputField<TValue>({ input, inputType, meta: { error }, classes, ...rest }: IProps<TValue>) {
-	const { name, onBlur, onChange, onFocus, value } = input
+	const { name, onBlur = () => {}, onChange, onFocus, value } = input
 
 	switch (inputType) {
 		case InputTypes.Select:
@@ -68,7 +67,7 @@ function InputField<TValue>({ input, inputType, meta: { error }, classes, ...res
 		case InputTypes.Checkbox:
 			return <Checkbox onBlur={onBlur} onChange={onChange} value={name} checked={value} {...rest} />
 		case InputTypes.File:
-			return <FilePond onupdatefiles={onChange as any}  {...rest} />
+			return <FilePond onupdatefiles={onChange as any} {...rest} />
 
 		case InputTypes.Calender:
 			return (
@@ -103,29 +102,31 @@ function InputField<TValue>({ input, inputType, meta: { error }, classes, ...res
 // tslint:disable:no-any
 // tslint:disable-next-line:no-object-mutation
 InputField.defaultProps = {
-	input: {
-		onBlur: () => {},
-		onChange: () => {},
-		onDragStart: () => {},
-		onDrop: () => {},
-		onFocus: () => {}
-	},
-	meta: {
-		autofilled: false,
-		asyncValidating: false,
-		dirty: false,
-		// tslint:disable-next-line:no-any
-		dispatch: (action: any) => action,
-		form: "",
-		initial: "",
-		invalid: false,
-		pristine: true,
-		submitting: false,
-		submitFailed: false,
-		touched: false,
-		valid: true,
-		visited: false
-	}
+	input:
+		{
+			onBlur: () => {},
+			onChange: () => {},
+			onDragStart: () => {},
+			onDrop: () => {},
+			onFocus: () => {}
+		},
+	meta:
+		{
+			autofilled: false,
+			asyncValidating: false,
+			dirty: false,
+			// tslint:disable-next-line:no-any
+			dispatch: (action: any) => action,
+			form: "",
+			initial: "",
+			invalid: false,
+			pristine: true,
+			submitting: false,
+			submitFailed: false,
+			touched: false,
+			valid: true,
+			visited: false
+		}
 }
 
 export default materialThemeWrapper(injectSheet(styles)(InputField))

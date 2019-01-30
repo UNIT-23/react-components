@@ -22,7 +22,9 @@ enum gridSize {
 const iconSize: IIconSize = {
 	medium: 30,
 	small: 18,
-	mini: 16
+	mini: 16,
+	width: 20,
+	height: 23
 }
 
 const size: ISize = {
@@ -38,92 +40,102 @@ const size: ISize = {
 
 const style: IStyle = {
 	dashboardGridSpacing: 24,
-	h1: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "bold",
-		lineHeight: "normal",
-		fontSize: size.h1,
-		letterSpacing: "0.2",
-		color: "#1B1E24"
-	},
-	h2: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "bold",
-		lineHeight: "normal",
-		fontSize: size.h2,
-		letterSpacing: "0.2",
-		color: "#1B1E24"
-	},
-	h3: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "bold",
-		lineHeight: "normal",
-		fontSize: size.h3,
-		letterSpacing: "0.2",
-		color: "#1B1E24"
-	},
-	h4: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "bold",
-		lineHeight: "normal",
-		fontSize: size.h4,
-		letterSpacing: "0.2",
-		color: "#1B1E24"
-	},
-	h5: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "bold",
-		lineHeight: "normal",
-		fontSize: size.h5,
-		letterSpacing: "0.2",
-		color: "#1B1E24"
-	},
-	caption: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "500",
-		lineHeight: "normal",
-		fontSize: size.caption,
-		color: "#1B1E24"
-	},
-	label: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "500",
-		lineHeight: "normal",
-		fontSize: size.label,
-		textTransform: "uppercase",
-		color: "#252631"
-	},
-	regular: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "500",
-		lineHeight: "1.3125rem",
-		fontSize: size.regular,
-		color: "#98A9BC"
-	},
-	lightText: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "500",
-		lineHeight: "1.3125rem",
-		fontSize: size.regular,
-		color: "#252631"
-	},
-	linkText: {
-		fontFamily: type.base,
-		fontStyle: "normal",
-		fontWeight: "500",
-		lineHeight: "normal",
-		fontSize: size.regular,
-		color: "#252631"
-	}
+	h1:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "bold",
+			lineHeight: "normal",
+			fontSize: size.h1,
+			letterSpacing: "0.2",
+			color: "#1B1E24"
+		},
+	h2:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "bold",
+			lineHeight: "normal",
+			fontSize: size.h2,
+			letterSpacing: "0.2",
+			color: "#1B1E24"
+		},
+	h3:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "bold",
+			lineHeight: "normal",
+			fontSize: size.h3,
+			letterSpacing: "0.2",
+			color: "#1B1E24"
+		},
+	h4:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "bold",
+			lineHeight: "normal",
+			fontSize: size.h4,
+			letterSpacing: "0.2",
+			color: "#1B1E24"
+		},
+	h5:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "bold",
+			lineHeight: "normal",
+			fontSize: size.h5,
+			letterSpacing: "0.2",
+			color: "#1B1E24"
+		},
+	caption:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "500",
+			lineHeight: "normal",
+			fontSize: size.caption,
+			color: "#1B1E24"
+		},
+	label:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "500",
+			lineHeight: "normal",
+			fontSize: size.label,
+			textTransform: "uppercase",
+			color: "#252631"
+		},
+	regular:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "500",
+			lineHeight: "1.3125rem",
+			fontSize: size.regular,
+			color: "#98A9BC"
+		},
+	lightText:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "500",
+			lineHeight: "1.3125rem",
+			fontSize: size.regular,
+			color: "#252631"
+		},
+	linkText:
+		{
+			fontFamily: type.base,
+			fontStyle: "normal",
+			fontWeight: "500",
+			lineHeight: "normal",
+			fontSize: size.regular,
+			color: "#252631"
+		}
 }
 
 export default {
