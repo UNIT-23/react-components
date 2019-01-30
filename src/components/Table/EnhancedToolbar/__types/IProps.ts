@@ -1,8 +1,8 @@
-import { WithStyles } from "@material-ui/core/styles"
+import { WithTheme, StyledComponentProps } from "react-jss"
 
-import styles from "../styles"
+import { Theme } from "../../../../theme"
 
-export interface IProps extends WithStyles<typeof styles> {
+export interface IProps extends Partial<WithTheme<typeof Theme>>, StyledComponentProps {
 	readonly DefaultBtn?: JSX.Element
 	readonly numSelected?: number
 	readonly SelectedBtn?: JSX.Element

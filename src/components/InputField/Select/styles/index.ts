@@ -47,7 +47,7 @@ export const getSelectStyles = (
 		height: 36,
 		borderRadius: 4,
 		"&:hover": {
-			backgroundColor: Theme.backgroundColor
+			backgroundColor: Theme.background
 		}
 	}),
 	multiValueLabel: (base: Object) => ({
@@ -60,7 +60,7 @@ export const getSelectStyles = (
 	multiValueRemove: (base: Object) => ({
 		...base,
 		"&:hover": {
-			backgroundColor: Theme.backgroundColor
+			backgroundColor: Theme.background
 		},
 		"& span": {
 			"& svg": {

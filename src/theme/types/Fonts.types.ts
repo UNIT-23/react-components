@@ -1,5 +1,4 @@
 import { GridSpacing } from "@material-ui/core/Grid"
-import { FontWeightProperty } from "csstype"
 
 export interface IType {
 	readonly base: string
@@ -23,90 +22,14 @@ export interface ISize {
 
 export interface IStyle {
 	readonly dashboardGridSpacing: GridSpacing
-	readonly h1: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly letterSpacing: string
-		readonly color: string
-	}
-	readonly h2: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly letterSpacing: string
-		readonly color: string
-	}
-	readonly h3: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly letterSpacing: string
-		readonly color: string
-	}
-	readonly h4: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly letterSpacing: string
-		readonly color: string
-	}
-	readonly h5: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly letterSpacing: string
-		readonly color: string
-	}
-	readonly caption: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly color: string
-	}
-	readonly label: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly textTransform: string
-		readonly color: string
-	}
-	readonly regular: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly color: string
-	}
-	readonly lightText: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly color: string
-	}
-	readonly linkText: {
-		readonly fontFamily: string
-		readonly fontStyle: string
-		readonly fontWeight: FontWeightProperty
-		readonly lineHeight: string
-		readonly fontSize: string
-		readonly color: string
-	}
+	readonly h1: React.CSSProperties
+	readonly h2: React.CSSProperties
+	readonly h3: React.CSSProperties
+	readonly h4: React.CSSProperties
+	readonly h5: React.CSSProperties
+	readonly caption: React.CSSProperties
+	readonly label: React.CSSProperties
+	readonly regular: React.CSSProperties
+	readonly lightText: React.CSSProperties
+	readonly linkText: React.CSSProperties
 }

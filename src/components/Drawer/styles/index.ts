@@ -1,12 +1,5 @@
-import { IProps } from "../__types/IProps"
+import { Styles } from "react-jss"
 
-// tslint:disable-next-line:no-any
-export const styles: any = {
-	list: {
-		width: ({ width }: IProps) => width || "60vw",
-		height: ({ height }: IProps) => height || "89%",
-		"& ul": {
-			padding: 0
-		}
-	}
+export const styles: Styles = {
+	list: {}
 }

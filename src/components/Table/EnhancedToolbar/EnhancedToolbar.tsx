@@ -14,7 +14,7 @@ const EnhancedTableToolbar: React.SFC<IProps> = ({
 	SelectedBtn,
 	classes
 }: IProps): JSX.Element => (
-	<Toolbar className={`${classes.root}  ${numSelected > 0 && classes.highlight}`}>
+	<Toolbar className={`${numSelected > 0 && classes.highlight}`}>
 		<div className={classes.title}>
 			{numSelected > 0 ? (
 				<Typography color="inherit" variant="subtitle1">

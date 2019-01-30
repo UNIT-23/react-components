@@ -1,6 +1,6 @@
 import { PostsTypes } from "../../../types/postsTypes"
 
-export interface IPostsRequestActionPayload extends IListPayload, Partial<IPosts> {}
+export interface IPostsRequestActionPayload extends Partial<IPosts> {}
 export type PostsGetRequestAction = IAction<IPostsRequestActionPayload, PostsTypes>
 
 export interface IPostsSuccessPayload extends Pick<IPosts, "posts" | "postsCount"> {}

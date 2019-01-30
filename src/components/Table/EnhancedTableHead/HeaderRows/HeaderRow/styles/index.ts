@@ -1,8 +1,7 @@
 import { createStyles } from "@material-ui/core"
-import { StyleRules, StyleRulesCallback } from "@material-ui/core/styles/withStyles"
 import { Theme, Fonts } from "../../../../../../theme"
 
-const styles: StyleRulesCallback = (): StyleRules =>
+export const styles = () =>
 	createStyles({
 		root: {
 			backgroundColor: Theme.gray,
@@ -14,11 +13,5 @@ const styles: StyleRulesCallback = (): StyleRules =>
 					fontFamily: Fonts.type.base
 				}
 			}
-		},
-		toolTip: {
-			display: "flex",
-			justifyContent: "center"
 		}
 	})
-
-export default styles

@@ -1,5 +1,5 @@
 import { ISize, IStyle, IType, IIconSize } from "./types/Fonts.types"
-import { Theme } from "./Colors"
+import { Theme } from "./Themes"
 
 const type: IType = {
 	base: "Roboto"

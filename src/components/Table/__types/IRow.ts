@@ -1,3 +1,3 @@
-export interface IRow {
-	readonly [key: string]: ITableData
+export interface IRow<TData> {
+	readonly [key: string]: ITableData<TData>
 }

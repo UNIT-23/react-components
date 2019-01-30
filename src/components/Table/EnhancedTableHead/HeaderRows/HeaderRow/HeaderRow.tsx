@@ -3,22 +3,22 @@ import TableCell from "@material-ui/core/TableCell"
 import Tooltip from "@material-ui/core/Tooltip"
 import TableSortLabel from "@material-ui/core/TableSortLabel"
 import Typography from "@material-ui/core/Typography"
-import { withStyles } from "@material-ui/core/styles"
 
-import { IProps } from "./__types/IProps"
 import { HeaderRowValues } from "./__types/HeaderRowValues"
 
-import styles from "./styles/"
+import { IProps } from "./__types/IProps"
+import materialThemeWrapper from "../../../../MaterialThemeWrapper/MaterialThemeWrapper"
+import { withStyles } from "@material-ui/core"
+import { styles } from "./styles"
 
 const createSortHandler: Function = (property: number, onRequestSort: Function): Function => (event: Event): void =>
 	onRequestSort(event, property)
 
-function HeaderRow({ id, classes, label, orderBy, orderType, onRequestSort }: IProps): JSX.Element {
+function HeaderRow<TData>({ id, label, orderBy, orderType, onRequestSort, classes }: IProps<TData>): JSX.Element {
 	return (
-		<TableCell className={classes.root} sortDirection={orderBy === id ? orderType : false}>
-			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay} className={classes.toolTip}>
+		<TableCell sortDirection={orderBy === id ? orderType : false} className={classes.root}>
+			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay}>
 				<TableSortLabel
-					className={classes.header}
 					active={orderBy === id}
 					direction={orderType}
 					onClick={createSortHandler(id, onRequestSort)}
@@ -32,4 +32,17 @@ function HeaderRow({ id, classes, label, orderBy, orderType, onRequestSort }: IP
 	)
 }
 
-export default withStyles(styles)(HeaderRow)
+// TODO: Remove class
+export default class WrappedHeaderRpw<T> extends React.Component<
+	WrappedHeaderRpw<T>["C"] extends React.ComponentType<infer P> ? P : never,
+	{}
+> {
+	private readonly C = materialThemeWrapper<IProps<T>>(
+		withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof HeaderRow, IProps<T>>) => (
+			<HeaderRow<T> {...props} />
+		))
+	)
+	public render() {
+		return <this.C {...this.props} />
+	}
+}

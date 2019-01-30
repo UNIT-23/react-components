@@ -1,9 +1,7 @@
-import { WithStyles } from "@material-ui/core/styles"
+import { StyledComponentProps } from "@material-ui/core"
 
-import styles from "../styles"
-
-export interface IProps extends WithStyles<typeof styles>, ITableHeader {
+export interface IProps<TData> extends ITableHeader<TData>, StyledComponentProps {
 	readonly onRequestSort: Function
-	readonly orderBy: string
+	readonly orderBy: keyof TData
 	readonly orderType: "asc" | "desc"
 }

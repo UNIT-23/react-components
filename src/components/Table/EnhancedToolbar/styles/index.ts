@@ -1,8 +1,10 @@
-import { createStyles, Theme as MuiTheme } from "@material-ui/core"
+import { createStyles } from "@material-ui/core"
 import { StyleRules } from "@material-ui/core/styles/withStyles"
 import { Theme, Fonts } from "../../../../theme"
 
-export default (theme: MuiTheme): StyleRules =>
+import { MuiTheme } from "../../../../theme/"
+
+export default (theme: typeof MuiTheme): StyleRules =>
 	createStyles({
 		root: {
 			backgroundColor: Theme.primaryLight

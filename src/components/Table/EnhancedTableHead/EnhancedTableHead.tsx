@@ -12,7 +12,7 @@ import { InputTypes } from "../../../models/InputTypes"
 
 import { IProps } from "./__types/IProps"
 
-function EnhancedTableHead<THead extends ITableHeader>({
+function EnhancedTableHead<TData>({
 	handleSelectClick,
 	onSelectAllClick,
 	onRequestSort,
@@ -21,7 +21,7 @@ function EnhancedTableHead<THead extends ITableHeader>({
 	numSelected,
 	rowCount,
 	columns
-}: IProps<THead>): JSX.Element {
+}: IProps<TData>): JSX.Element {
 	return (
 		<TableHead>
 			<TableRow>

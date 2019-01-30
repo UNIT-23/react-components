@@ -12,7 +12,7 @@ import { API } from "../../../models/ApiState"
 
 export const initialState: IPosts = {
 	posts: [],
-	orderBy: "",
+	orderBy: undefined,
 	orderType: "asc",
 	rowsPerPage: 0,
 	page: 0,

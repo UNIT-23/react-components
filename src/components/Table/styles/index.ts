@@ -1,13 +1,11 @@
-import { Theme as MuiTheme, createStyles } from "@material-ui/core"
-
-import { TableValues } from "../__types/TableValues"
+import { createStyles } from "@material-ui/core"
 import { Theme } from "../../../theme"
 
-export const styles = (theme: MuiTheme) =>
+export const styles = () =>
 	createStyles({
 		root: {
-			width: "100%",
-			marginTop: theme.spacing.unit * TableValues.marginTopMultiplier
+			background: Theme.primaryLight,
+			boxShadow: "0px 1px 2px rgba(8, 35, 48, 0.15), 0px 2px 6px rgba(8, 35, 48, 0.1); border-radius: 3px"
 		},
 		table: {
 			minWidth: 1020
