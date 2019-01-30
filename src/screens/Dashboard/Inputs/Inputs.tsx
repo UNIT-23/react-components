@@ -99,6 +99,22 @@ class Inputs extends React.Component<IProps> {
 						}))}
 					/>
 				</div>
+				<div>
+					<div>
+					<label htmlFor="calender">Calender</label>
+
+					</div>
+					<Field
+							autoFocus
+							enableBackDates={true}
+							component={InputField}
+							inputType={InputTypes.Calender}
+							name="referenceDate"
+							id="calender"
+							formats="YYYY-MM-DD"
+							type="single"
+					/>
+				</div>
 			</form>
 		)
 	}
