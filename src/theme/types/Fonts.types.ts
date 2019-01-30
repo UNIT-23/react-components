@@ -7,6 +7,9 @@ export interface IType {
 export interface IIconSize {
 	readonly medium: number
 	readonly small: number
+	readonly mini: number
+	readonly width: number
+	readonly height: number
 }
 
 export interface ISize {

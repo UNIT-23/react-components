@@ -15,56 +15,58 @@ import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
 import { withStyles } from "@material-ui/core"
+import Card from "../Card/Card"
 
 class Table<TData> extends React.Component<IProps<TData>> {
 	public render() {
 		return (
-			<div className={this.props.classes.root}>
-				<EnhancedToolbar
-					DefaultBtn={this.props.DefaultBtn}
-					SelectedBtn={this.props.SelectedBtn}
-					tableTitle={this.props.tableTitle}
-					numSelected={this.props.selected ? this.props.selected.length : 0}
-					classes={this.props.classes}
-				/>
-				<div className={this.props.classes.tableWrapper}>
-					<ApiSuspense apiState={this.props.dataRequestState}>
-						<MaterialTable className={this.props.classes.table}>
-							<EnhancedTableHead<TData>
-								numSelected={this.props.selected ? this.props.selected.length : 0}
-								columns={this.props.header}
-								orderType={this.props.orderType}
-								orderBy={this.props.orderBy}
-								handleSelectClick={this.props.handleSelectClick}
-								onSelectAllClick={this.props.handleSelectAllClick}
-								onRequestSort={this.props.onChangeSort}
-								rowCount={this.props.rows.length}
-							/>
-							<TableBody className={this.props.classes.tableBody}>
-								<TableRows<TData>
+			<Card>
+				<div className={this.props.classes.root}>
+					<EnhancedToolbar
+						DefaultBtn={this.props.DefaultBtn}
+						SelectedBtn={this.props.SelectedBtn}
+						tableTitle={this.props.tableTitle}
+						numSelected={this.props.selected ? this.props.selected.length : 0}
+					/>
+					<div className={this.props.classes.tableWrapper}>
+						<ApiSuspense apiState={this.props.dataRequestState}>
+							<MaterialTable className={this.props.classes.table}>
+								<EnhancedTableHead<TData>
+									numSelected={this.props.selected ? this.props.selected.length : 0}
 									columns={this.props.header}
-									deleteHandler={this.props.deleteHandler}
-									editHandler={this.props.editHandler}
-									handleSelectClick={this.props.handleSelectClick}
-									orderBy={this.props.orderBy}
 									orderType={this.props.orderType}
-									page={this.props.page}
-									rows={this.props.rows}
-									rowsPerPage={this.props.rowsPerPage}
-									selected={this.props.selected}
+									orderBy={this.props.orderBy}
+									handleSelectClick={this.props.handleSelectClick}
+									onSelectAllClick={this.props.handleSelectAllClick}
+									onRequestSort={this.props.onChangeSort}
+									rowCount={this.props.rows.length}
 								/>
-							</TableBody>
-						</MaterialTable>
-					</ApiSuspense>
+								<TableBody>
+									<TableRows<TData>
+										columns={this.props.header}
+										deleteHandler={this.props.deleteHandler}
+										editHandler={this.props.editHandler}
+										handleSelectClick={this.props.handleSelectClick}
+										orderBy={this.props.orderBy}
+										orderType={this.props.orderType}
+										page={this.props.page}
+										rows={this.props.rows}
+										rowsPerPage={this.props.rowsPerPage}
+										selected={this.props.selected}
+									/>
+								</TableBody>
+							</MaterialTable>
+						</ApiSuspense>
+					</div>
+					<Pagination
+						page={this.props.page}
+						count={this.props.count}
+						rowsPerPage={this.props.rowsPerPage}
+						onChangePage={this.props.onChangePage}
+						onChangeRowsPerPage={this.props.onChangeRowsPerPage}
+					/>
 				</div>
-				<Pagination
-					page={this.props.page}
-					count={this.props.count}
-					rowsPerPage={this.props.rowsPerPage}
-					onChangePage={this.props.onChangePage}
-					onChangeRowsPerPage={this.props.onChangeRowsPerPage}
-				/>
-			</div>
+			</Card>
 		)
 	}
 }

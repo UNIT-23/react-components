@@ -11,6 +11,11 @@ import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
 
 import { styles } from "./styles"
 
+import { FilePond } from "react-filepond"
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css"
+
 import { IProps } from "./__types/IProps"
 import { InputTypes } from "../../models/InputTypes"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
@@ -48,23 +53,8 @@ function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValu
 		case InputTypes.Checkbox:
 			return <Checkbox onBlur={onBlur} onChange={onChange} value={name} checked={value} {...rest} />
 		case InputTypes.File:
-			const adaptFileEventToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-				e.preventDefault()
+			return <FilePond onupdatefiles={onChange as any} {...rest} />
 
-				const reader = new FileReader()
-				const file = e.target.files[0]
-
-				// tslint:disable-next-line:no-object-mutation
-				reader.onloadend = () => {
-					onChange(reader.result as any)
-				}
-
-				if (file) {
-					reader.readAsDataURL(file)
-				}
-			}
-
-			return <input onChange={adaptFileEventToValue} type="file" name={name} {...rest} />
 		case InputTypes.Calender:
 			return (
 				<Calender
@@ -98,30 +88,31 @@ function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValu
 // tslint:disable:no-any
 // tslint:disable-next-line:no-object-mutation
 InputField.defaultProps = {
-	input: {
-		onBlur: () => {},
-		onChange: () => {},
-		onDragStart: () => {},
-		onDrop: () => {},
-		onFocus: () => {}
-	},
-	meta: {
-		autofilled: false,
-		asyncValidating: false,
-		dirty: false,
-		// tslint:disable-next-line:no-any
-		dispatch: (action: any) => action,
-		form: "",
-		initial: "",
-		invalid: false,
-		pristine: true,
-		submitting: false,
-		submitFailed: false,
-		touched: false,
-		valid: true,
-		visited: false,
-		enableBackDates: false
-	}
+	input:
+		{
+			onBlur: () => {},
+			onChange: () => {},
+			onDragStart: () => {},
+			onDrop: () => {},
+			onFocus: () => {}
+		},
+	meta:
+		{
+			autofilled: false,
+			asyncValidating: false,
+			dirty: false,
+			// tslint:disable-next-line:no-any
+			dispatch: (action: any) => action,
+			form: "",
+			initial: "",
+			invalid: false,
+			pristine: true,
+			submitting: false,
+			submitFailed: false,
+			touched: false,
+			valid: true,
+			visited: false
+		}
 }
 
 export default materialThemeWrapper(injectSheet(styles)(InputField))
