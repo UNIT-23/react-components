@@ -4,7 +4,8 @@ import { Fonts } from "../../../../theme"
 export const styles: Styles = {
 	container: {
 		display: "flex",
-		justifyContent: "center"
+		justifyContent: "center",
+		marginTop: 40
 	},
 	perPageContainer: {
 		display: "flex",
@@ -25,5 +26,14 @@ export const styles: Styles = {
 	perPageText: {
 		fontSize: Fonts.size.regular,
 		fontFamily: Fonts.type.base
+	},
+	previousButton: {
+		marginRight: 32
+	},
+	nextButton: {
+		marginLeft: 32
+	},
+	paginationPaddingRight: {
+		paddingRight: 5
 	}
 }

@@ -80,6 +80,7 @@ function TableRows<TData>({
 							role="checkbox"
 							selected={isSelected}
 							aria-checked={isSelected}
+							className={classes.root}
 							onClick={rowClickHandler(handleSelectClick, row.id.value)}
 						>
 							{!!handleSelectClick && (

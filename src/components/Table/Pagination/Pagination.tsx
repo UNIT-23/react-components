@@ -9,6 +9,7 @@ import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
 import { styles } from "./styles"
 import injectSheet from "react-jss"
+import { Theme } from "../../../theme"
 class Pagination extends React.Component<IProps> {
 	public constructor(props: IProps) {
 		super(props)
@@ -84,37 +85,49 @@ class Pagination extends React.Component<IProps> {
 		return (
 			<div className={classes.container}>
 				<div>
-					<Button buttonType="square" onClick={this.handleBackButtonClick}>
-						{"<"}
-					</Button>
-					{maxPages >= Values.buttonLabel1 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
-							{buttonLabel1}
+					<span className={classes.previousButton}>
+						<Button buttonType="square" onClick={this.handleBackButtonClick}>
+							{"<"}
 						</Button>
+					</span>
+					{maxPages >= Values.buttonLabel1 && (
+						<span className={classes.paginationPaddingRight}>
+							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
+								{buttonLabel1}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel2 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
-							{buttonLabel2}
-						</Button>
+						<span className={classes.paginationPaddingRight}>
+							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
+								{buttonLabel2}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel3 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
-							{buttonLabel3}
-						</Button>
+						<span className={classes.paginationPaddingRight}>
+							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
+								{buttonLabel3}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel4 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
-							{buttonLabel4}
-						</Button>
+						<span className={classes.paginationPaddingRight}>
+							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
+								{buttonLabel4}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel5 && (
 						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel5)}>
 							{buttonLabel5}
 						</Button>
 					)}
-					<Button buttonType="square" onClick={this.handleNextButtonClick}>
-						{">"}
-					</Button>
+					<span className={classes.nextButton}>
+						<Button buttonType="square" onClick={this.handleNextButtonClick}>
+							{">"}
+						</Button>
+					</span>
 				</div>
 				<div className={classes.perPageContainer}>
 					<div className={classes.perPageText}>Showing</div>
@@ -128,6 +141,7 @@ class Pagination extends React.Component<IProps> {
 								onChange: onChangeRowsPerPage
 							}}
 							showDropDownArrowIcons={true}
+							dropDownIndicatorColor={Theme.secondary}
 							options={this.rowsPerPageOptions}
 						/>
 					</div>
