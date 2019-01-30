@@ -3,22 +3,19 @@ import TableCell from "@material-ui/core/TableCell"
 import Tooltip from "@material-ui/core/Tooltip"
 import TableSortLabel from "@material-ui/core/TableSortLabel"
 import Typography from "@material-ui/core/Typography"
-import { withStyles } from "@material-ui/core/styles"
 
-import { IProps } from "./__types/IProps"
 import { HeaderRowValues } from "./__types/HeaderRowValues"
 
-import styles from "./styles/"
+import { IProps } from "./__types/IProps"
 
 const createSortHandler: Function = (property: number, onRequestSort: Function): Function => (event: Event): void =>
 	onRequestSort(event, property)
 
-function HeaderRow({ id, classes, label, orderBy, orderType, onRequestSort }: IProps): JSX.Element {
+function HeaderRow<TData>({ id, label, orderBy, orderType, onRequestSort }: IProps<TData>): JSX.Element {
 	return (
-		<TableCell className={classes.root} sortDirection={orderBy === id ? orderType : false}>
-			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay} className={classes.toolTip}>
+		<TableCell sortDirection={orderBy === id ? orderType : false}>
+			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay}>
 				<TableSortLabel
-					className={classes.header}
 					active={orderBy === id}
 					direction={orderType}
 					onClick={createSortHandler(id, onRequestSort)}
@@ -32,4 +29,4 @@ function HeaderRow({ id, classes, label, orderBy, orderType, onRequestSort }: IP
 	)
 }
 
-export default withStyles(styles)(HeaderRow)
+export default HeaderRow

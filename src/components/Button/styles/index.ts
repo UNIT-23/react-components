@@ -10,7 +10,7 @@ export const styles: any = () => ({
 			color: ({ outline }: IProps) => (outline ? Theme.info : Theme.primary),
 			background:
 				({ disabled, outline }: IProps) =>
-					disabled ? Theme.primaryLight : outline ? Theme.primary : Theme.secondary,
+				disabled ? Theme.primaryLight : (outline ? Theme.primary :  Theme.secondary),
 			padding: ({ padding }: IProps) => padding || "0px",
 			width: ({ width, buttonType }: IProps) => (buttonType === "square" ? 50 : width || Values.defaultWidth),
 			outline: "none",

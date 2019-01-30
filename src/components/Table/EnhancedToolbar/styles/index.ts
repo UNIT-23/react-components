@@ -1,9 +1,11 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles } from "@material-ui/core"
 import { StyleRules } from "@material-ui/core/styles/withStyles"
 
-export default (theme: Theme): StyleRules =>
+import { MuiTheme } from "../../../../theme/"
+
+export default (theme: typeof MuiTheme): StyleRules =>
 	createStyles({
-		root  : {},
+		root: {},
 		spacer: {
 			flex: "1 1 100%"
 		},

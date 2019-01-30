@@ -1,3 +1,3 @@
-import { SlideProps } from "@material-ui/core/Slide"
+import { TransitionProps } from "@material-ui/core/transitions/transition"
 
-export interface IProps extends SlideProps {}
+export interface IProps extends TransitionProps {}

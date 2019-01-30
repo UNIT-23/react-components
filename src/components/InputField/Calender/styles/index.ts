@@ -3,7 +3,7 @@ export const styles = {
 		{
 			".CalendarDay__default":
 				{
-					color: "#252631"
+					color: "#252631",
 				},
 			".CalendarDay":
 				{
@@ -73,8 +73,7 @@ export const styles = {
 			".DayPicker_weekHeader_li":
 				{
 					color: "#778CA2",
-					font: "14px Rubik",
-					margin: "20px 0px 20px 0px"
+					font: "14px Rubik"
 				},
 			".CalendarMonth_caption":
 				{
@@ -97,6 +96,12 @@ export const styles = {
 				{
 					"padding-inline-end": "20px"
 				},
+		 ".CalendarMonth" : {
+			 	padding: "0px!important"
+		},
+		 ".DayPicker_weekHeader_1" : {
+			padding: "0px!important"
+		},
 			svg:
 				{
 					margin: "20px"

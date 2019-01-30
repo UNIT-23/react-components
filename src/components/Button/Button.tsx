@@ -11,7 +11,7 @@ function Button({ children, type, onClick, classes, theme }: IProps) {
 		case "create":
 			return (
 				<div className={classes.addBtn} onClick={onClick}>
-					<PlusIcon color={theme.backgroundColor} className={classes.icon} />
+					<PlusIcon color={theme.secondary} className={classes.icon} />
 					<div className={classes.span}>{children} </div>
 				</div>
 			)

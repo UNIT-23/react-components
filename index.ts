@@ -37,6 +37,7 @@ export { default as InputField } from "./src/components/InputField/InputField"
 export { default as RedirectToLogin } from "./src/components/RedirectToLogin/RedirectToLogin"
 export { default as Loader } from "./src/components/Loader/Loader"
 export { default as Table } from "./src/components/Table/Table"
+export { TableModel } from "./src/components/Table/models/TableModel"
 export { default as Panels } from "./src/components/Panels/Panels"
 
 // -------------------------------------------------------
@@ -56,7 +57,7 @@ export { alertReducer } from "./src/appstate/reducers/alert/alertReducer"
 /*---------------------Theme--------------------------*/
 // -------------------------------------------------------
 
-export { Theme } from "./src/theme/"
+export { Theme, overrideTheme } from "./src/theme/"
 
 // -------------------------------------------------------
 /*---------------------Utils--------------------------*/

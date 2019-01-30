@@ -1,4 +1,5 @@
 import { ISize, IStyle, IType, IIconSize } from "./types/Fonts.types"
+import { Theme } from "./Themes"
 
 const type: IType = {
 	base: "Roboto"
@@ -94,7 +95,7 @@ const style: IStyle = {
 		{
 			fontFamily: type.base,
 			fontStyle: "normal",
-			fontWeight: "500",
+			fontWeight: 500,
 			lineHeight: "normal",
 			fontSize: size.caption,
 			color: "#1B1E24"
@@ -103,17 +104,17 @@ const style: IStyle = {
 		{
 			fontFamily: type.base,
 			fontStyle: "normal",
-			fontWeight: "500",
+			fontWeight: 300,
 			lineHeight: "normal",
-			fontSize: size.label,
+			fontSize: size.regular,
 			textTransform: "uppercase",
-			color: "#252631"
+			color: Theme.info
 		},
 	regular:
 		{
 			fontFamily: type.base,
 			fontStyle: "normal",
-			fontWeight: "500",
+			fontWeight: 500,
 			lineHeight: "1.3125rem",
 			fontSize: size.regular,
 			color: "#98A9BC"
@@ -122,7 +123,7 @@ const style: IStyle = {
 		{
 			fontFamily: type.base,
 			fontStyle: "normal",
-			fontWeight: "500",
+			fontWeight: 500,
 			lineHeight: "1.3125rem",
 			fontSize: size.regular,
 			color: "#252631"
@@ -131,7 +132,7 @@ const style: IStyle = {
 		{
 			fontFamily: type.base,
 			fontStyle: "normal",
-			fontWeight: "500",
+			fontWeight: 500,
 			lineHeight: "normal",
 			fontSize: size.regular,
 			color: "#252631"

@@ -1,9 +1,6 @@
 // tslint:disable:no-any
 import React from "react"
 import injectSheet from "react-jss"
-// @ts-ignore
-import { CheckboxSelect } from "@atlaskit/select"
-
 import EditorInput from "./Editor/Editor"
 import Switch from "./Switch/Switch"
 import Checkbox from "./Checkbox/Checkbox"
@@ -12,7 +9,7 @@ import { CirclePicker } from "react-color"
 // @ts-ignore
 import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
 
-import { styles, selectStyles } from "./styles"
+import { styles } from "./styles"
 
 import { FilePond } from "react-filepond"
 
@@ -22,8 +19,9 @@ import "filepond/dist/filepond.min.css"
 import { IProps } from "./__types/IProps"
 import { InputTypes } from "../../models/InputTypes"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
+import Select from "./Select/Select"
 
-function InputField<TValue>({ input, inputType, meta: { error }, classes, ...rest }: IProps<TValue>) {
+function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValue>) {
 	const { name, onBlur = () => {}, onChange, onFocus, value } = input
 
 	switch (inputType) {
@@ -32,19 +30,7 @@ function InputField<TValue>({ input, inputType, meta: { error }, classes, ...res
 				onBlur(value)
 			}
 
-			return (
-				<CheckboxSelect
-					onBlur={onBlurForSelect}
-					onFocus={onFocus}
-					onChange={onChange}
-					value={value}
-					styles={selectStyles}
-					invalidMessage={error}
-					className="checkbox-select"
-					classNamePrefix="select"
-					{...rest}
-				/>
-			)
+			return <Select onBlur={onBlurForSelect} onFocus={onFocus} onChange={onChange} {...rest} />
 		case InputTypes.Editor:
 			return (
 				<div className={classes.editor}>

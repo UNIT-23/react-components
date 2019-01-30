@@ -1,7 +1,6 @@
 import * as React from "react"
 import TableCell from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
-import { withStyles } from "@material-ui/core/styles"
 
 import InputField from "../../InputField/InputField"
 
@@ -9,30 +8,34 @@ import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
 import { InputTypes } from "../../../models/InputTypes"
 
-import { styles } from "./styles/"
+import TrashIcon from "../../Icons/TrashIcon"
+import EditIcon from "../../Icons/EditIcon"
 
-function stableSort(
-	array: ReadonlyArray<ITableData>,
-	cmp: (a: ITableData, b: ITableData) => number
-): ReadonlyArray<ITableData> {
-	const stabilizedThis: ReadonlyArray<ReadonlyArray<ITableData | number>> = array
-		.map((el: ITableData, index: number) => [el, index])
-		.sort((a: ReadonlyArray<ITableData | number>, b: ReadonlyArray<ITableData | number>) => {
-			const orderType: number = cmp(a[0] as ITableData, b[0] as ITableData)
+function stableSort<TData>(
+	array: ReadonlyArray<ITableData<TData>>,
+	cmp: (a: ITableData<TData>, b: ITableData<TData>) => number
+): ReadonlyArray<ITableData<TData>> {
+	const stabilizedThis: ReadonlyArray<ReadonlyArray<ITableData<TData> | number>> = array
+		.map((el: ITableData<TData>, index: number) => [el, index])
+		.sort((a: ReadonlyArray<ITableData<TData> | number>, b: ReadonlyArray<ITableData<TData> | number>) => {
+			const orderType: number = cmp(a[0] as ITableData<TData>, b[0] as ITableData<TData>)
 
 			return orderType !== 0 ? orderType : (a[1] as number) - (b[1] as number)
 		})
 
-	return stabilizedThis.map((el: ReadonlyArray<ITableData | number>) => el[0] as ITableData)
+	return stabilizedThis.map((el: ReadonlyArray<ITableData<TData> | number>) => el[0] as ITableData<TData>)
 }
 
-function getSorting(orderType: "asc" | "desc", orderBy: string): (a: ITableData, b: ITableData) => number {
+function getSorting<TData>(
+	orderType: "asc" | "desc",
+	orderBy: keyof TData
+): (a: ITableData<TData>, b: ITableData<TData>) => number {
 	return orderType === "desc"
-		? (a: ITableData, b: ITableData): number => desc(a, b, orderBy)
-		: (a: ITableData, b: ITableData): number => -desc(a, b, orderBy)
+		? (a: ITableData<TData>, b: ITableData<TData>): number => desc(a, b, orderBy)
+		: (a: ITableData<TData>, b: ITableData<TData>): number => -desc(a, b, orderBy)
 }
 
-function desc(a: ITableData, b: ITableData, orderBy: string): number {
+function desc<TData>(a: ITableData<TData>, b: ITableData<TData>, orderBy: keyof TData): number {
 	return b[orderBy].value < a[orderBy].value ? -1 : b[orderBy].value > a[orderBy].value ? 1 : 0
 }
 
@@ -43,9 +46,10 @@ function rowClickHandler(
 	return (event: React.MouseEvent<HTMLTableRowElement>): Function => handleClick && handleClick(event, id)
 }
 
-function TableRows<THead extends ITableHeader>({
+function TableRows<TData>({
 	rows,
-	classes,
+	editHandler,
+	deleteHandler,
 	handleSelectClick,
 	orderType,
 	orderBy,
@@ -53,16 +57,16 @@ function TableRows<THead extends ITableHeader>({
 	rowsPerPage,
 	selected = [],
 	columns
-}: IProps<THead>): JSX.Element {
+}: IProps<TData>): JSX.Element {
 	const emptyRows: number = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
 	return (
 		<React.Fragment>
 			{(orderBy ? stableSort(rows, getSorting(orderType, orderBy)) : rows)
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-				.map((row: ITableData) => {
+				.map((row: ITableData<TData>) => {
 					const isSelected: boolean = selected.includes(row.id.value)
-					const rowNames: ReadonlyArray<string> = columns.map((c: THead) => c.id)
+					const rowNames: ReadonlyArray<keyof TData> = columns.map((c: ITableHeader<TData>) => c.id) as any
 
 					return (
 						<TableRow
@@ -80,12 +84,26 @@ function TableRows<THead extends ITableHeader>({
 								</TableCell>
 							)}
 							{rowNames
-								.filter((rowName: string) => rowName !== "id")
-								.map((rowName: string, i: number) => (
-									<TableCell className={classes.tableCell} key={i} align={"center"}>
+								.filter((rowName: keyof TData) => rowName !== "id")
+								.map((rowName: keyof TData, i: number) => (
+									<TableCell key={i} align={"center"}>
 										{row[rowName].component}
 									</TableCell>
 								))}
+							{!handleSelectClick && (
+								<TableCell padding="checkbox">
+									{editHandler && (
+										<div onClick={editHandler}>
+											<EditIcon />
+										</div>
+									)}
+									{deleteHandler && (
+										<div onClick={deleteHandler(row.id.value as number)}>
+											<TrashIcon />
+										</div>
+									)}
+								</TableCell>
+							)}
 						</TableRow>
 					)
 				})}
@@ -98,4 +116,4 @@ function TableRows<THead extends ITableHeader>({
 	)
 }
 
-export default withStyles(styles)(TableRows)
+export default TableRows

@@ -13,7 +13,7 @@ import { API } from "../../../models/ApiState"
 
 import { IProps } from "./__types/IProps"
 
-const header: ReadonlyArray<ITableHeader> = [
+const header: ReadonlyArray<ITableHeader<IPost>> = [
 	{ id: "firstname", label: "Firstname" },
 	{ id: "lastname", label: "Lastname" },
 	{ id: "email", label: "Email" },
@@ -21,34 +21,29 @@ const header: ReadonlyArray<ITableHeader> = [
 	{ id: "hasPremium", label: "Premium" }
 ]
 
-class TableExampleComponent extends TableModel<IProps> {
+class TableExampleComponent extends TableModel<IPost, IProps> {
 	public constructor(props: IProps) {
 		super(props)
 
 		this.getAction = postsGetRequest
 	}
 
-	public formatData<IPost>(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData> {
-		return (
-			super
-				.formatData(data)
-				// tslint:disable-next-line:no-any
-				.map((d: any) => ({
-					...d,
-					hasPremium: {
-						...d.hasPremium,
-						component: d.hasPremium.value ? "Premium" : "Trial"
-					}
-				}))
-		)
+	public formatData(data: ReadonlyArray<IPost>): ReadonlyArray<ITableData<IPost>> {
+		return super.formatData(data).map((d: ITableData<IPost>) => ({
+			...d,
+			hasPremium: {
+				...d.hasPremium,
+				component: d.hasPremium.value ? "Premium" : "Trial"
+			}
+		}))
 	}
 
 	public render() {
-		const { posts, page, rowsPerPage, filter, orderBy, orderType } = this.props
+		const { posts, page, rowsPerPage, filter, orderBy, orderType, postsCount } = this.props
 
 		return (
-			<Table
-				count={90}
+			<Table<IPost>
+				count={postsCount}
 				page={page}
 				header={header}
 				orderBy={orderBy}

@@ -1,87 +1,36 @@
 import { IProps } from "../__types/IProps"
-import { Fonts } from "../../../theme"
+import { Fonts, Theme } from "../../../theme"
+
+// tslint:disable-next-line:no-any
+export const inputBaseStyle: any = {
+	width: "96%",
+	marginTop: 13,
+	fontSize: Fonts.size.regular,
+	padding: {
+		left: 15,
+		top: 18,
+		bottom: 17
+	},
+	backgroundColor: ({ meta: { error, touched } }: IProps) => (error && touched ? Theme.accentLight : Theme.primary),
+	borderColor: ({ meta: { error, touched } }: IProps) => (error && touched ? Theme.danger : Theme.primaryDark),
+	borderRadius: 4,
+	boxSizing: "border-box",
+	borderWidth: 1,
+	borderStyle: "solid",
+	fontFamily: Fonts.type.base
+}
 
 // tslint:disable-next-line:no-any
 export const styles: any = {
 	input: {
-		width: "96%",
-		fontSize: Fonts.size.regular,
-		outline: "none",
-		borderRadius: "0px",
-		margin: "8px 0px",
-		height: 31,
-		padding: "8px 8px",
-		boxShadow: "1px 3px 8px 0px #ccc",
-		border: ({ meta: { error, touched } }: IProps) => (error && touched ? "1px solid red" : "1px solid #e8e6e6")
+		...inputBaseStyle,
+		height: 52
 	},
 	textarea: {
-		width: "96%",
-		fontSize: Fonts.size.regular,
-		outline: "none",
-		borderRadius: "0px",
-		margin: "8px 0px",
-		resize: "none",
-		height: 80,
-		padding: "8px 8px",
-		boxShadow: "1px 3px 8px 0px #ccc",
-		border: ({ meta: { error, touched } }: IProps) => (error && touched ? "1px solid red" : "1px solid #e8e6e6")
+		...inputBaseStyle,
+		height: 77
 	},
 	editor: {
 		boxShadow: "1px 3px 8px 0px #ccc"
 	}
 }
-
-const selectStyles = {
-	control: (base: Object) => ({
-		...base,
-		outline: 0,
-		backgroundColor: "#fff",
-		borderColor: "#fff",
-		color: "#000",
-		minHeight: 40,
-		borderRadius: 0,
-		boxShadow: "1px 3px 8px 0px #ccc",
-		borderStyle: "none",
-		borderWidth: 0,
-		"&:hover": {
-			borderColor: "#fff"
-		},
-		"&:focus": {
-			borderColor: "#fff"
-		}
-	}),
-	options: (base: Object) => ({
-		...base,
-		outline: 0,
-		backgroundColor: "#fff",
-		"&:hover": {
-			backgroundColor: "#fff"
-		}
-	}),
-	menu: (base: Object) => ({
-		...base,
-		marginTop: 1,
-		borderRadius: 0,
-		"&:hover": {
-			"&:focus": {
-				backgroundColor: "#ccc"
-			}
-		}
-	}),
-	menuList: (base: Object) => ({
-		...base,
-		"&:hover": {
-			"&:focus": {
-				backgroundColor: "#ccc"
-			}
-		}
-	}),
-	multiValueRemove: (base: Object) => ({
-		...base,
-		"&:hover": {
-			backgroundColor: "#f8f8f8;"
-		}
-	})
-}
-
-export { selectStyles }

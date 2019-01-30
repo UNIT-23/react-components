@@ -89,7 +89,7 @@ class Inputs extends React.Component<IProps> {
 					<Field
 						component={InputField}
 						name="recipients"
-						inputType="select"
+						inputType={InputTypes.Select}
 						isMulti="true"
 						closeMenuOnSelect={false}
 						placeholder="Select Recipients"
