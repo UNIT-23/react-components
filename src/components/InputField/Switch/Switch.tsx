@@ -35,7 +35,18 @@ class Checkbox extends React.Component<IProps, IState> {
 
 		return (
 			<div className={classes.container}>
-				<Switch onBlur={onBlur} checked={toggle} onChange={this.toggle} color="default" />
+				<Switch
+					classes={{
+					checked: classes.checked,
+					bar: classes.bar,
+					icon: classes.icon,
+					iconChecked: classes.iconChecked
+					}}
+					onBlur={onBlur}
+					checked={toggle}
+					onChange={this.toggle}
+					color="default"
+				/>
 			</div>
 		)
 	}
