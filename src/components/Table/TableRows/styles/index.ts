@@ -14,7 +14,8 @@ export const styles = () =>
 			fontSize: Fonts.size.regular,
 			color: Theme.info,
 			border: "none",
-			fontFamily: Fonts.type.base,
+			fontFamily: Fonts.type.base
+		},
 		row: {
 			"&:hover div": {
 				visibility: "visible"
