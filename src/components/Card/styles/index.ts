@@ -8,6 +8,7 @@ export const styles: (theme: typeof Theme) => Styles<undefined, IProps> = (theme
 	container: {
 		backgroundColor: "#fff",
 		color: "#fff",
+		height: "100%",
 		minHeight: 170,
 		minWidth: "23%",
 		width: ((({ width }: IProps) => width || "auto") as unknown) as React.ReactText,

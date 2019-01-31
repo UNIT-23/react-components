@@ -1,7 +1,7 @@
-import { StyledComponentProps } from "@material-ui/core"
+import { StyledComponentProps } from "react-jss"
 
-export interface IProps<TData> extends ITableHeader<TData>, StyledComponentProps {
-	readonly onRequestSort: Function
-	readonly orderBy: keyof TData
-	readonly orderType: "asc" | "desc"
+export interface IProps<TData> extends Partial<ITableHeader<TData>>, StyledComponentProps {
+	readonly onRequestSort?: Function
+	readonly orderBy?: keyof TData
+	readonly orderType?: "asc" | "desc"
 }
