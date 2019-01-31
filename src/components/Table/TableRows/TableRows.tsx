@@ -66,7 +66,9 @@ function TableRows<TData>({
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 				.map((row: ITableData<TData>) => {
 					const isSelected: boolean = selected.includes(row.id.value)
-					const rowNames: ReadonlyArray<keyof TData> = columns.map((c: ITableHeader<TData>) => c.id) as any
+					const rowNames: ReadonlyArray<keyof TData> = columns.map(
+						(c: ITableHeader<TData>) => c.id as keyof TData
+					)
 
 					return (
 						<TableRow
