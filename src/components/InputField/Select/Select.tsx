@@ -34,6 +34,7 @@ const Select = ({
 	...rest
 }: IProps) => (
 	<MuiSelect
+		menuPlacement="auto"
 		onBlur={onBlur}
 		onFocus={onFocus}
 		onChange={onChange}
