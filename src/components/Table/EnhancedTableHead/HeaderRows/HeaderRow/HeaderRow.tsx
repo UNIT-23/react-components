@@ -14,17 +14,19 @@ const createSortHandler: Function = (property: number, onRequestSort: Function):
 function HeaderRow<TData>({ id, label, orderBy, orderType, onRequestSort }: IProps<TData>): JSX.Element {
 	return (
 		<TableCell sortDirection={orderBy === id ? orderType : false}>
-			<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay}>
-				<TableSortLabel
-					active={orderBy === id}
-					direction={orderType}
-					onClick={createSortHandler(id, onRequestSort)}
-				>
-					<Typography color="inherit" align="center" variant="caption">
-						{label}
-					</Typography>
-				</TableSortLabel>
-			</Tooltip>
+			{!!onRequestSort && (
+				<Tooltip title="Sort" enterDelay={HeaderRowValues.enterDelay}>
+					<TableSortLabel
+						active={orderBy === id}
+						direction={orderType}
+						onClick={createSortHandler(id, onRequestSort)}
+					>
+						<Typography color="inherit" align="center" variant="caption">
+							{label}
+						</Typography>
+					</TableSortLabel>
+				</Tooltip>
+			)}
 		</TableCell>
 	)
 }
