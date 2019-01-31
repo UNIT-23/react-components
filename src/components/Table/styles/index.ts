@@ -1,13 +1,16 @@
-import { createStyles, Theme } from "@material-ui/core"
+import { createStyles } from "@material-ui/core"
+import { Theme } from "../../../theme"
 
-export const styles = (theme: Theme) =>
+export const styles = () =>
 	createStyles({
 		root: {
-			width: "100%",
-			background: theme.palette.background.default
+			background: Theme.primaryLight
 		},
 		table: {
 			minWidth: 1020
+		},
+		tableBody: {
+			backgroundColor: Theme.primaryLight
 		},
 		tableWrapper: {
 			overflowX: "auto"

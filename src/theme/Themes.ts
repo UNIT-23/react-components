@@ -1,8 +1,6 @@
 import { Theme as MaterialThemeType } from "@material-ui/core"
 import { createMuiTheme } from "@material-ui/core/styles"
 
-export const MuiTheme: MaterialThemeType = createMuiTheme({})
-
 // tslint:disable-next-line:no-let
 export let Theme: IThemeColors = {
 	primary: "#FFFFFF",
@@ -23,6 +21,14 @@ export let Theme: IThemeColors = {
 	success: "#6DD230",
 	icons: "#778CA2"
 }
+
+export const MuiTheme: MaterialThemeType = createMuiTheme({
+	palette: {
+		background: {
+			default: Theme.primaryLight
+		}
+	}
+})
 
 // tslint:disable-next-line:no-let
 export let DarkTheme: IThemeColors = {

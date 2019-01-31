@@ -2,24 +2,29 @@ import { Theme, Fonts } from "../../../../theme"
 import { inputBaseStyle } from "../../styles"
 
 // tslint:disable-next-line:no-any
-export const getSelectStyles = (error: string, touched: boolean) => ({
+export const getSelectStyles = (
+	error: string,
+	touched: boolean,
+	showDropDownArrowIcons: boolean,
+	backgroundColor: string = Theme.primary
+) => ({
 	control: (base: Object) => ({
 		...base,
 		...inputBaseStyle,
 		minHeight: 52,
-		backgroundColor: error && touched ? Theme.accentLight : Theme.primary,
+		backgroundColor: error && touched ? Theme.accentLight : backgroundColor,
 		borderColor: error && touched ? Theme.danger : Theme.primaryDark,
 		":hover": {
 			...(base as any)[":hover"],
-			backgroundColor: Theme.primary
+			backgroundColor
 		},
 		"&:hover": {
 			borderWidth: 2,
-			backgroundColor: Theme.primary
+			backgroundColor
 		},
 		"&:focus": {
 			borderWidth: 2,
-			backgroundColor: Theme.primary
+			backgroundColor
 		}
 	}),
 	checkBoxSelect: (base: Object) => ({
@@ -77,28 +82,41 @@ export const getSelectStyles = (error: string, touched: boolean) => ({
 	}),
 	menu: (base: Object) => ({
 		...base,
-		width: "96%"
+		width: "96%",
+		position: "absolute",
+		zIndex: 1000
 	}),
 	menuList: (base: Object) => ({
 		...base,
 		"&:hover": {
 			"&:focus": {
-				backgroundColor: Theme.primary
+				backgroundColor
 			}
 		}
 	}),
 	dropdownIndicator: (base: Object) => ({
 		...base,
-		"& svg": {
-			width: 18,
-			height: 21
+		"& div": {
+			"& svg": showDropDownArrowIcons
+				? {
+						width: 14,
+						height: 10
+				  }
+				: {
+						width: 18,
+						height: 21
+				  }
 		}
 	}),
 	options: (base: Object) => ({
 		...base,
-		backgroundColor: Theme.primary,
+		backgroundColor,
 		"&:hover": {
-			backgroundColor: Theme.primary
+			backgroundColor
 		}
 	})
 })
+
+export const dropDownArrowIconsStyles = {
+	display: "grid"
+}
