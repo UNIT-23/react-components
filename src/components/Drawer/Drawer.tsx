@@ -2,6 +2,8 @@ import * as React from "react"
 import injectSheet from "react-jss"
 import posed from "react-pose"
 
+import Card from "../Card/Card"
+
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles/"
@@ -10,25 +12,38 @@ const Modal = posed.div({
 	enter: {
 		applyAtStart: { y: 0 },
 		height: "80vh",
-		opacity: 1,
+		marginBottom: 40,
+		beforeChildren: true,
+		staggerChildren: 50,
 		transition: {
-			opacity: { ease: "easeOut", duration: 1500 },
-			default: { ease: "linear", duration: 500 }
+			default: { ease: "easeOut", duration: 1000 }
 		}
 	},
 	exit: {
 		height: "0vh",
-		opacity: 0,
+		marginBottom: 0,
 		transition: {
-			opacity: { ease: "easeOut", duration: 300 },
-			default: { ease: "linear", duration: 300 }
+			default: { ease: "easeOut", duration: 300 }
 		},
 		applyAtEnd: { y: -10000 }
 	}
 })
 
+const Child = posed.div({
+	exit: {
+		opacity: 0
+	},
+	enter: {
+		opacity: 1
+	}
+})
+
 const Drawer: React.SFC<IProps> = ({ openModel, children }: IProps) => (
-	<Modal pose={openModel ? "enter" : "exit"}>{children}</Modal>
+	<Modal pose={openModel ? "enter" : "exit"}>
+		<Child style={{ height: "100%" }} pose={openModel ? "enter" : "exit"}>
+			<Card>{children}</Card>
+		</Child>
+	</Modal>
 )
 
 export default injectSheet(styles)(Drawer)

@@ -16,6 +16,8 @@ function HeaderRows<TData>({ rows, orderBy, orderType, onRequestSort }: IProps<T
 					{...row}
 				/>
 			))}
+			{/* For Delete Rows */}
+			<HeaderRow />
 		</React.Fragment>
 	)
 }

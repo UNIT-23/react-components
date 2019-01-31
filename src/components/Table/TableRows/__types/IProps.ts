@@ -1,4 +1,6 @@
-export interface IProps<TData> {
+import { StyledComponentProps } from "react-jss"
+
+export interface IProps<TData> extends StyledComponentProps {
 	readonly rows: ReadonlyArray<ITableData<TData>>
 	handleSelectClick?(event: React.ChangeEvent, id: number): void
 	editHandler?(event: React.MouseEvent<HTMLDivElement>): void
