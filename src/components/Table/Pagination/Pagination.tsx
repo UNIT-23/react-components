@@ -6,8 +6,10 @@ import InputField from "../../InputField/InputField"
 import { InputTypes } from "../../../models/InputTypes"
 
 import { IProps } from "./__types/IProps"
-import { Values } from "./__types/Values"
-
+import { Values, PageNumber } from "./__types/Values"
+import { styles } from "./styles"
+import injectSheet from "react-jss"
+import { Theme } from "../../../theme"
 class Pagination extends React.Component<IProps> {
 	public constructor(props: IProps) {
 		super(props)
@@ -69,7 +71,8 @@ class Pagination extends React.Component<IProps> {
 	}
 
 	public render(): JSX.Element {
-		const { page, count, rowsPerPage, onChangeRowsPerPage } = this.props
+		const { page, count, rowsPerPage, onChangeRowsPerPage, classes: jssClasses } = this.props
+		const classes = jssClasses as any
 
 		const maxPages = this.maxPages()
 
@@ -80,47 +83,92 @@ class Pagination extends React.Component<IProps> {
 		const buttonLabel5 = this.getNavButtonNumber(Values.buttonLabel5, page, maxPages)
 
 		return (
-			<div
-				style={{
-					display: "flex"
-				}}
-			>
-				<div>
-					<Button buttonType="square" onClick={this.handleBackButtonClick}>
-						{"<"}
-					</Button>
-					{maxPages >= Values.buttonLabel1 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
-							{buttonLabel1}
+			<div className={classes.container}>
+				<div className={classes.paginationContainer}>
+					<span className={classes.previousButton}>
+						<Button
+							borderColor={Theme.primaryDark}
+							color={Theme.secondaryDark}
+							onClick={this.handleBackButtonClick}
+							type="small"
+						>
+							{"<"}
 						</Button>
+					</span>
+					{maxPages >= Values.buttonLabel1 && (
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.One && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel1)}
+							>
+								{buttonLabel1}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel2 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
-							{buttonLabel2}
-						</Button>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Two && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel2)}
+							>
+								{buttonLabel2}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel3 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
-							{buttonLabel3}
-						</Button>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Three && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel3)}
+							>
+								{buttonLabel3}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel4 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
-							{buttonLabel4}
-						</Button>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Four && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel4)}
+							>
+								{buttonLabel4}
+							</Button>
+						</span>
 					)}
 					{maxPages >= Values.buttonLabel5 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel5)}>
-							{buttonLabel5}
-						</Button>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Five && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel5)}
+							>
+								{buttonLabel5}
+							</Button>
+						</span>
 					)}
-					<Button buttonType="square" onClick={this.handleNextButtonClick}>
-						{">"}
-					</Button>
+					<span className={classes.nextButton}>
+						<Button
+							borderColor={Theme.primaryDark}
+							color={Theme.secondaryDark}
+							type="small"
+							onClick={this.handleNextButtonClick}
+						>
+							{">"}
+						</Button>
+					</span>
 				</div>
-				<div>
-					<div>Showing</div>
-					<div style={{ width: 120 }}>
+				<div className={classes.perPageContainer}>
+					<div className={classes.perPageText}>Showing</div>
+					<div className={classes.perPage}>
 						<InputField
 							inputType={InputTypes.Select}
 							isMulti={false}
@@ -129,14 +177,16 @@ class Pagination extends React.Component<IProps> {
 								value: { label: rowsPerPage, value: rowsPerPage },
 								onChange: onChangeRowsPerPage
 							}}
+							showDropDownArrowIcons={true}
+							dropDownIndicatorColor={Theme.secondary}
 							options={this.rowsPerPageOptions}
 						/>
 					</div>
+					<div className={classes.perPageText}>of {count}</div>
 				</div>
-				<div>of {count}</div>
 			</div>
 		)
 	}
 }
 
-export default Pagination
+export default injectSheet(styles)(Pagination)

@@ -25,6 +25,7 @@ class Table<TData> extends React.Component<IProps<TData>> {
 					<EnhancedToolbar
 						DefaultBtn={this.props.DefaultBtn}
 						SelectedBtn={this.props.SelectedBtn}
+						SearchBar={this.props.SearchBar}
 						tableTitle={this.props.tableTitle}
 						numSelected={this.props.selected ? this.props.selected.length : 0}
 					/>

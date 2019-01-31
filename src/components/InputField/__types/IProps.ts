@@ -16,6 +16,9 @@ export interface IProps<TValue = string | string[] | number | boolean | ArrayBuf
 	readonly options?: ReadonlyArray<IDropDownData<TValue>>
 	readonly meta?: Partial<WrappedFieldMetaProps>
 	readonly inputType?: InputTypes
+	readonly showDropDownArrowIcons?: boolean
+	readonly selectBackgroundColor?: string
+	readonly dropDownIndicatorColor?: string
 }
 
 interface IInput<TValue> {
