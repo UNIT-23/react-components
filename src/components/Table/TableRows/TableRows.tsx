@@ -1,17 +1,18 @@
 import * as React from "react"
+import { withStyles } from "@material-ui/core"
 import TableCell from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 
 import InputField from "../../InputField/InputField"
+import TrashIcon from "../../Icons/TrashIcon"
+import EditIcon from "../../Icons/EditIcon"
+
+import materialThemeWrapper from "../../MaterialThemeWrapper/MaterialThemeWrapper"
 
 import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
 import { InputTypes } from "../../../models/InputTypes"
 
-import TrashIcon from "../../Icons/TrashIcon"
-import EditIcon from "../../Icons/EditIcon"
-import { withStyles } from "@material-ui/core"
-import materialThemeWrapper from "../../MaterialThemeWrapper/MaterialThemeWrapper"
 import { styles } from "./styles"
 
 function stableSort<TData>(
@@ -70,7 +71,9 @@ function TableRows<TData>({
 				.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 				.map((row: ITableData<TData>) => {
 					const isSelected: boolean = selected.includes(row.id.value)
-					const rowNames: ReadonlyArray<keyof TData> = columns.map((c: ITableHeader<TData>) => c.id) as any
+					const rowNames: ReadonlyArray<keyof TData> = columns.map(
+						(c: ITableHeader<TData>) => c.id as keyof TData
+					)
 
 					return (
 						<TableRow
@@ -82,6 +85,7 @@ function TableRows<TData>({
 							aria-checked={isSelected}
 							className={classes.root}
 							onClick={rowClickHandler(handleSelectClick, row.id.value)}
+							className={classes.row}
 						>
 							{!!handleSelectClick && (
 								<TableCell padding="checkbox">
@@ -96,17 +100,19 @@ function TableRows<TData>({
 									</TableCell>
 								))}
 							{!handleSelectClick && (
-								<TableCell className={classes.tableCell}>
-									{editHandler && (
-										<div onClick={editHandler}>
-											<EditIcon />
-										</div>
-									)}
-									{deleteHandler && (
-										<div onClick={deleteHandler(row.id.value as number)}>
-											<TrashIcon />
-										</div>
-									)}
+								<TableCell padding="checkbox">
+									<div className={classes.controls}>
+										{!!editHandler && (
+											<div onClick={editHandler}>
+												<EditIcon />
+											</div>
+										)}
+										{!!deleteHandler && (
+											<div onClick={deleteHandler(row.id.value as number)}>
+												<TrashIcon />
+											</div>
+										)}
+									</div>
 								</TableCell>
 							)}
 						</TableRow>
@@ -122,8 +128,9 @@ function TableRows<TData>({
 }
 
 // TODO: Remove class
-export default class WrappedTableRows<T> extends React.Component<
-	WrappedTableRows<T>["C"] extends React.ComponentType<infer P> ? P : never,
+// tslint:disable-next-line:max-classes-per-file
+export default class WrappedGenericComponent<T> extends React.Component<
+	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P> ? P : never,
 	{}
 > {
 	private readonly C = materialThemeWrapper<IProps<T>>(
