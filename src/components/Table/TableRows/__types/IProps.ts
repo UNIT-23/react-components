@@ -1,4 +1,4 @@
-import { StyledComponentProps } from "react-jss"
+import { StyledComponentProps } from "@material-ui/core"
 
 export interface IProps<TData> extends StyledComponentProps {
 	readonly rows: ReadonlyArray<ITableData<TData>>

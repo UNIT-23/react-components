@@ -19,5 +19,6 @@ export interface IProps<TData> extends StyledComponentProps {
 	readonly rowsPerPage: number
 	readonly selected?: ReadonlyArray<number>
 	readonly SelectedBtn?: JSX.Element
+	readonly SearchBar?: JSX.Element
 	readonly tableTitle: JSX.Element
 }

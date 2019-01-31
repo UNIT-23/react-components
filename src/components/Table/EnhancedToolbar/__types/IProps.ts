@@ -7,4 +7,5 @@ export interface IProps extends Partial<WithTheme<typeof Theme>>, StyledComponen
 	readonly numSelected?: number
 	readonly SelectedBtn?: JSX.Element
 	readonly tableTitle?: JSX.Element
+	readonly SearchBar?: JSX.Element
 }

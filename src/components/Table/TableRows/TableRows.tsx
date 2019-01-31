@@ -7,7 +7,7 @@ import InputField from "../../InputField/InputField"
 import TrashIcon from "../../Icons/TrashIcon"
 import EditIcon from "../../Icons/EditIcon"
 
-import { materialThemeWrapper } from "../../../.."
+import materialThemeWrapper from "../../MaterialThemeWrapper/MaterialThemeWrapper"
 
 import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
@@ -83,8 +83,8 @@ function TableRows<TData>({
 							role="checkbox"
 							selected={isSelected}
 							aria-checked={isSelected}
+							className={classes.root}
 							onClick={rowClickHandler(handleSelectClick, row.id.value)}
-							className={classes.row}
 						>
 							{!!handleSelectClick && (
 								<TableCell padding="checkbox">
@@ -94,7 +94,7 @@ function TableRows<TData>({
 							{rowNames
 								.filter((rowName: keyof TData) => rowName !== "id")
 								.map((rowName: keyof TData, i: number) => (
-									<TableCell key={i} align={"center"}>
+									<TableCell key={i} align={"center"} className={classes.tableCell}>
 										{row[rowName].component}
 									</TableCell>
 								))}

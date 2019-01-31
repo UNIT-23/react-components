@@ -7,3 +7,11 @@ export enum Values {
 	maxButtons = 5,
 	defaultRowsPerPage = 5
 }
+
+export enum PageNumber {
+	One,
+	Two,
+	Three,
+	Four,
+	Five
+}
