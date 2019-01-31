@@ -1,5 +1,3 @@
-import * as React from "react"
-
 export interface IProps<TData> {
 	readonly numSelected: number
 	readonly onRequestSort: Function

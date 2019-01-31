@@ -26,6 +26,19 @@ export const MuiTheme: MaterialThemeType = createMuiTheme({
 	palette: {
 		background: {
 			default: Theme.primaryLight
+		},
+		primary: {
+			main: Theme.primary,
+			light: Theme.primaryLight
+		},
+		secondary: {
+			main: Theme.secondary
+		},
+		text: {
+			primary: Theme.info
+		},
+		grey: {
+			"100": Theme.gray
 		}
 	}
 })

@@ -6,6 +6,7 @@ export const styles = () =>
 		root: {
 			backgroundColor: Theme.gray,
 			textAlign: "center",
+			border: "none",
 			"& span": {
 				"& span": {
 					color: Theme.icons,

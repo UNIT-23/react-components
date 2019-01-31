@@ -5,7 +5,6 @@ import TableCell from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 
 import HeaderRows from "./HeaderRows/HeaderRows"
-
 import InputField from "../../InputField/InputField"
 
 import { InputTypes } from "../../../models/InputTypes"
