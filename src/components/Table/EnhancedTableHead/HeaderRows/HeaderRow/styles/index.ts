@@ -5,6 +5,7 @@ export const styles = () =>
 	createStyles({
 		root: {
 			backgroundColor: Theme.gray,
+			textAlign: "center",
 			"& span": {
 				"& span": {
 					color: Theme.icons,
