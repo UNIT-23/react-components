@@ -10,7 +10,7 @@ import { CirclePicker } from "react-color"
 import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
 
 import { styles } from "./styles"
-
+// @ts-ignore
 import { FilePond } from "react-filepond"
 
 // Import FilePond styles

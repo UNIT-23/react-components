@@ -11,6 +11,7 @@ const EnhancedTableToolbar: React.SFC<IProps> = ({
 	tableTitle,
 	numSelected,
 	DefaultBtn,
+	SearchBar,
 	SelectedBtn,
 	classes
 }: IProps): JSX.Element => (
@@ -24,7 +25,9 @@ const EnhancedTableToolbar: React.SFC<IProps> = ({
 				tableTitle
 			)}
 		</div>
-		<div className={classes.spacer} />
+		<div className={classes.searchBarSpacer} />
+		<div className={classes.searchBar}>{SearchBar && <>{SearchBar}</>}</div>
+		<div className={classes.actionButtonSpacer} />
 		<div className={classes.actions}>
 			{numSelected > 0 ? SelectedBtn && <>{SelectedBtn}</> : DefaultBtn && <>{DefaultBtn}</>}
 		</div>

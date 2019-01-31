@@ -6,7 +6,7 @@ import InputField from "../../InputField/InputField"
 import { InputTypes } from "../../../models/InputTypes"
 
 import { IProps } from "./__types/IProps"
-import { Values } from "./__types/Values"
+import { Values, PageNumber } from "./__types/Values"
 import { styles } from "./styles"
 import injectSheet from "react-jss"
 import { Theme } from "../../../theme"
@@ -84,47 +84,84 @@ class Pagination extends React.Component<IProps> {
 
 		return (
 			<div className={classes.container}>
-				<div>
+				<div className={classes.paginationContainer}>
 					<span className={classes.previousButton}>
-						<Button buttonType="square" onClick={this.handleBackButtonClick}>
+						<Button
+							borderColor={Theme.primaryDark}
+							color={Theme.secondaryDark}
+							onClick={this.handleBackButtonClick}
+							type="small"
+						>
 							{"<"}
 						</Button>
 					</span>
 					{maxPages >= Values.buttonLabel1 && (
-						<span className={classes.paginationPaddingRight}>
-							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel1)}>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.One && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel1)}
+							>
 								{buttonLabel1}
 							</Button>
 						</span>
 					)}
 					{maxPages >= Values.buttonLabel2 && (
-						<span className={classes.paginationPaddingRight}>
-							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel2)}>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Two && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel2)}
+							>
 								{buttonLabel2}
 							</Button>
 						</span>
 					)}
 					{maxPages >= Values.buttonLabel3 && (
-						<span className={classes.paginationPaddingRight}>
-							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel3)}>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Three && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel3)}
+							>
 								{buttonLabel3}
 							</Button>
 						</span>
 					)}
 					{maxPages >= Values.buttonLabel4 && (
-						<span className={classes.paginationPaddingRight}>
-							<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel4)}>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Four && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel4)}
+							>
 								{buttonLabel4}
 							</Button>
 						</span>
 					)}
 					{maxPages >= Values.buttonLabel5 && (
-						<Button buttonType="square" onClick={this.goToPageHandler(buttonLabel5)}>
-							{buttonLabel5}
-						</Button>
+						<span className={classes.paginationButton}>
+							<Button
+								borderColor={Theme.primaryDark}
+								color={page === PageNumber.Five && Theme.secondaryDark}
+								type="small"
+								onClick={this.goToPageHandler(buttonLabel5)}
+							>
+								{buttonLabel5}
+							</Button>
+						</span>
 					)}
 					<span className={classes.nextButton}>
-						<Button buttonType="square" onClick={this.handleNextButtonClick}>
+						<Button
+							borderColor={Theme.primaryDark}
+							color={Theme.secondaryDark}
+							type="small"
+							onClick={this.handleNextButtonClick}
+						>
 							{">"}
 						</Button>
 					</span>

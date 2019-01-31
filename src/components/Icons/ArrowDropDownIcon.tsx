@@ -10,7 +10,7 @@ interface IProps {
 
 const ArrowDropDownIcon: React.SFC<IProps> = ({
 	color = "#222",
-	size = Fonts.iconSize.small,
+	size = Fonts.iconSize.mini,
 	fill = "none"
 }: IProps): JSX.Element => (
 	<svg

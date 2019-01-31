@@ -96,15 +96,17 @@ export const getSelectStyles = (
 	}),
 	dropdownIndicator: (base: Object) => ({
 		...base,
-		"& svg": showDropDownArrowIcons
-			? {
-					width: 14,
-					height: 10
-			  }
-			: {
-					width: 18,
-					height: 21
-			  }
+		"& div": {
+			"& svg": showDropDownArrowIcons
+				? {
+						width: 14,
+						height: 10
+				  }
+				: {
+						width: 18,
+						height: 21
+				  }
+		}
 	}),
 	options: (base: Object) => ({
 		...base,

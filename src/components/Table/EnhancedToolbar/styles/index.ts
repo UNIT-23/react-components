@@ -9,10 +9,10 @@ export default (theme: typeof MuiTheme): StyleRules =>
 		root: {
 			backgroundColor: Theme.primaryLight
 		},
-		spacer: {
+		searchBarSpacer: {
 			flex: "0 1 5%"
 		},
-		actions: {
+		searchBar: {
 			color: theme.palette.text.secondary,
 			maxWidth: 281,
 			"& input": {
@@ -23,6 +23,9 @@ export default (theme: typeof MuiTheme): StyleRules =>
 					color: "#D3D7E1"
 				}
 			}
+		},
+		actionButtonSpacer: {
+			flex: "1 1 0%"
 		},
 		title: {
 			flex: "0 0 auto",

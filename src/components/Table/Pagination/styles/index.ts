@@ -1,11 +1,14 @@
 import { Styles } from "react-jss"
-import { Fonts } from "../../../../theme"
+import { Fonts, Theme } from "../../../../theme"
 
 export const styles: Styles = {
 	container: {
 		display: "flex",
 		justifyContent: "center",
 		marginTop: 40
+	},
+	paginationContainer: {
+		display: "flex"
 	},
 	perPageContainer: {
 		display: "flex",
@@ -25,15 +28,22 @@ export const styles: Styles = {
 	},
 	perPageText: {
 		fontSize: Fonts.size.regular,
-		fontFamily: Fonts.type.base
+		fontFamily: Fonts.type.base,
+		color: Theme.icons
 	},
 	previousButton: {
-		marginRight: 32
+		"& button": {
+			margin: "13px 28px 21px 0px"
+		}
 	},
 	nextButton: {
-		marginLeft: 32
+		"& button": {
+			margin: "13px 0px 21px 28px"
+		}
 	},
-	paginationPaddingRight: {
-		paddingRight: 5
+	paginationButton: {
+		"& button": {
+			margin: "13px 2px 21px 2px"
+		}
 	}
 }
