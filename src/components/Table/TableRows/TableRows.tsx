@@ -102,12 +102,12 @@ function TableRows<TData>({
 								<TableCell padding="checkbox">
 									<div className={classes.controls}>
 										{editHandler && (
-											<div onClick={editHandler}>
+											<div onClick={editHandler(row)}>
 												<EditIcon />
 											</div>
 										)}
 										{deleteHandler && (
-											<div onClick={deleteHandler(row.id.value as number)}>
+											<div onClick={deleteHandler(row)}>
 												<TrashIcon />
 											</div>
 										)}

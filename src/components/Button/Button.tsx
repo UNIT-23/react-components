@@ -12,7 +12,7 @@ function Button({ children, type, onClick, classes, theme }: IProps) {
 			return (
 				<div className={classes.addBtn} onClick={onClick}>
 					<PlusIcon color={theme.secondary} className={classes.icon} />
-					<div className={classes.span}>{children} </div>
+					<div className={classes.span}>Create</div>
 				</div>
 			)
 			break
