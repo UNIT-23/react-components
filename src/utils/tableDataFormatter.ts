@@ -13,5 +13,5 @@ export function tableDataFormatter<T extends Record<keyof T, React.ReactNode>>(d
 		} as any
 	})
 
-	return formatedData
+	return formatedData as ITableData<T>
 }
