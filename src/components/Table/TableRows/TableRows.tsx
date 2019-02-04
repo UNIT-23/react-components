@@ -82,9 +82,9 @@ function TableRows<TData>({
 							hover={true}
 							tabIndex={-1}
 							role="checkbox"
+							className={classes.root}
 							selected={isSelected}
 							aria-checked={isSelected}
-							className={classes.root}
 							onClick={rowClickHandler(handleSelectClick, row.id.value)}
 						>
 							{!!handleSelectClick && (
