@@ -21,12 +21,16 @@ export const styles = (theme: typeof Theme) => ({
 		width: 40,
 		height: 40,
 		borderRadius: 2,
+		// tslint:disable:no-any
 		background: (props: IProps) => {
 			if (props.color) {
-				// tslint:disable-next-line:no-any
 				const rgbColor = (props.color as any).rgb as RGBColor
 
-				return `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, ${rgbColor.a})`
+				if (rgbColor) {
+					return `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, ${rgbColor.a})`
+				}
+
+				return (props.color as any).hex
 			}
 
 			return theme.secondaryLight
