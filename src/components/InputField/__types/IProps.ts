@@ -1,5 +1,6 @@
 import { StyledComponentProps } from "react-jss"
 import { BaseFieldProps, WrappedFieldMetaProps } from "redux-form"
+import { ColorResult } from "react-color"
 
 // tslint:disable:readonly-array
 
@@ -28,6 +29,6 @@ interface IInput<TValue> {
 	onDragStart?(value: TValue | React.DragEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
 	onDrop?(value: TValue | React.DragEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
 	onFocus?(value: TValue | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
-	onChange?(value: TValue | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
+	onChange?(value: TValue | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | Element> | ColorResult): void
 	onBlur?(value: TValue | React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | Element>): void
 }
