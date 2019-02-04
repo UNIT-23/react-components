@@ -45,6 +45,8 @@ class TableExampleComponent extends TableModel<IPost, IProps> {
 			<Table<IPost>
 				count={postsCount}
 				page={page}
+				editHandler={this.editHandler}
+				deleteHandler={this.deleteHandler}
 				header={header}
 				orderBy={orderBy}
 				orderType={orderType}

@@ -14,7 +14,7 @@ import ApiSuspense from "../ApiSuspense/ApiSuspense"
 import { IProps } from "./__types/IProps"
 
 import { styles } from "./styles"
-import { withStyles } from "@material-ui/core"
+import { withStyles, withTheme } from "@material-ui/core"
 import Card from "../Card/Card"
 
 class Table<TData> extends React.Component<IProps<TData>> {
@@ -79,7 +79,11 @@ export default class WrappedGenericComponent<T> extends React.Component<
 	{}
 > {
 	private readonly C = materialThemeWrapper<IProps<T>>(
-		withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => <Table<T> {...props} />)
+		withTheme()(
+			withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => (
+				<Table<T> {...props} />
+			))
+		)
 	)
 	public render() {
 		return <this.C {...this.props} />

@@ -38,9 +38,9 @@ const Child = posed.div({
 	}
 })
 
-const Drawer: React.SFC<IProps> = ({ openModel, children }: IProps) => (
-	<Modal pose={openModel ? "enter" : "exit"}>
-		<Child style={{ height: "100%" }} pose={openModel ? "enter" : "exit"}>
+const Drawer: React.SFC<IProps> = ({ openModel, children, classes }: IProps) => (
+	<Modal pose={openModel ? "enter" : "exit"} className={classes.drawer}>
+		<Child pose={openModel ? "enter" : "exit"} className={classes.child}>
 			<Card>{children}</Card>
 		</Child>
 	</Modal>

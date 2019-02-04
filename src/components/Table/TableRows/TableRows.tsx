@@ -1,5 +1,5 @@
 import * as React from "react"
-import { withStyles } from "@material-ui/core"
+import { withStyles, withTheme } from "@material-ui/core"
 import TableCell from "@material-ui/core/TableCell"
 import TableRow from "@material-ui/core/TableRow"
 
@@ -61,7 +61,8 @@ function TableRows<TData>({
 	rowsPerPage,
 	selected = [],
 	columns,
-	classes
+	classes,
+	theme
 }: IProps<TData>): JSX.Element {
 	const emptyRows: number = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
@@ -81,10 +82,10 @@ function TableRows<TData>({
 							hover={true}
 							tabIndex={-1}
 							role="checkbox"
+							className={classes.root}
 							selected={isSelected}
 							aria-checked={isSelected}
 							onClick={rowClickHandler(handleSelectClick, row.id.value)}
-							className={classes.row}
 						>
 							{!!handleSelectClick && (
 								<TableCell padding="checkbox">
@@ -99,16 +100,16 @@ function TableRows<TData>({
 									</TableCell>
 								))}
 							{!handleSelectClick && (
-								<TableCell padding="checkbox">
+								<TableCell padding="checkbox" className={classes.tableCell}>
 									<div className={classes.controls}>
-										{!!editHandler && (
-											<div onClick={editHandler}>
-												<EditIcon />
+										{editHandler && (
+											<div onClick={editHandler(row)} className={classes.control}>
+												<EditIcon color={theme.palette.secondary.main} />
 											</div>
 										)}
-										{!!deleteHandler && (
-											<div onClick={deleteHandler(row.id.value as number)}>
-												<TrashIcon />
+										{deleteHandler && (
+											<div onClick={deleteHandler(row)} className={classes.control}>
+												<TrashIcon color={theme.palette.error.main} />
 											</div>
 										)}
 									</div>
@@ -118,7 +119,10 @@ function TableRows<TData>({
 					)
 				})}
 			{emptyRows > 0 && (
-				<TableRow style={{ height: emptyRows * Values.emptyRowHightMultiplier }}>
+				<TableRow
+					style={{ height: emptyRows * Values.emptyRowHightMultiplier }}
+					className={classes.tableCellEmpty}
+				>
 					<TableCell colSpan={Values.emptyRowSpan} />
 				</TableRow>
 			)}
@@ -133,9 +137,11 @@ export default class WrappedGenericComponent<T> extends React.Component<
 	{}
 > {
 	private readonly C = materialThemeWrapper<IProps<T>>(
-		withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof TableRows, IProps<T>>) => (
-			<TableRows<T> {...props} />
-		))
+		withTheme()(
+			withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof TableRows, IProps<T>>) => (
+				<TableRows<T> {...props} />
+			))
+		)
 	)
 	public render() {
 		return <this.C {...this.props} />

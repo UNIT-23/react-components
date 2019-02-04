@@ -1,5 +1,10 @@
 import { Styles } from "react-jss"
 
-export const styles: Styles = {
-	list: {}
+import { IProps } from "../__types/IProps"
+
+export const styles: Styles<undefined, IProps> = {
+	drawer: {},
+	child: {
+		height: "100%"
+	}
 }
