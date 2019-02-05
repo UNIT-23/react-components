@@ -5,9 +5,10 @@ import { Fonts } from "../../theme"
 interface IProps {
 	readonly color?: string
 	readonly size?: number
+	readonly className?: string
 }
 
-const ChevronRightIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium }: IProps): JSX.Element => (
+const ChevronRightIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.iconSize.medium, className }: IProps): JSX.Element => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
@@ -19,6 +20,7 @@ const ChevronRightIcon: React.SFC<IProps> = ({ color = "#222", size = Fonts.icon
 		strokeWidth="1"
 		strokeLinecap="round"
 		strokeLinejoin="round"
+		className={className}
 	>
 		<polyline points="9 18 15 12 9 6" />
 	</svg>

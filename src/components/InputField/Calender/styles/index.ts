@@ -68,7 +68,7 @@ export const styles = {
             background: "#F8FAFB",
             "font-family": "16px Roboto",
             width: "361px",
-            "margin-left": "-40px",
+            "margin-left": "-30px",
             height: "15px"
         },
         ".DateRangePickerInput_calendarIcon, .SingleDatePickerInput_calendarIcon": {
@@ -86,14 +86,22 @@ export const styles = {
         },
         ".DayPicker_weekHeader_1": {
             padding: "0px!important",
-            marginTop: "-5px"
+            marginTop: "-15px"
+        },
+        ".DayPicker_transitionContainer__horizontal": {
+            marginTop: "-10px"
         },
         ".DateRangePickerInput_arrow_svg": {
-            marginTop: "15px"
-        },
-        svg: {
-            margin: "20px"
+            width: "60px"
         }
+    },
+    rightSvg: {
+        marginBottom: "-55px",
+        marginLeft: "25px"
+    },
+    leftSvg: {
+        marginBottom: "-13px",
+        marginLeft: "15px"
     },
     myArrow: {
         // Jss-expand gives more readable syntax
