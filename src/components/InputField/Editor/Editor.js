@@ -7,7 +7,7 @@ import styles from "./styles/"
 import "./styles/react-quill.css"
 
 class EditorInput extends Component {
-	editorRefHanlder(ref) {
+	editorRefHandler(ref) {
 		const editor = ref
 
 		editor && editor.focus()
@@ -41,7 +41,7 @@ class EditorInput extends Component {
 					]}
 					placeholder="Say something..."
 					bounds=".reactQuillBounds"
-					ref={this.editorRefHanlder}
+					ref={this.editorRefHandler}
 				/>
 			</div>
 		)

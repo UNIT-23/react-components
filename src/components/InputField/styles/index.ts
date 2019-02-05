@@ -3,7 +3,7 @@ import { Fonts, Theme } from "../../../theme"
 
 // tslint:disable-next-line:no-any
 export const inputBaseStyle: any = {
-	width: "96%",
+	width: "100%",
 	marginTop: 13,
 	fontSize: Fonts.size.regular,
 	padding: {
