@@ -9,7 +9,7 @@ export let Theme: IThemeColors = {
 	secondary: "#85C733",
 	secondaryLight: "rgba(133, 199, 51, 0.12)",
 	secondaryDark: "#3D974F",
-	background: "#F9F9F9",
+	background: "rgba(249, 249, 249, 0.8)",
 	profileBackground: "#F9F9F9",
 	accent: "#FBC01B",
 	accentLight: "#fff8ed",
@@ -25,7 +25,7 @@ export let Theme: IThemeColors = {
 export const MuiTheme: MaterialThemeType = createMuiTheme({
 	palette: {
 		background: {
-			default: Theme.primaryLight
+			default: Theme.background
 		},
 		primary: {
 			main: Theme.primary,
