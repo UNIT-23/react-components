@@ -13,7 +13,7 @@ import { IProps } from "./__types/IProps"
 import { IState } from "./__types/IState"
 
 import injectSheet from "react-jss"
-import {styles} from "./styles"
+import { styles } from "./styles"
 
 function Transition(props: IProps) {
   return <Slide direction="left" {...props} />
@@ -21,7 +21,7 @@ function Transition(props: IProps) {
 
 class AlertDialogSlide extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
-	super(props);
+	super(props)
 	this.state = {
 		open: false
 	}
@@ -39,8 +39,9 @@ class AlertDialogSlide extends React.Component<IProps, IState> {
   }
 
   public render() {
-	  const {classes, handleClose, handleOpen, open} = this.props
-	return (
+		const {classes, handleClose, handleOpen, open} = this.props
+
+	 return (
 		<div>
 		<Button onClick={handleOpen || this.handleClickOpen}>delete</Button>
 		<Dialog
@@ -50,7 +51,7 @@ class AlertDialogSlide extends React.Component<IProps, IState> {
 			onClose={handleClose || this.handleClose}
 			aria-labelledby="alert-dialog-slide-title"
 			aria-describedby="alert-dialog-slide-description"
-			classes= {{
+			classes={{
 				paper: classes.paper,
 				container: classes.container
 			}}
@@ -63,12 +64,15 @@ class AlertDialogSlide extends React.Component<IProps, IState> {
 			<div className={classes.title}>{"Are you Sure you want to delete this store?"}</div>
 			</DialogTitle>
 			<DialogContent classes={{root: classes.root}}>
-			<DialogContentText id="alert-dialog-slide-description" classes={{
+			<DialogContentText
+				id="alert-dialog-slide-description"
+				classes={{
 				root: classes.text
-			}}>
-				Let Google help apps determine location .are you sure
-				you wsnt to delete this .it will delete its all data ,
-				its store
+			}}
+			>
+				Deleting the store will also delete its custom departments,
+				positions, tasks, benefits, exemptions and budgets and time
+				off requests
 			</DialogContentText>
 			</DialogContent>
 			<DialogActions>

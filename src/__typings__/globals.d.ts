@@ -4,7 +4,7 @@ interface IRootState {
 	readonly tables: ITables
 }
 
-interface IPosts extends IListPayload {
+interface IPosts extends IListPayload<IPost> {
 	readonly page: number
 	readonly orderBy: keyof IPost
 	readonly orderType: "asc" | "desc"
@@ -16,7 +16,7 @@ interface IPosts extends IListPayload {
 }
 
 interface IPost {
-	readonly id: string
+	readonly id: number
 	readonly firstname: string
 	readonly lastname: string
 	readonly email: string
@@ -114,11 +114,11 @@ enum API {
 /* ------------------------------------------------- */
 // Useful Types
 /* ------------------------------------------------- */
-interface IListPayload {
+interface IListPayload<T> {
 	readonly limit?: number
 	readonly offset?: number
 	readonly sort?: string
-	readonly orderBy?: string
+	readonly orderBy?: keyof T
 	readonly orderType?: "asc" | "desc"
 }
 

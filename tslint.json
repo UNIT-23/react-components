@@ -10,6 +10,7 @@
 	"rules": {
 		"no-empty": false,
 		"comment-format": false,
+		"no-object-mutation": false,
 		"no-parameter-properties": false,
 		"no-unused-expression": false,
 		"only-arrow-functions": false,

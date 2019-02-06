@@ -43,11 +43,13 @@ class TableExampleComponent extends TableModel<IPost, IProps> {
 
 		return (
 			<Table<IPost>
-				count={postsCount}
 				page={page}
 				header={header}
 				orderBy={orderBy}
+				count={postsCount}
 				orderType={orderType}
+				editHandler={this.editHandler}
+				deleteHandler={this.deleteHandler}
 				rowsPerPage={rowsPerPage}
 				SelectedBtn={<SelectedBtn />}
 				rows={this.formatData(posts)}

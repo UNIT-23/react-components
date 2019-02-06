@@ -14,7 +14,7 @@ class EditorInput extends Component {
 	}
 
 	render() {
-		const { classes, ...rest } = this.props
+		const { classes, theme, ...rest } = this.props
 
 		return (
 			<div className={`reactQuillBounds ${classes.editor}`}>

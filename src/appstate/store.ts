@@ -9,7 +9,7 @@ import Reactotron from "reactotron-react-js"
 // @ts-ignore
 import { reactotronRedux } from "reactotron-redux"
 
-// import sagaPlugin from "reactotron-redux-saga"
+import sagaPlugin from "reactotron-redux-saga"
 
 import { rootReducer } from "./rootReducer"
 
@@ -20,14 +20,13 @@ function configureStore() {
 	// Source: https://github.com/infinitered/reactotron
 	if (process.env.NODE_ENV !== "production") {
 		const reactotron = Reactotron.configure()
-			// TODO: Activate sagaPlugin https://github.com/infinitered/reactotron/issues/917#issue-403886155
-			// .use(sagaPlugin({}))
+			.use(sagaPlugin({}))
 			.use(reactotronRedux())
 			.connect()
 
-		// const sagaMonitor = reactotron.createSagaMonitor()
+		const sagaMonitor = reactotron.createSagaMonitor()
 
-		const sagaMiddleware_DEV = createSagaMiddleware({})
+		const sagaMiddleware_DEV = createSagaMiddleware({ sagaMonitor })
 
 		// Imported as on Docs
 		const immutabilityCheckMiddleware = require("redux-immutable-state-invariant").default()

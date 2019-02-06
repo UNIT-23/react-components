@@ -1,10 +1,11 @@
-import { Theme } from "../../../../theme"
+import { createStyles, Theme } from "@material-ui/core"
 
-export const styles = {
-    root: {
-        color: `${Theme.secondary}!important`
-    },
-    checked: {
-        color: `${Theme.secondary}!important`
-    }
-}
+export const styles = (theme: Theme) =>
+	createStyles({
+	root: {
+		color: `${theme.palette.secondary.main}!important`
+	},
+	checked: {
+		color: `${theme.palette.secondary.main}!important`
+	}
+	})
