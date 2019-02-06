@@ -28,7 +28,7 @@ function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValu
 		case InputTypes.Select:
 			const onBlurForSelect = (_: React.ChangeEvent) => {
 				onBlur(value)
-			}
+		}
 
 			return <Select onBlur={onBlurForSelect} onFocus={onFocus} onChange={onChange} {...rest} />
 		case InputTypes.Editor:

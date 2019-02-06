@@ -105,8 +105,11 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						showDefaultInputIcon
 						displayFormat="YYYY-MM-DD"
 						hideKeyboardShortcutsPanel
-						navPrev={<Left />}
-						navNext={<div className={classes.rangeArrow}><Right /></div>}
+						navPrev={<Left className={classes.leftSvg} />}
+						navNext={
+							<div className={classes.rangeArrow}>
+								<Right className={classes.rightSvg} />
+							</div>}
 						isOutsideRange={outRangeDates}
 					/>
 				) : (
@@ -122,8 +125,11 @@ class CalenderComponent extends React.Component<IProps, IState> {
 						isOutsideRange={outRangeDates}
 						numberOfMonths={1}
 						hideKeyboardShortcutsPanel
-						navPrev={<Left />}
-						navNext={<div className={classes.myArrow}><Right /></div>}
+						navPrev={<Left className={classes.leftSvg} />}
+						navNext={
+							<div className={classes.myArrow}>
+								<Right className={classes.rightSvg} />
+							</div>}
 					/>
 				)}
 			</div>

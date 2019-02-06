@@ -7,7 +7,7 @@ import InputField from "../../InputField/InputField"
 import TrashIcon from "../../Icons/TrashIcon"
 import EditIcon from "../../Icons/EditIcon"
 
-import materialThemeWrapper from "../../MaterialThemeWrapper/MaterialThemeWrapper"
+import { materialThemeWrapper } from "../../../.."
 
 import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
@@ -59,7 +59,7 @@ function TableRows<TData>({
 	orderBy,
 	page,
 	rowsPerPage,
-	selected = [],
+	selected= [],
 	columns,
 	classes,
 	theme
@@ -95,7 +95,7 @@ function TableRows<TData>({
 							{rowNames
 								.filter((rowName: keyof TData) => rowName !== "id")
 								.map((rowName: keyof TData, i: number) => (
-									<TableCell key={i} align={"center"} className={classes.tableCell}>
+									<TableCell key={i} align={"center"}>
 										{row[rowName].component}
 									</TableCell>
 								))}
@@ -133,9 +133,9 @@ function TableRows<TData>({
 // TODO: Remove class
 // tslint:disable-next-line:max-classes-per-file
 export default class WrappedGenericComponent<T> extends React.Component<
-	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P> ? P : never,
+	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P>? P: never,
 	{}
-> {
+	> {
 	private readonly C = materialThemeWrapper<IProps<T>>(
 		withTheme()(
 			withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof TableRows, IProps<T>>) => (
