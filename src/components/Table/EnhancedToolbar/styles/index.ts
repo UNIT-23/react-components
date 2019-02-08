@@ -1,13 +1,11 @@
-import { createStyles } from "@material-ui/core"
+import { createStyles, Theme } from "@material-ui/core"
 import { StyleRules } from "@material-ui/core/styles/withStyles"
-import { Theme, Fonts } from "../../../../theme"
+import { Fonts } from "../../../../theme"
 
-import { MuiTheme } from "../../../../theme/"
-
-export default (theme: typeof MuiTheme): StyleRules =>
+export default (theme: Theme): StyleRules =>
 	createStyles({
 		root: {
-			backgroundColor: Theme.primaryLight
+			backgroundColor: theme.palette.primary.light
 		},
 		searchBarSpacer: {
 			flex: "0 1 5%"
@@ -18,7 +16,7 @@ export default (theme: typeof MuiTheme): StyleRules =>
 			"& input": {
 				maxHeight: 41,
 				marginTop: 0,
-				backgroundColor: Theme.gray,
+				backgroundColor: theme.palette.grey["100"],
 				"&::-webkit-input-placeholder": {
 					color: "#D3D7E1"
 				}
@@ -30,7 +28,7 @@ export default (theme: typeof MuiTheme): StyleRules =>
 		title: {
 			flex: "0 0 auto",
 			fontWeight: 500,
-			color: Theme.secondary,
+			color: theme.palette.secondary.main,
 			textTransform: "uppercase",
 			fontSize: Fonts.size.h5
 		}

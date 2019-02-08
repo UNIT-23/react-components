@@ -11,7 +11,7 @@ const SelectedBtn = ({ theme }: IProps) => (
 			cursor: "pointer"
 		}}
 	>
-		<TrashIcon color={theme.danger} fill={theme.danger} />
+		<TrashIcon color={theme.danger} />
 	</div>
 )
 
