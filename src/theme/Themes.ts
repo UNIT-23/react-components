@@ -23,6 +23,9 @@ export let Theme: IThemeColors = {
 }
 
 export const MuiTheme: MaterialThemeType = createMuiTheme({
+	typography: {
+		useNextVariants: true
+	},
 	palette: {
 		background: {
 			default: Theme.background
