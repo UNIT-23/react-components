@@ -52,3 +52,8 @@ declare module "*.module.sass" {
 	const classes: { readonly [key: string]: string }
 	export default classes
 }
+
+declare module "reactotron-react-js" {}
+declare module "reactotron-redux" {}
+declare module "reactotron-redux-saga" {}
+declare module "redux-immutable-state-invariant" {}
