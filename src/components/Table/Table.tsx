@@ -1,71 +1,94 @@
-import * as React from "react"
+import { withStyles, withTheme } from "@material-ui/core"
 import MaterialTable from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
-
+import * as React from "react"
+import ApiSuspense from "../ApiSuspense/ApiSuspense"
+import Card from "../Card/Card"
+import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 import EnhancedTableHead from "./EnhancedTableHead/EnhancedTableHead"
 import EnhancedToolbar from "./EnhancedToolbar/EnhancedToolbar"
-import TableRows from "./TableRows/TableRows"
 import Pagination from "./Pagination/Pagination"
-
-import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
-
-import ApiSuspense from "../ApiSuspense/ApiSuspense"
-
-import { IProps } from "./__types/IProps"
-
 import { styles } from "./styles"
-import { withStyles, withTheme } from "@material-ui/core"
-import Card from "../Card/Card"
+import TableRows from "./TableRows/TableRows"
+import { IProps } from "./__types/IProps"
 
 class Table<TData> extends React.Component<IProps<TData>> {
 	public render() {
+		const {
+			classes,
+			count,
+			dataRequestState,
+			DefaultBtn,
+			deleteHandler,
+			editHandler,
+			handleSelectAllClick,
+			handleSelectClick,
+			header,
+			onChangePage,
+			onChangeRowsPerPage,
+			onChangeSort,
+			orderBy,
+			orderType,
+			page,
+			rows,
+			rowsPerPage,
+			SearchBar,
+			selected,
+			SelectedBtn,
+			tableTitle,
+		} = this.props
+
 		return (
 			<Card>
-				<div className={this.props.classes.root}>
-					<EnhancedToolbar
-						DefaultBtn={this.props.DefaultBtn}
-						SelectedBtn={this.props.SelectedBtn}
-						SearchBar={this.props.SearchBar}
-						tableTitle={this.props.tableTitle}
-						numSelected={this.props.selected ? this.props.selected.length : 0}
-					/>
-					<div className={this.props.classes.tableWrapper}>
-						<ApiSuspense apiState={this.props.dataRequestState}>
-							<MaterialTable className={this.props.classes.table}>
+				<div className={classes.root}>
+					{!!tableTitle && (
+						<EnhancedToolbar
+							DefaultBtn={DefaultBtn}
+							SelectedBtn={SelectedBtn}
+							SearchBar={SearchBar}
+							tableTitle={tableTitle}
+							numSelected={selected ? selected.length : 0}
+						/>
+					)}
+					<div className={classes.tableWrapper}>
+						<ApiSuspense apiState={dataRequestState}>
+							<MaterialTable className={classes.table}>
 								<EnhancedTableHead<TData>
-									numSelected={this.props.selected ? this.props.selected.length : 0}
-									columns={this.props.header}
-									orderType={this.props.orderType}
-									orderBy={this.props.orderBy}
-									handleSelectClick={this.props.handleSelectClick}
-									onSelectAllClick={this.props.handleSelectAllClick}
-									onRequestSort={this.props.onChangeSort}
-									rowCount={this.props.rows.length}
+									numSelected={selected ? selected.length : 0}
+									columns={header}
+									orderType={orderType}
+									orderBy={orderBy}
+									handleSelectClick={handleSelectClick}
+									onSelectAllClick={handleSelectAllClick}
+									onRequestSort={onChangeSort}
+									rowCount={rows.length}
 								/>
 								<TableBody>
 									<TableRows<TData>
-										columns={this.props.header}
-										deleteHandler={this.props.deleteHandler}
-										editHandler={this.props.editHandler}
-										handleSelectClick={this.props.handleSelectClick}
-										orderBy={this.props.orderBy}
-										orderType={this.props.orderType}
-										page={this.props.page}
-										rows={this.props.rows}
-										rowsPerPage={this.props.rowsPerPage}
-										selected={this.props.selected}
+										columns={header}
+										deleteHandler={deleteHandler}
+										editHandler={editHandler}
+										handleSelectClick={handleSelectClick}
+										orderBy={orderBy}
+										orderType={orderType}
+										page={page}
+										rows={rows}
+										rowsPerPage={rowsPerPage}
+										selected={selected}
 									/>
 								</TableBody>
 							</MaterialTable>
 						</ApiSuspense>
 					</div>
-					<Pagination
-						page={this.props.page}
-						count={this.props.count}
-						rowsPerPage={this.props.rowsPerPage}
-						onChangePage={this.props.onChangePage}
-						onChangeRowsPerPage={this.props.onChangeRowsPerPage}
-					/>
+					{!!rowsPerPage && (
+						<Pagination
+							page={page}
+							count={count}
+							rowsPerPage={rowsPerPage}
+							onChangePage={onChangePage}
+							onChangeRowsPerPage={onChangeRowsPerPage}
+						/>
+					)}
 				</div>
 			</Card>
 		)
@@ -75,15 +98,22 @@ class Table<TData> extends React.Component<IProps<TData>> {
 // TODO: Remove class
 // tslint:disable-next-line:max-classes-per-file
 export default class WrappedGenericComponent<T> extends React.Component<
-	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P> ? P : never,
+	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P>
+		? P
+		: never,
 	{}
 > {
 	private readonly C = materialThemeWrapper<IProps<T>>(
 		withTheme()(
-			withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => (
-				<Table<T> {...props} />
-			))
-		)
+			withStyles(styles)(
+				(
+					props: JSX.LibraryManagedAttributes<
+						typeof Table,
+						IProps<T>
+					>,
+				) => <Table<T> {...props} />,
+			),
+		),
 	)
 	public render() {
 		return <this.C {...this.props} />

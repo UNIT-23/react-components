@@ -58,7 +58,8 @@
 		"object-literal-sort-keys": false,
 		"object-literal-key-quotes": false,
 		"ban-types": false,
-		"trailing-comma": false
+		"trailing-comma": false,
+		"completed-docs": false
 	},
 	"defaultSeverity": "error"
 }
