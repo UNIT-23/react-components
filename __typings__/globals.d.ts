@@ -43,7 +43,7 @@ interface IAlert {
 declare enum AlertLevel {
 	Success = "Success",
 	Warning = "Warning",
-	Error = "Error"
+	Error = "Error",
 }
 
 declare enum WeekDays {
@@ -53,7 +53,7 @@ declare enum WeekDays {
 	Wednesday = "Wednesday",
 	Thursday = "Thursday",
 	Friday = "Friday",
-	Saturday = "Saturday"
+	Saturday = "Saturday",
 }
 
 declare enum InputTypes {
@@ -65,7 +65,7 @@ declare enum InputTypes {
 	File = "file",
 	Calender = "calender",
 	TimePicker = "timepicker",
-	ColorPicker = "colorpicker"
+	ColorPicker = "colorpicker",
 }
 
 interface IStartEndOfWeek {
@@ -108,12 +108,17 @@ declare enum API {
 	NOT_REQUESTED = "API_NOT_REQUESTED",
 	REQUEST_PENDING = "API_REQUEST_PENDING",
 	REQUEST_SUCCESS = "API_REQUEST_SUCCESS",
-	REQUEST_ERROR = "API_REQUEST_ERROR"
+	REQUEST_ERROR = "API_REQUEST_ERROR",
 }
 
 /* ------------------------------------------------- */
 // Useful Types
 /* ------------------------------------------------- */
+
+interface IDefaultDataType {
+	readonly id: number
+	readonly name: string
+}
 interface IListPayload<T> {
 	readonly limit?: number
 	readonly offset?: number
@@ -147,7 +152,7 @@ interface IDropDownData<T = number | string> {
 declare enum SuperPrivileges {
 	None = "none",
 	Read = "read",
-	Write = "write"
+	Write = "write",
 }
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>

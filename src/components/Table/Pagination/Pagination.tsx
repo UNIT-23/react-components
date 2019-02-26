@@ -1,15 +1,13 @@
 import * as React from "react"
-
+import injectSheet from "react-jss"
+import { InputTypes } from "../../../models/InputTypes"
+import { Theme } from "../../../theme"
 import Button from "../../Button/Button"
 import InputField from "../../InputField/InputField"
-
-import { InputTypes } from "../../../models/InputTypes"
-
-import { IProps } from "./__types/IProps"
-import { Values, PageNumber } from "./__types/Values"
 import { styles } from "./styles"
-import injectSheet from "react-jss"
-import { Theme } from "../../../theme"
+import { IProps } from "./__types/IProps"
+import { PageNumber, Values } from "./__types/Values"
+
 class Pagination extends React.Component<IProps> {
 	public constructor(props: IProps) {
 		super(props)
@@ -18,13 +16,14 @@ class Pagination extends React.Component<IProps> {
 		this.handleNextButtonClick = this.handleNextButtonClick.bind(this)
 	}
 
-	private readonly rowsPerPageOptions: ReadonlyArray<IDropDownData> = [
-		{ label: "5", value: 5 },
-		{ label: "10", value: 10 },
-		{ label: "25", value: 25 }
-	]
+	private readonly rowsPerPageOptions: ReadonlyArray<{
+		readonly id: number
+		readonly name: string
+	}> = [{ name: "5", id: 5 }, { name: "10", id: 10 }, { name: "25", id: 25 }]
 
-	public goToPageHandler(page: number): (event: React.MouseEvent<HTMLButtonElement>) => void {
+	public goToPageHandler(
+		page: number,
+	): (event: React.MouseEvent<HTMLButtonElement>) => void {
 		return (event: React.MouseEvent<HTMLButtonElement>) => {
 			const indexZeroAdjustedPage = page - 1
 
@@ -60,27 +59,60 @@ class Pagination extends React.Component<IProps> {
 		return Math.ceil(this.props.count / this.props.rowsPerPage)
 	}
 
-	private getNavButtonNumber(index: number, page: number, maxPages: number): number {
-		const maxButtons = maxPages > Values.maxButtons ? Values.maxButtons : maxPages
+	private getNavButtonNumber(
+		index: number,
+		page: number,
+		maxPages: number,
+	): number {
+		const maxButtons =
+			maxPages > Values.maxButtons ? Values.maxButtons : maxPages
 		const diffFromLastButton = maxButtons - index
 		const diffFromAbsoluteLastPage = maxPages - diffFromLastButton
 
 		const normalCurrentButtonLabel = page + index
 
-		return normalCurrentButtonLabel > diffFromAbsoluteLastPage ? diffFromAbsoluteLastPage : normalCurrentButtonLabel
+		return normalCurrentButtonLabel > diffFromAbsoluteLastPage
+			? diffFromAbsoluteLastPage
+			: normalCurrentButtonLabel
 	}
 
 	public render(): JSX.Element {
-		const { page, count, rowsPerPage, onChangeRowsPerPage, classes: jssClasses } = this.props
+		const {
+			page,
+			count,
+			rowsPerPage,
+			onChangeRowsPerPage,
+			classes: jssClasses,
+		} = this.props
 		const classes = jssClasses as any
 
 		const maxPages = this.maxPages()
 
-		const buttonLabel1 = this.getNavButtonNumber(Values.buttonLabel1, page, maxPages)
-		const buttonLabel2 = this.getNavButtonNumber(Values.buttonLabel2, page, maxPages)
-		const buttonLabel3 = this.getNavButtonNumber(Values.buttonLabel3, page, maxPages)
-		const buttonLabel4 = this.getNavButtonNumber(Values.buttonLabel4, page, maxPages)
-		const buttonLabel5 = this.getNavButtonNumber(Values.buttonLabel5, page, maxPages)
+		const buttonLabel1 = this.getNavButtonNumber(
+			Values.buttonLabel1,
+			page,
+			maxPages,
+		)
+		const buttonLabel2 = this.getNavButtonNumber(
+			Values.buttonLabel2,
+			page,
+			maxPages,
+		)
+		const buttonLabel3 = this.getNavButtonNumber(
+			Values.buttonLabel3,
+			page,
+			maxPages,
+		)
+		const buttonLabel4 = this.getNavButtonNumber(
+			Values.buttonLabel4,
+			page,
+			maxPages,
+		)
+		const buttonLabel5 = this.getNavButtonNumber(
+			Values.buttonLabel5,
+			page,
+			maxPages,
+		)
 
 		return (
 			<div className={classes.container}>
@@ -99,7 +131,10 @@ class Pagination extends React.Component<IProps> {
 						<span className={classes.paginationButton}>
 							<Button
 								borderColor={Theme.primaryDark}
-								color={page === PageNumber.One && Theme.secondaryDark}
+								color={
+									page === PageNumber.One &&
+									Theme.secondaryDark
+								}
 								type="small"
 								onClick={this.goToPageHandler(buttonLabel1)}
 							>
@@ -111,7 +146,10 @@ class Pagination extends React.Component<IProps> {
 						<span className={classes.paginationButton}>
 							<Button
 								borderColor={Theme.primaryDark}
-								color={page === PageNumber.Two && Theme.secondaryDark}
+								color={
+									page === PageNumber.Two &&
+									Theme.secondaryDark
+								}
 								type="small"
 								onClick={this.goToPageHandler(buttonLabel2)}
 							>
@@ -123,7 +161,10 @@ class Pagination extends React.Component<IProps> {
 						<span className={classes.paginationButton}>
 							<Button
 								borderColor={Theme.primaryDark}
-								color={page === PageNumber.Three && Theme.secondaryDark}
+								color={
+									page === PageNumber.Three &&
+									Theme.secondaryDark
+								}
 								type="small"
 								onClick={this.goToPageHandler(buttonLabel3)}
 							>
@@ -135,7 +176,10 @@ class Pagination extends React.Component<IProps> {
 						<span className={classes.paginationButton}>
 							<Button
 								borderColor={Theme.primaryDark}
-								color={page === PageNumber.Four && Theme.secondaryDark}
+								color={
+									page === PageNumber.Four &&
+									Theme.secondaryDark
+								}
 								type="small"
 								onClick={this.goToPageHandler(buttonLabel4)}
 							>
@@ -147,7 +191,10 @@ class Pagination extends React.Component<IProps> {
 						<span className={classes.paginationButton}>
 							<Button
 								borderColor={Theme.primaryDark}
-								color={page === PageNumber.Five && Theme.secondaryDark}
+								color={
+									page === PageNumber.Five &&
+									Theme.secondaryDark
+								}
 								type="small"
 								onClick={this.goToPageHandler(buttonLabel5)}
 							>
@@ -174,8 +221,11 @@ class Pagination extends React.Component<IProps> {
 							isMulti={false}
 							closeMenuOnSelect={true}
 							input={{
-								value: { label: rowsPerPage, value: rowsPerPage },
-								onChange: onChangeRowsPerPage
+								value: {
+									label: rowsPerPage,
+									value: rowsPerPage,
+								},
+								onChange: onChangeRowsPerPage,
 							}}
 							showDropDownArrowIcons={true}
 							dropDownIndicatorColor={Theme.secondary}

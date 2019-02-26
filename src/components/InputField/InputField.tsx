@@ -1,36 +1,45 @@
 // tslint:disable:no-any
-import React from "react"
-import injectSheet from "react-jss"
-import EditorInput from "./Editor/Editor"
-import Switch from "./Switch/Switch"
-import Checkbox from "./Checkbox/Checkbox"
-import Calender from "./Calender/CalenderComponent"
-import ColorPicker from "./ColorPicker/ColorPicker"
-// @ts-ignore
-import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
-
-import { styles } from "./styles"
-// @ts-ignore
-import { FilePond } from "react-filepond"
-
 // Import FilePond styles
 import "filepond/dist/filepond.min.css"
-
-import { IProps } from "./__types/IProps"
+import React from "react"
+// @ts-ignore
+import { FilePond } from "react-filepond"
+import injectSheet from "react-jss"
 import { InputTypes } from "../../models/InputTypes"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
+import Calender from "./Calender/CalenderComponent"
+import Checkbox from "./Checkbox/Checkbox"
+import ColorPicker from "./ColorPicker/ColorPicker"
+import EditorInput from "./Editor/Editor"
 import Select from "./Select/Select"
+import { styles } from "./styles"
+import Switch from "./Switch/Switch"
+// @ts-ignore
+import TimeKeeper from "./TimeKeeper/TimeKeeperComponent"
+import { IProps } from "./__types/IProps"
 
-function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValue>) {
+function InputField<TValue>({
+	input,
+	inputType,
+	classes,
+	...rest
+}: IProps<TValue>) {
 	const { name, onBlur = () => {}, onChange, onFocus, value } = input
 
 	switch (inputType) {
 		case InputTypes.Select:
 			const onBlurForSelect = (_: React.ChangeEvent) => {
 				onBlur(value)
-		}
+			}
 
-			return <Select onBlur={onBlurForSelect} onFocus={onFocus} onChange={onChange} {...rest} />
+			return (
+				<Select
+					onBlur={onBlurForSelect}
+					onFocus={onFocus}
+					onChange={onChange}
+					{...rest}
+				/>
+			)
 		case InputTypes.Editor:
 			return (
 				<div className={classes.editor}>
@@ -51,7 +60,15 @@ function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValu
 		case InputTypes.Switch:
 			return <Switch {...input} {...rest} />
 		case InputTypes.Checkbox:
-			return <Checkbox onBlur={onBlur} onChange={onChange} value={name} checked={value} {...rest} />
+			return (
+				<Checkbox
+					onBlur={onBlur}
+					onChange={onChange}
+					value={name}
+					checked={value}
+					{...rest}
+				/>
+			)
 		case InputTypes.File:
 			return <FilePond onupdatefiles={onChange as any} {...rest} />
 
@@ -67,7 +84,9 @@ function InputField<TValue>({ input, inputType, classes, ...rest }: IProps<TValu
 				/>
 			)
 		case InputTypes.TimePicker:
-			return <TimeKeeper value={value as any} onChange={onChange as any} />
+			return (
+				<TimeKeeper value={value as any} onChange={onChange as any} />
+			)
 		case InputTypes.ColorPicker:
 			return <ColorPicker color={value as any} onChange={onChange} />
 		default:
@@ -92,7 +111,7 @@ InputField.defaultProps = {
 		onChange: () => {},
 		onDragStart: () => {},
 		onDrop: () => {},
-		onFocus: () => {}
+		onFocus: () => {},
 	},
 	meta: {
 		autofilled: false,
@@ -108,8 +127,8 @@ InputField.defaultProps = {
 		submitFailed: false,
 		touched: false,
 		valid: true,
-		visited: false
-	}
+		visited: false,
+	},
 }
 
 export default materialThemeWrapper(injectSheet(styles)(InputField))
