@@ -1,9 +1,8 @@
 import * as React from "react"
 import injectSheet from "react-jss"
-import { InputTypes } from "../../../models/InputTypes"
 import { Theme } from "../../../theme"
 import Button from "../../Button/Button"
-import InputField from "../../InputField/InputField"
+import Select from "../../Select/Select"
 import { styles } from "./styles"
 import { IProps } from "./__types/IProps"
 import { PageNumber, Values } from "./__types/Values"
@@ -82,9 +81,8 @@ class Pagination extends React.Component<IProps> {
 			count,
 			rowsPerPage,
 			onChangeRowsPerPage,
-			classes: jssClasses,
+			classes,
 		} = this.props
-		const classes = jssClasses as any
 
 		const maxPages = this.maxPages()
 
@@ -216,8 +214,7 @@ class Pagination extends React.Component<IProps> {
 				<div className={classes.perPageContainer}>
 					<div className={classes.perPageText}>Showing</div>
 					<div className={classes.perPage}>
-						<InputField
-							inputType={InputTypes.Select}
+						<Select
 							isMulti={false}
 							closeMenuOnSelect={true}
 							input={{

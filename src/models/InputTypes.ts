@@ -1,5 +1,4 @@
 export enum InputTypes {
-	Select = "select",
 	Textarea = "textarea",
 	Editor = "editor",
 	Switch = "switch",
@@ -7,5 +6,5 @@ export enum InputTypes {
 	File = "file",
 	Calender = "calender",
 	TimePicker = "timepicker",
-	ColorPicker = "colorpicker"
+	ColorPicker = "colorpicker",
 }

@@ -19,31 +19,31 @@ export let Theme: IThemeColors = {
 	info: "#252631",
 	warning: "#FBC01B",
 	success: "#6DD230",
-	icons: "#778CA2"
+	icons: "#778CA2",
 }
 
 export const MuiTheme: MaterialThemeType = createMuiTheme({
 	typography: {
-		useNextVariants: true
+		useNextVariants: true,
 	},
 	palette: {
 		background: {
-			default: Theme.background
+			default: Theme.background,
 		},
 		primary: {
 			main: Theme.primary,
-			light: Theme.primaryLight
+			light: Theme.primaryLight,
 		},
 		secondary: {
-			main: Theme.secondary
+			main: Theme.secondary,
 		},
 		text: {
-			primary: Theme.info
+			primary: Theme.info,
 		},
 		grey: {
-			"100": Theme.gray
-		}
-	}
+			"100": Theme.gray,
+		},
+	},
 })
 
 // tslint:disable-next-line:no-let
@@ -64,10 +64,13 @@ export let DarkTheme: IThemeColors = {
 	info: "#252631",
 	warning: "#FBC01B",
 	success: "#6DD230",
-	icons: "#778CA2"
+	icons: "#778CA2",
 }
 
-export function overrideTheme(newTheme: IThemeColors, newDarkTheme: IThemeColors): void {
+export function overrideTheme(
+	newTheme: IThemeColors,
+	newDarkTheme: IThemeColors,
+): void {
 	Theme = { ...Theme, ...newTheme }
 	DarkTheme = { ...DarkTheme, ...newDarkTheme }
 }

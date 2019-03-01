@@ -4,12 +4,18 @@ import { WrappedFieldMetaProps } from "redux-form"
 // tslint:disable:readonly-array
 export interface IProps<TData extends IDefaultDataType>
 	extends StyledComponentProps {
+	readonly isMulti?: boolean
+	readonly isClearable?: boolean
+	readonly closeMenuOnSelect?: boolean
 	readonly showDropDownArrowIcons?: boolean
 	readonly dropDownIndicatorColor?: string
 	readonly selectBackgroundColor?: string
+	readonly placeholder?: string
 	readonly meta?: Partial<WrappedFieldMetaProps>
-	readonly onBlur: (event: React.FocusEvent) => void
-	readonly onChange: (event: React.ChangeEvent) => void
-	readonly onFocus: (event: React.FocusEvent) => void
+	readonly input?: {
+		onChange?(value: TData): void
+		onFocus?(value: TData): void
+		onBlur?(value: TData): void
+	}
 	readonly options?: ReadonlyArray<TData>
 }

@@ -1,17 +1,13 @@
 import * as React from "react"
 import { connect } from "react-redux"
 import { Field, reduxForm } from "redux-form"
-
 import InputField from "../../../components/InputField/InputField"
-
-import { validate } from "../../../services/validate/validationService"
-
-import { mockedUsers } from "../../../utils/mockedUsers"
-
+import Select from "../../../components/Select/Select"
 import { InputTypes } from "../../../models/InputTypes"
-
-import { IProps } from "./__types/IProps"
+import { validate } from "../../../services/validate/validationService"
+import { mockedUsers } from "../../../utils/mockedUsers"
 import { IForm } from "./__types/IForm"
+import { IProps } from "./__types/IProps"
 
 class Inputs extends React.Component<IProps> {
 	public constructor(props: IProps) {
@@ -21,6 +17,7 @@ class Inputs extends React.Component<IProps> {
 	}
 
 	public submitHandler(value: IForm) {
+		// tslint:disable:no-console
 		console.log("====================================")
 		console.log(value)
 		console.log("====================================")
@@ -87,32 +84,35 @@ class Inputs extends React.Component<IProps> {
 						<label htmlFor="switchTypeInput">Checkbox Type</label>
 					</div>
 					<Field
-						component={InputField}
+						component={Select}
 						name="recipients"
-						inputType={InputTypes.Select}
 						isMulti="true"
 						closeMenuOnSelect={false}
 						placeholder="Select Recipients"
-						options={mockedUsers.map((u: { readonly [key: string]: string }, id: number) => ({
-							value: id,
-							label: u.name
-						}))}
+						options={mockedUsers.map(
+							(
+								u: { readonly [key: string]: string },
+								id: number,
+							) => ({
+								id,
+								name: u.name,
+							}),
+						)}
 					/>
 				</div>
 				<div>
 					<div>
-					<label htmlFor="calender">Calender</label>
-
+						<label htmlFor="calender">Calender</label>
 					</div>
 					<Field
-							autoFocus
-							enableBackDates={true}
-							component={InputField}
-							inputType={InputTypes.Calender}
-							name="referenceDate"
-							id="calender"
-							formats="YYYY-MM-DD"
-							type="single"
+						autoFocus
+						enableBackDates={true}
+						component={InputField}
+						inputType={InputTypes.Calender}
+						name="referenceDate"
+						id="calender"
+						formats="YYYY-MM-DD"
+						type="single"
 					/>
 				</div>
 			</form>
@@ -120,4 +120,8 @@ class Inputs extends React.Component<IProps> {
 	}
 }
 
-export default connect()(reduxForm<IForm, Pick<IProps, "dispatch">>({ form: "login", validate })(Inputs))
+export default connect()(
+	reduxForm<IForm, Pick<IProps, "dispatch">>({ form: "login", validate })(
+		Inputs,
+	),
+)

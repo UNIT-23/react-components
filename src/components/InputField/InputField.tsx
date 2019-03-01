@@ -11,7 +11,6 @@ import Calender from "./Calender/CalenderComponent"
 import Checkbox from "./Checkbox/Checkbox"
 import ColorPicker from "./ColorPicker/ColorPicker"
 import EditorInput from "./Editor/Editor"
-import Select from "./Select/Select"
 import { styles } from "./styles"
 import Switch from "./Switch/Switch"
 // @ts-ignore
@@ -27,19 +26,6 @@ function InputField<TValue>({
 	const { name, onBlur = () => {}, onChange, onFocus, value } = input
 
 	switch (inputType) {
-		case InputTypes.Select:
-			const onBlurForSelect = (_: React.ChangeEvent) => {
-				onBlur(value)
-			}
-
-			return (
-				<Select
-					onBlur={onBlurForSelect}
-					onFocus={onFocus}
-					onChange={onChange}
-					{...rest}
-				/>
-			)
 		case InputTypes.Editor:
 			return (
 				<div className={classes.editor}>

@@ -1,10 +1,10 @@
 import * as React from "react"
-
+import {
+	setRowsPerPage,
+	setTableSearchFilter,
+} from "../../../appstate/tables/actions/tablesActions"
 import { tableDataFormatter } from "../../../utils/tableDataFormatter"
-
 import { IProps } from "./__types/IProps"
-
-import { setRowsPerPage, setTableSearchFilter } from "../../../appstate/tables/actions/tablesActions"
 
 export class TableModel<
 	TData extends { readonly id: number },
@@ -37,7 +37,9 @@ export class TableModel<
 	// tslint:disable-next-line:readonly-keyword
 	public getAction: (payload: any) => IAction<any, any> = undefined
 	// tslint:disable-next-line:readonly-keyword
-	public deleteAction: (payload: { readonly id: number }) => IAction<{ readonly id: number }, string> = undefined
+	public deleteAction: (payload: {
+		readonly id: number
+	}) => IAction<{ readonly id: number }, string> = undefined
 	// tslint:disable-next-line:readonly-keyword
 	public drawerAction: () => IAction<undefined, string> = undefined
 
@@ -47,13 +49,18 @@ export class TableModel<
 		dispatch(this.getAction({}))
 	}
 
-	public formatData(data: ReadonlyArray<TData>): ReadonlyArray<ITableData<TData>> {
+	public formatData(
+		data: ReadonlyArray<TData>,
+	): ReadonlyArray<ITableData<TData>> {
 		this.data = data
 
 		return data.map(tableDataFormatter)
 	}
 
-	public onChangePage(_event: React.MouseEvent<HTMLButtonElement>, nextPage: number) {
+	public onChangePage(
+		_event: React.MouseEvent<HTMLButtonElement>,
+		nextPage: number,
+	) {
 		const { rowsPerPage, dispatch } = this.props
 
 		const nextOffset = nextPage * rowsPerPage
@@ -61,23 +68,23 @@ export class TableModel<
 		dispatch(
 			this.getAction({
 				limit: rowsPerPage,
-				offset: nextOffset
-			})
+				offset: nextOffset,
+			}),
 		)
 	}
 
-	public onChangeRowsPerPage(selected: IDropDownData<number>): void {
+	public onChangeRowsPerPage(selected: IDefaultDataType): void {
 		const { dispatch } = this.props
 
-		const rowsPerPage = selected.value
+		const rowsPerPage = selected.id
 
 		dispatch(setRowsPerPage(rowsPerPage))
 
 		dispatch(
 			this.getAction({
 				limit: rowsPerPage,
-				offset: 0
-			})
+				offset: 0,
+			}),
 		)
 	}
 
@@ -88,8 +95,8 @@ export class TableModel<
 			this.getAction({
 				orderBy,
 				limit: rowsPerPage,
-				offset: 0
-			})
+				offset: 0,
+			}),
 		)
 	}
 
@@ -101,7 +108,9 @@ export class TableModel<
 		dispatch(this.getAction({}))
 	}
 
-	public deleteHandler(row: ITableData<TData>): (event: React.MouseEvent<HTMLDivElement>) => void {
+	public deleteHandler(
+		row: ITableData<TData>,
+	): (event: React.MouseEvent<HTMLDivElement>) => void {
 		const { dispatch } = this.props
 		const id = row.id.value as number
 
@@ -110,7 +119,9 @@ export class TableModel<
 		}
 	}
 
-	public editHandler(row: ITableData<TData>): (event: React.MouseEvent<HTMLDivElement>) => void {
+	public editHandler(
+		row: ITableData<TData>,
+	): (event: React.MouseEvent<HTMLDivElement>) => void {
 		const id = row.id.value as number
 
 		return () => {

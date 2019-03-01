@@ -1,6 +1,5 @@
 import * as React from "react"
 import { StyledComponentProps, WithTheme } from "react-jss"
-
 import { Theme } from "../../../theme"
 
 export interface IProps
@@ -14,6 +13,7 @@ export interface IProps
 	readonly color?: string
 	readonly width?: string | number
 	readonly margin?: string | number
+	readonly borderRadius?: string | number
 	readonly buttonType?: "default" | "square"
 	readonly outline?: boolean
 	readonly background?: string
