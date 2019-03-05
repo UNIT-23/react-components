@@ -1,13 +1,13 @@
 // tslint:disable-next-line:ban-ts-ignore
 // @ts-ignore
-import AtlaskitSelect, { components } from "@atlaskit/select"
-import * as React from "react"
-import { Theme } from "../../theme"
-import ArrowDropDownIcon from "../Icons/ArrowDropDownIcon"
-import ArrowDropUpIcon from "../Icons/ArrowDropUpIcon"
-import ChevronDownIcon from "../Icons/ChevronDownIcon"
-import { dropDownArrowIconsStyles, getSelectStyles } from "./styles"
-import { IProps } from "./__types/IProps"
+import AtlaskitSelect, {components} from "@atlaskit/select";
+import * as React from "react";
+import {Theme} from "../../theme";
+import ArrowDropDownIcon from "../Icons/ArrowDropDownIcon";
+import ArrowDropUpIcon from "../Icons/ArrowDropUpIcon";
+import ChevronDownIcon from "../Icons/ChevronDownIcon";
+import {dropDownArrowIconsStyles, getSelectStyles} from "./styles";
+import {IProps} from "./__types/IProps";
 
 const getDropdownArrowIndicator = (
 	dropDownIndicatorColor: string = Theme.icons,
@@ -33,7 +33,7 @@ const onChangeFormatter = (onChange: (value: any) => void) => (selected: {
 }) => onChange((selected && selected.value) || { id: 0, name: "" })
 
 function Select<TData extends IDefaultDataType = IDefaultDataType>({
-	input: { onFocus, onBlur, onChange },
+	input: { onFocus, onChange },
 	meta: { error, touched },
 	showDropDownArrowIcons,
 	selectBackgroundColor,
@@ -46,7 +46,6 @@ function Select<TData extends IDefaultDataType = IDefaultDataType>({
 		<AtlaskitSelect
 			isClearable={isClearable}
 			menuPlacement="auto"
-			onBlur={onBlur}
 			onFocus={onFocus}
 			onChange={onChangeFormatter(onChange)}
 			components={{
