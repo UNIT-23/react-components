@@ -1,17 +1,15 @@
 // tslint:disable-next-line:ban-ts-ignore
 // @ts-ignore
-import AtlaskitSelect, {components} from "@atlaskit/select";
-import * as React from "react";
-import {Theme} from "../../theme";
-import ArrowDropDownIcon from "../Icons/ArrowDropDownIcon";
-import ArrowDropUpIcon from "../Icons/ArrowDropUpIcon";
-import ChevronDownIcon from "../Icons/ChevronDownIcon";
-import {dropDownArrowIconsStyles, getSelectStyles} from "./styles";
-import {IProps} from "./__types/IProps";
+import AtlaskitSelect, { components } from "@atlaskit/select"
+import * as React from "react"
+import { Theme } from "../../theme"
+import ArrowDropDownIcon from "../Icons/ArrowDropDownIcon"
+import ArrowDropUpIcon from "../Icons/ArrowDropUpIcon"
+import ChevronDownIcon from "../Icons/ChevronDownIcon"
+import { dropDownArrowIconsStyles, getSelectStyles } from "./styles"
+import { IProps } from "./__types/IProps"
 
-const getDropdownArrowIndicator = (
-	dropDownIndicatorColor: string = Theme.icons,
-) => (props: IProps<IDefaultDataType>) => (
+const getDropdownArrowIndicator = (dropDownIndicatorColor: string = Theme.icons) => (props: IProps<IDefaultDataType>) => (
 	<components.DropdownIndicator {...props}>
 		<div style={dropDownArrowIconsStyles}>
 			<ArrowDropUpIcon color={dropDownIndicatorColor} />
@@ -26,14 +24,13 @@ const DropdownDefaultIndicator = (props: IProps<IDefaultDataType>) => (
 	</components.DropdownIndicator>
 )
 
-// tslint:disable-next-line:no-any
-const onChangeFormatter = (onChange: (value: any) => void) => (selected: {
-	readonly value: IDefaultDataType
-	readonly label: string
-}) => onChange((selected && selected.value) || { id: 0, name: "" })
+function onHandlerFormatter<TData extends IDefaultDataType> (handler: (value: TData) => void) {
+	return (selected: { readonly value: IDefaultDataType; readonly label: string }) =>
+		selected ? handler(selected.value as TData) : handler(({ id: 0, name: "" } as unknown) as TData)
+}
 
-function Select<TData extends IDefaultDataType = IDefaultDataType>({
-	input: { onFocus, onChange },
+function Select<TData extends IDefaultDataType> ({
+	input: { onFocus, onChange, value },
 	meta: { error, touched },
 	showDropDownArrowIcons,
 	selectBackgroundColor,
@@ -47,25 +44,19 @@ function Select<TData extends IDefaultDataType = IDefaultDataType>({
 			isClearable={isClearable}
 			menuPlacement="auto"
 			onFocus={onFocus}
-			onChange={onChangeFormatter(onChange)}
+			onChange={onHandlerFormatter(onChange)}
 			components={{
-				DropdownIndicator: showDropDownArrowIcons
-					? getDropdownArrowIndicator(dropDownIndicatorColor)
-					: DropdownDefaultIndicator,
-				ClearIndicator: components.ClearIndicator,
+				DropdownIndicator: showDropDownArrowIcons ? getDropdownArrowIndicator(dropDownIndicatorColor) : DropdownDefaultIndicator,
+				ClearIndicator   : components.ClearIndicator
 			}}
-			styles={getSelectStyles(
-				error,
-				touched,
-				showDropDownArrowIcons,
-				selectBackgroundColor,
-			)}
+			styles={getSelectStyles(error, touched, showDropDownArrowIcons, selectBackgroundColor)}
 			invalidMessage={error}
 			className="checkbox-select"
 			classNamePrefix="select"
+			value={value.id && { label: value.name, value: value.id }}
 			options={options.map<IDropDownData<TData>>((e: TData) => ({
 				label: e.name,
-				value: e,
+				value: e
 			}))}
 			{...rest}
 		/>
@@ -76,28 +67,28 @@ function Select<TData extends IDefaultDataType = IDefaultDataType>({
 // tslint:disable-next-line:no-object-mutation
 Select.defaultProps = {
 	input: {
-		onBlur: () => {},
-		onChange: () => {},
+		onBlur     : () => {},
+		onChange   : () => {},
 		onDragStart: () => {},
-		onDrop: () => {},
-		onFocus: () => {},
+		onDrop     : () => {},
+		onFocus    : () => {}
 	},
 	meta: {
-		autofilled: false,
+		autofilled     : false,
 		asyncValidating: false,
-		dirty: false,
+		dirty          : false,
 		// tslint:disable-next-line:no-any
-		dispatch: (action: any) => action,
-		form: "",
-		initial: "",
-		invalid: false,
-		pristine: true,
-		submitting: false,
-		submitFailed: false,
-		touched: false,
-		valid: true,
-		visited: false,
-	},
+		dispatch       : (action: any) => action,
+		form           : "",
+		initial        : "",
+		invalid        : false,
+		pristine       : true,
+		submitting     : false,
+		submitFailed   : false,
+		touched        : false,
+		valid          : true,
+		visited        : false
+	}
 }
 
 export default Select

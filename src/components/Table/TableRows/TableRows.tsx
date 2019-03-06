@@ -11,68 +11,36 @@ import { styles } from "./styles"
 import { IProps } from "./__types/IProps"
 import { Values } from "./__types/Values"
 
-function stableSort<TData>(
+function stableSort<TData> (
 	array: ReadonlyArray<ITableData<TData>>,
-	cmp: (a: ITableData<TData>, b: ITableData<TData>) => number,
+	cmp: (a: ITableData<TData>, b: ITableData<TData>) => number
 ): ReadonlyArray<ITableData<TData>> {
-	const stabilizedThis: ReadonlyArray<
-		ReadonlyArray<ITableData<TData> | number>
-	> = array
+	const stabilizedThis: ReadonlyArray<ReadonlyArray<ITableData<TData> | number>> = array
 		.map((el: ITableData<TData>, index: number) => [el, index])
-		.sort(
-			(
-				a: ReadonlyArray<ITableData<TData> | number>,
-				b: ReadonlyArray<ITableData<TData> | number>,
-			) => {
-				const orderType: number = cmp(
-					a[0] as ITableData<TData>,
-					b[0] as ITableData<TData>,
-				)
+		.sort((a: ReadonlyArray<ITableData<TData> | number>, b: ReadonlyArray<ITableData<TData> | number>) => {
+			const orderType: number = cmp(a[0] as ITableData<TData>, b[0] as ITableData<TData>)
 
-				return orderType !== 0
-					? orderType
-					: (a[1] as number) - (b[1] as number)
-			},
-		)
+			return orderType !== 0 ? orderType : (a[1] as number) - (b[1] as number)
+		})
 
-	return stabilizedThis.map(
-		(el: ReadonlyArray<ITableData<TData> | number>) =>
-			el[0] as ITableData<TData>,
-	)
+	return stabilizedThis.map((el: ReadonlyArray<ITableData<TData> | number>) => el[0] as ITableData<TData>)
 }
 
-function getSorting<TData>(
-	orderType: "asc" | "desc",
-	orderBy: keyof TData,
-): (a: ITableData<TData>, b: ITableData<TData>) => number {
+function getSorting<TData> (orderType: "asc" | "desc", orderBy: keyof TData): (a: ITableData<TData>, b: ITableData<TData>) => number {
 	return orderType === "desc"
-		? (a: ITableData<TData>, b: ITableData<TData>): number =>
-				desc(a, b, orderBy)
-		: (a: ITableData<TData>, b: ITableData<TData>): number =>
-				-desc(a, b, orderBy)
+		? (a: ITableData<TData>, b: ITableData<TData>): number => desc(a, b, orderBy)
+		: (a: ITableData<TData>, b: ITableData<TData>): number => -desc(a, b, orderBy)
 }
 
-function desc<TData>(
-	a: ITableData<TData>,
-	b: ITableData<TData>,
-	orderBy: keyof TData,
-): number {
-	return b[orderBy].value < a[orderBy].value
-		? -1
-		: b[orderBy].value > a[orderBy].value
-		? 1
-		: 0
+function desc<TData> (a: ITableData<TData>, b: ITableData<TData>, orderBy: keyof TData): number {
+	return b[orderBy].value < a[orderBy].value ? -1 : b[orderBy].value > a[orderBy].value ? 1 : 0
 }
 
-function rowClickHandler(
-	handleClick: Function,
-	id: number | string,
-): ((event: React.MouseEvent<HTMLTableRowElement>) => void) | undefined {
-	return (event: React.MouseEvent<HTMLTableRowElement>): Function =>
-		handleClick && handleClick(event, id)
+function rowClickHandler (handleClick: Function, id: number | string): ((event: React.MouseEvent<HTMLTableRowElement>) => void) | undefined {
+	return (event: React.MouseEvent<HTMLTableRowElement>): Function => handleClick && handleClick(event, id)
 }
 
-function TableRows<TData>({
+function TableRows<TData extends IDefaultDataType> ({
 	rows,
 	editHandler,
 	deleteHandler,
@@ -84,26 +52,19 @@ function TableRows<TData>({
 	selected = [],
 	columns,
 	classes,
-	theme,
+	theme
 }: IProps<TData>): JSX.Element {
-	const emptyRows: number =
-		rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+	const emptyRows: number = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
 
-	const sortedRows = orderBy
-		? stableSort(rows, getSorting(orderType, orderBy))
-		: rows
+	const sortedRows = orderBy ? stableSort(rows, getSorting(orderType, orderBy)) : rows
 
-	const paginatedRows = rowsPerPage
-		? sortedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-		: sortedRows
+	const paginatedRows = rowsPerPage ? sortedRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedRows
 
 	return (
 		<React.Fragment>
 			{paginatedRows.map((row: ITableData<TData>) => {
 				const isSelected: boolean = selected.includes(row.id.value)
-				const rowNames: ReadonlyArray<keyof TData> = columns.map(
-					(c: ITableHeader<TData>) => c.id as keyof TData,
-				)
+				const rowNames: ReadonlyArray<keyof TData> = columns.map((c: ITableHeader<TData>) => c.id as keyof TData)
 
 				return (
 					<TableRow
@@ -114,17 +75,11 @@ function TableRows<TData>({
 						className={classes.root}
 						selected={isSelected}
 						aria-checked={isSelected}
-						onClick={rowClickHandler(
-							handleSelectClick,
-							row.id.value,
-						)}
+						onClick={rowClickHandler(handleSelectClick, row.id.value)}
 					>
 						{!!handleSelectClick && (
 							<TableCell padding="checkbox">
-								<InputField
-									inputType={InputTypes.Checkbox}
-									checked={isSelected}
-								/>
+								<InputField inputType={InputTypes.Checkbox} checked={isSelected} />
 							</TableCell>
 						)}
 						{rowNames
@@ -135,31 +90,16 @@ function TableRows<TData>({
 								</TableCell>
 							))}
 						{!handleSelectClick && (
-							<TableCell
-								padding="checkbox"
-								className={classes.tableCell}
-							>
+							<TableCell padding="checkbox" className={classes.tableCell}>
 								<div className={classes.controls}>
 									{editHandler && (
-										<div
-											onClick={editHandler(row)}
-											className={classes.control}
-										>
-											<EditIcon
-												color={
-													theme.palette.secondary.main
-												}
-											/>
+										<div onClick={editHandler(row)} className={classes.control}>
+											<EditIcon color={theme.palette.secondary.main} />
 										</div>
 									)}
 									{deleteHandler && (
-										<div
-											onClick={deleteHandler(row)}
-											className={classes.control}
-										>
-											<TrashIcon
-												color={theme.palette.error.main}
-											/>
+										<div onClick={deleteHandler(row)} className={classes.control}>
+											<TrashIcon color={theme.palette.error.main} />
 										</div>
 									)}
 								</div>
@@ -171,7 +111,7 @@ function TableRows<TData>({
 			{emptyRows > 0 && (
 				<TableRow
 					style={{
-						height: emptyRows * Values.emptyRowHightMultiplier,
+						height: emptyRows * Values.emptyRowHightMultiplier
 					}}
 					className={classes.tableCellEmpty}
 				>
@@ -184,25 +124,14 @@ function TableRows<TData>({
 
 // TODO: Remove class
 // tslint:disable-next-line:max-classes-per-file
-export default class WrappedGenericComponent<T> extends React.Component<
-	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P>
-		? P
-		: never,
+export default class WrappedGenericComponent<T extends IDefaultDataType> extends React.Component<
+	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P> ? P : never,
 	{}
-> {
+	> {
 	private readonly C = materialThemeWrapper<IProps<T>>(
-		withTheme()(
-			withStyles(styles)(
-				(
-					props: JSX.LibraryManagedAttributes<
-						typeof TableRows,
-						IProps<T>
-					>,
-				) => <TableRows<T> {...props} />,
-			),
-		),
+		withTheme()(withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof TableRows, IProps<T>>) => <TableRows<T> {...props} />))
 	)
-	public render() {
+	public render () {
 		return <this.C {...this.props} />
 	}
 }

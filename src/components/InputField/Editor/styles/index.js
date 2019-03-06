@@ -1,7 +1,7 @@
 export default theme => ({
 	editor: {
 		backgroundColor: theme.primary,
-		"& .ql-snow": {
+		"& .ql-snow"   : {
 			border: "none !important"
 		},
 		"& .ql-formats": {
@@ -9,7 +9,7 @@ export default theme => ({
 		},
 		"& .ql-editor": {
 			height: ({ height }) => height,
-			width: "95%"
+			width : "95%"
 		}
 	}
 })

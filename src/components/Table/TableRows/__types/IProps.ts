@@ -1,6 +1,6 @@
-import { WithTheme, StyledComponentProps } from "@material-ui/core"
+import { StyledComponentProps, WithTheme } from "@material-ui/core"
 
-export interface IProps<TData> extends StyledComponentProps, Partial<WithTheme> {
+export interface IProps<TData extends IDefaultDataType> extends StyledComponentProps, Partial<WithTheme> {
 	readonly rows: ReadonlyArray<ITableData<TData>>
 	handleSelectClick?(event: React.ChangeEvent, id: number): void
 	editHandler?(row: ITableData<TData>): (event: React.MouseEvent<HTMLDivElement>) => void

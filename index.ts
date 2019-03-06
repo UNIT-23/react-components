@@ -1,30 +1,21 @@
 // -------------------------------------------------------
-/*---------------------Components------------------------*/
+/* ---------------------Components------------------------ */
 // -------------------------------------------------------
 
 // -------------------------------------------------------
-/*---------------------Actions---------------------------*/
+/* ---------------------Actions--------------------------- */
 // -------------------------------------------------------
-export {
-	closeAlert,
-	openAlert,
-} from "./src/appstate/actions/alert/alertActions"
+export { closeAlert, openAlert } from "./src/appstate/actions/alert/alertActions"
 export { AlertOpenAction } from "./src/appstate/actions/alert/__types/IActions"
 // -------------------------------------------------------
-/*---------------------Reducers--------------------------*/
+/* ---------------------Reducers-------------------------- */
 // -------------------------------------------------------
 export { alertReducer } from "./src/appstate/reducers/alert/alertReducer"
 export { default as Alert } from "./src/components/Alert/Alert"
 export { AlertLevel } from "./src/components/Alert/__types/AlertTypes"
-export {
-	default as ApiSuspense,
-} from "./src/components/ApiSuspense/ApiSuspense"
+export { default as ApiSuspense } from "./src/components/ApiSuspense/ApiSuspense"
 export { default as Avatar } from "./src/components/Avatar/Avatar"
-export {
-	PresenceValue,
-	SizeValue,
-	StatusValue,
-} from "./src/components/Avatar/__types/AvatarValues"
+export { PresenceValue, SizeValue, StatusValue } from "./src/components/Avatar/__types/AvatarValues"
 export { default as Button } from "./src/components/Button/Button"
 export { default as Card } from "./src/components/Card/Card"
 export { default as Drawer } from "./src/components/Drawer/Drawer"
@@ -33,19 +24,13 @@ export { default as ArrowLeftIcon } from "./src/components/Icons/ArrowLeftIcon"
 export { default as CalendarIcon } from "./src/components/Icons/CalendarIcon"
 export { default as ChatIcon } from "./src/components/Icons/ChatIcon"
 export { default as CheckIcon } from "./src/components/Icons/CheckIcon"
-export {
-	default as ChevronLeftIcon,
-} from "./src/components/Icons/ChevronLeftIcon"
-export {
-	default as ChevronRightIcon,
-} from "./src/components/Icons/ChevronRightIcon"
+export { default as ChevronLeftIcon } from "./src/components/Icons/ChevronLeftIcon"
+export { default as ChevronRightIcon } from "./src/components/Icons/ChevronRightIcon"
 export { default as CircleIcon } from "./src/components/Icons/CircleIcon"
 export { default as ClockIcon } from "./src/components/Icons/ClockIcon"
 export { default as DollarIcon } from "./src/components/Icons/DollarIcon"
 export { default as EditIcon } from "./src/components/Icons/EditIcon"
-export {
-	default as EditSquareIcon,
-} from "./src/components/Icons/EditSquareIcon"
+export { default as EditSquareIcon } from "./src/components/Icons/EditSquareIcon"
 export { default as GearIcon } from "./src/components/Icons/GearIcon"
 export { default as ListIcon } from "./src/components/Icons/ListIcon"
 export { default as MetricsIcon } from "./src/components/Icons/MetricsIcon"
@@ -58,26 +43,44 @@ export { default as UserIcon } from "./src/components/Icons/UserIcon"
 export { default as UsersIcon } from "./src/components/Icons/UsersIcon"
 export { default as InputField } from "./src/components/InputField/InputField"
 export { default as Loader } from "./src/components/Loader/Loader"
-export {
-	default as materialThemeWrapper,
-} from "./src/components/MaterialThemeWrapper/MaterialThemeWrapper"
+export { default as materialThemeWrapper } from "./src/components/MaterialThemeWrapper/MaterialThemeWrapper"
 export { default as Panels } from "./src/components/Panels/Panels"
-export {
-	default as RedirectToLogin,
-} from "./src/components/RedirectToLogin/RedirectToLogin"
+export { default as RedirectToLogin } from "./src/components/RedirectToLogin/RedirectToLogin"
 export { default as Select } from "./src/components/Select/Select"
 export { TableModel } from "./src/components/Table/models/TableModel"
 export { default as Table } from "./src/components/Table/Table"
 export { API } from "./src/models/ApiState"
 // -------------------------------------------------------
-/*---------------------Models--------------------------*/
+/* ---------------------Models-------------------------- */
 // -------------------------------------------------------
 export { InputTypes } from "./src/models/InputTypes"
+export {
+	addTime,
+	convertLocalToUTC,
+	convertToFuzzyTime,
+	diffDates,
+	diffTimes,
+	formatDate,
+	formatNonStandardDate,
+	formatToLocalDate,
+	formatToLocalDateExtended,
+	formatToLocalTime,
+	getAllDatesInRange,
+	getDateNumber,
+	getDatesForWeek,
+	getLocalDate,
+	getLocalDateTime,
+	getLocalTime,
+	getMomentInstance,
+	getStartEndOfWeek,
+	getTimeForZone,
+	updateDate
+} from "./src/services/dateService"
 // -------------------------------------------------------
-/*---------------------Theme--------------------------*/
+/* ---------------------Theme-------------------------- */
 // -------------------------------------------------------
 export { overrideTheme, Theme } from "./src/theme/"
 // -------------------------------------------------------
-/*---------------------Utils--------------------------*/
+/* ---------------------Utils-------------------------- */
 // -------------------------------------------------------
 export { tableDataFormatter } from "./src/utils/tableDataFormatter"

@@ -1,0 +1,63 @@
+{
+	"root": true,
+	"parserOptions": {
+		"parser": "babel-eslint",
+		"sourceType": "module"
+	},
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "15.0"
+		}
+	},
+	"env": {
+		"node": true,
+		"mocha": true,
+		"browser": true,
+		"jest": true,
+		"amd": true,
+		"cypress/globals": true
+	},
+	"extends": ["standard", "plugin:react/recommended", "react-app"],
+	"plugins": ["prettier", "react", "cypress"],
+	"globals": {
+		"alertify": true,
+		"page": true
+	},
+	"rules": {
+		"max-len": [
+			"error",
+			{
+				"code": 150
+			}
+		],
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"no-console": "warn",
+		"quotes": [
+			2,
+			"double",
+			{
+				"avoidEscape": true
+			}
+		],
+		"indent": [2, "tab"],
+		"no-tabs": 0,
+		"arrow-parens": 0,
+		"no-var": 2,
+		"prefer-const": 1,
+		"camelcase": 0,
+		"no-underscore-dangle": 2,
+		"key-spacing": [
+			"error",
+			{
+				"beforeColon": false,
+				"afterColon": true,
+				"align": "colon"
+			}
+		],
+		"object-curly-spacing": ["error", "always"],
+		"curly": ["error", "all"],
+		"brace-style": ["error", "1tbs"]
+	}
+}

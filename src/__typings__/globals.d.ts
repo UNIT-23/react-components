@@ -17,6 +17,7 @@ interface IPosts extends IListPayload<IPost> {
 
 interface IPost {
 	readonly id: number
+	readonly name: string
 	readonly firstname: string
 	readonly lastname: string
 	readonly email: string

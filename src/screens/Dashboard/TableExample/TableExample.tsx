@@ -13,38 +13,28 @@ const header: ReadonlyArray<ITableHeader<IPost>> = [
 	{ id: "lastname", label: "Lastname" },
 	{ id: "email", label: "Email" },
 	{ id: "phone", label: "Phone" },
-	{ id: "hasPremium", label: "Premium" },
+	{ id: "hasPremium", label: "Premium" }
 ]
 
 class TableExampleComponent extends TableModel<IPost, IProps> {
-	public constructor(props: IProps) {
+	public constructor (props: IProps) {
 		super(props)
 
 		this.getAction = postsGetRequest
 	}
 
-	public formatData(
-		data: ReadonlyArray<IPost>,
-	): ReadonlyArray<ITableData<IPost>> {
+	public formatData (data: ReadonlyArray<IPost>): ReadonlyArray<ITableData<IPost>> {
 		return super.formatData(data).map((d: ITableData<IPost>) => ({
 			...d,
 			hasPremium: {
 				...d.hasPremium,
-				component: d.hasPremium.value ? "Premium" : "Trial",
-			},
+				component: d.hasPremium.value ? "Premium" : "Trial"
+			}
 		}))
 	}
 
-	public render() {
-		const {
-			posts,
-			page,
-			rowsPerPage,
-			filter,
-			orderBy,
-			orderType,
-			postsCount,
-		} = this.props
+	public render () {
+		const { posts, page, rowsPerPage, filter, orderBy, orderType, postsCount } = this.props
 
 		return (
 			<Table<IPost>
@@ -63,25 +53,20 @@ class TableExampleComponent extends TableModel<IPost, IProps> {
 				tableTitle={<div>Merchants</div>}
 				dataRequestState={API.REQUEST_SUCCESS}
 				onChangeRowsPerPage={this.onChangeRowsPerPage}
-				DefaultBtn={
-					<DefaultBtn
-						handleSearch={this.filterHandler}
-						filter={filter}
-					/>
-				}
+				DefaultBtn={<DefaultBtn handleSearch={this.filterHandler} filter={filter} />}
 			/>
 		)
 	}
 }
 
 export default connect(({ posts, tables }: IRootState) => ({
-	page: posts.page,
-	posts: posts.posts,
-	filter: tables.filter,
-	orderBy: posts.orderBy,
-	orderType: posts.orderType,
-	postsCount: posts.postsCount,
-	rowsPerPage: tables.rowsPerPage,
-	postsGetError: posts.postsGetError,
-	postsGetRequestState: posts.postsGetRequestState,
+	page                : posts.page,
+	posts               : posts.posts,
+	filter              : tables.filter,
+	orderBy             : posts.orderBy,
+	orderType           : posts.orderType,
+	postsCount          : posts.postsCount,
+	rowsPerPage         : tables.rowsPerPage,
+	postsGetError       : posts.postsGetError,
+	postsGetRequestState: posts.postsGetRequestState
 }))(TableExampleComponent)

@@ -12,8 +12,8 @@ import { styles } from "./styles"
 import TableRows from "./TableRows/TableRows"
 import { IProps } from "./__types/IProps"
 
-class Table<TData> extends React.Component<IProps<TData>> {
-	public render() {
+class Table<TData extends IDefaultDataType> extends React.Component<IProps<TData>> {
+	public render () {
 		const {
 			classes,
 			count,
@@ -35,7 +35,7 @@ class Table<TData> extends React.Component<IProps<TData>> {
 			SearchBar,
 			selected,
 			SelectedBtn,
-			tableTitle,
+			tableTitle
 		} = this.props
 
 		return (
@@ -97,25 +97,14 @@ class Table<TData> extends React.Component<IProps<TData>> {
 
 // TODO: Remove class
 // tslint:disable-next-line:max-classes-per-file
-export default class WrappedGenericComponent<T> extends React.Component<
-	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P>
-		? P
-		: never,
+export default class WrappedGenericComponent<T extends IDefaultDataType> extends React.Component<
+	WrappedGenericComponent<T>["C"] extends React.ComponentType<infer P> ? P : never,
 	{}
-> {
+	> {
 	private readonly C = materialThemeWrapper<IProps<T>>(
-		withTheme()(
-			withStyles(styles)(
-				(
-					props: JSX.LibraryManagedAttributes<
-						typeof Table,
-						IProps<T>
-					>,
-				) => <Table<T> {...props} />,
-			),
-		),
+		withTheme()(withStyles(styles)((props: JSX.LibraryManagedAttributes<typeof Table, IProps<T>>) => <Table<T> {...props} />))
 	)
-	public render() {
+	public render () {
 		return <this.C {...this.props} />
 	}
 }
