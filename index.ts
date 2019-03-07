@@ -1,7 +1,6 @@
 // -------------------------------------------------------
 /* ---------------------Components------------------------ */
 // -------------------------------------------------------
-
 // -------------------------------------------------------
 /* ---------------------Actions--------------------------- */
 // -------------------------------------------------------
@@ -18,6 +17,7 @@ export { default as Avatar } from "./src/components/Avatar/Avatar"
 export { PresenceValue, SizeValue, StatusValue } from "./src/components/Avatar/__types/AvatarValues"
 export { default as Button } from "./src/components/Button/Button"
 export { default as Card } from "./src/components/Card/Card"
+export { default as Dialog } from "./src/components/Dialog/Dialog"
 export { default as Drawer } from "./src/components/Drawer/Drawer"
 export { default as AlertIcon } from "./src/components/Icons/AlertIcon"
 export { default as ArrowLeftIcon } from "./src/components/Icons/ArrowLeftIcon"

@@ -9,6 +9,7 @@ export interface IProps
 		Pick<React.AllHTMLAttributes<HTMLButtonElement>, "disabled" | "type"> {
 	readonly children?: React.ReactNode
 	readonly addBtn?: boolean
+	readonly autoFocus?: boolean
 	readonly padding?: string | number
 	readonly color?: string
 	readonly width?: string | number

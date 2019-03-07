@@ -62,6 +62,8 @@ declare enum InputTypes {
 	Switch = "switch",
 	Editor = "editor",
 	Checkbox = "checkbox",
+	Radio = "radio",
+	RadioGroup = "radioGroup",
 	File = "file",
 	Calender = "calender",
 	TimePicker = "timepicker",

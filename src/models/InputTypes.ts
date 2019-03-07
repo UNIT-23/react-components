@@ -3,6 +3,8 @@ export enum InputTypes {
 	Editor = "editor",
 	Switch = "switch",
 	Checkbox = "checkbox",
+	Radio = "radio",
+	RadioGroup = "radioGroup",
 	File = "file",
 	Calender = "calender",
 	TimePicker = "timepicker",

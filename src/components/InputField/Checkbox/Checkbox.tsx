@@ -1,16 +1,15 @@
-import * as React from "react"
 import { withStyles } from "@material-ui/core"
 import MuiCheckbox from "@material-ui/core/Checkbox"
-
+import * as React from "react"
+import { styles } from "./styles"
 import { IProps } from "./__types/IProps"
 
-import { styles } from "./styles"
-
-const Checkbox = ({ value, classes, color, ...rest }: IProps) => (
+const Checkbox = ({ classes, color, onBlur, onChange, value, checked, ...rest }: IProps) => (
 	<MuiCheckbox
-		value={value}
+		checked={checked}
+		onChange={onChange}
 		classes={{
-			root: classes.root,
+			root   : classes.root,
 			checked: classes.checked
 		}}
 		{...rest}
