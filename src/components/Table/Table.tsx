@@ -3,7 +3,6 @@ import MaterialTable from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import * as React from "react"
 import ApiSuspense from "../ApiSuspense/ApiSuspense"
-import Card from "../Card/Card"
 import materialThemeWrapper from "../MaterialThemeWrapper/MaterialThemeWrapper"
 import EnhancedTableHead from "./EnhancedTableHead/EnhancedTableHead"
 import EnhancedToolbar from "./EnhancedToolbar/EnhancedToolbar"
@@ -39,58 +38,56 @@ class Table<TData extends IDefaultDataType> extends React.Component<IProps<TData
 		} = this.props
 
 		return (
-			<Card>
-				<div className={classes.root}>
-					{!!tableTitle && (
-						<EnhancedToolbar
-							DefaultBtn={DefaultBtn}
-							SelectedBtn={SelectedBtn}
-							SearchBar={SearchBar}
-							tableTitle={tableTitle}
-							numSelected={selected ? selected.length : 0}
-						/>
-					)}
-					<div className={classes.tableWrapper}>
-						<ApiSuspense apiState={dataRequestState}>
-							<MaterialTable className={classes.table}>
-								<EnhancedTableHead<TData>
-									numSelected={selected ? selected.length : 0}
+			<div className={classes.root}>
+				{!!tableTitle && (
+					<EnhancedToolbar
+						DefaultBtn={DefaultBtn}
+						SelectedBtn={SelectedBtn}
+						SearchBar={SearchBar}
+						tableTitle={tableTitle}
+						numSelected={selected ? selected.length : 0}
+					/>
+				)}
+				<div className={classes.tableWrapper}>
+					<ApiSuspense apiState={dataRequestState}>
+						<MaterialTable className={classes.table}>
+							<EnhancedTableHead<TData>
+								numSelected={selected ? selected.length : 0}
+								columns={header}
+								orderType={orderType}
+								orderBy={orderBy}
+								handleSelectClick={handleSelectClick}
+								onSelectAllClick={handleSelectAllClick}
+								onRequestSort={onChangeSort}
+								rowCount={rows.length}
+							/>
+							<TableBody>
+								<TableRows<TData>
 									columns={header}
-									orderType={orderType}
-									orderBy={orderBy}
+									deleteHandler={deleteHandler}
+									editHandler={editHandler}
 									handleSelectClick={handleSelectClick}
-									onSelectAllClick={handleSelectAllClick}
-									onRequestSort={onChangeSort}
-									rowCount={rows.length}
+									orderBy={orderBy}
+									orderType={orderType}
+									page={page}
+									rows={rows}
+									rowsPerPage={rowsPerPage}
+									selected={selected}
 								/>
-								<TableBody>
-									<TableRows<TData>
-										columns={header}
-										deleteHandler={deleteHandler}
-										editHandler={editHandler}
-										handleSelectClick={handleSelectClick}
-										orderBy={orderBy}
-										orderType={orderType}
-										page={page}
-										rows={rows}
-										rowsPerPage={rowsPerPage}
-										selected={selected}
-									/>
-								</TableBody>
-							</MaterialTable>
-						</ApiSuspense>
-					</div>
-					{!!rowsPerPage && (
-						<Pagination
-							page={page}
-							count={count}
-							rowsPerPage={rowsPerPage}
-							onChangePage={onChangePage}
-							onChangeRowsPerPage={onChangeRowsPerPage}
-						/>
-					)}
+							</TableBody>
+						</MaterialTable>
+					</ApiSuspense>
 				</div>
-			</Card>
+				{!!rowsPerPage && (
+					<Pagination
+						page={page}
+						count={count}
+						rowsPerPage={rowsPerPage}
+						onChangePage={onChangePage}
+						onChangeRowsPerPage={onChangeRowsPerPage}
+					/>
+				)}
+			</div>
 		)
 	}
 }
