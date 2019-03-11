@@ -32,7 +32,7 @@ interface ITables {
 
 interface ITableHeader<TData> {
 	readonly id: keyof TData
-	readonly label: string
+	readonly label: React.ReactNode
 }
 
 interface IAlert {
